@@ -32,10 +32,10 @@ O sistema tem como principal objetivo resolver a falta de visibilidade sobre os 
 - Tecnologia: Ambiente de desenvolvimento (IDE), banco de dados, plataforma de hospedagem para testes. 
  
 # 6. Cronograma 
-Fase 1: Pesquisa e Planejamento: (3 meses)
-Fase 2: Desenvolvimento dos Módulos Principais: (3 meses)
-Fase 3: Testes e Documentação: (2 meses)
-Fase 4: Entrega e Apresentação do TCC: (1 semana)
+- Fase 1: Pesquisa e Planejamento: (3 meses)
+- Fase 2: Desenvolvimento dos Módulos Principais: (3 meses)
+- Fase 3: Testes e Documentação: (2 meses)
+- Fase 4: Entrega e Apresentação do TCC: (1 semana)
 
 # 7. Premissas  
 - Disponibilidade da equipe de desenvolvimento e o suporte do orientador.
