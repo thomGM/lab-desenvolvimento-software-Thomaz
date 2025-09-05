@@ -1,8 +1,8 @@
-#1. Identificação do Projeto 
--Nome do Projeto: Software para gerenciamento de clientes e pacientes em serviços de home care.
--Autor: Thomaz Milkewicz 
--Orientador: Clarissa Castellã Xavier
--Data: 
+# 1. Identificação do Projeto 
+- Nome do Projeto: Software para gerenciamento de clientes e pacientes em serviços de home care.
+- Autor: Thomaz Milkewicz 
+- Orientador: Clarissa Castellã Xavier
+- Data: 
 
 2. Introdução e Visão Geral  
 O sistema tem como principal objetivo resolver a falta de visibilidade sobre os cuidados prestados ao paciente,  integrando a equipe de cuidados e os familiares.
