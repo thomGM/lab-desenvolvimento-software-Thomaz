@@ -1,0 +1,30 @@
+@startuml
+actor Cuidador
+actor Familiar
+participant Paciente
+participant Sistema
+
+== Cadastro de Paciente ==
+Cuidador -> Sistema: cadastrarPaciente(dados)
+Sistema -> Paciente: criar novo registro
+Sistema --> Cuidador: confirmação
+
+== Registro de Agenda ==
+Cuidador -> Sistema: editarAgenda(paciente, atividades)
+Sistema -> Paciente: salvar agenda
+Sistema --> Cuidador: confirmação
+
+== Consulta da Agenda pelo Familiar ==
+Familiar -> Sistema: visualizarAgenda(paciente)
+Sistema -> Paciente: buscar agenda
+Sistema --> Familiar: agenda do paciente
+
+== Observações ==
+Familiar -> Sistema: cadastrarObservacao(paciente, texto)
+Sistema -> Paciente: salvar observação
+Sistema --> Familiar: confirmação
+
+Cuidador -> Sistema: visualizarObservacoes(paciente)
+Sistema -> Paciente: buscar observações
+Sistema --> Cuidador: lista de observações
+@enduml

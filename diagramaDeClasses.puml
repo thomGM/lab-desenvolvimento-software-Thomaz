@@ -1,0 +1,61 @@
+@startuml
+class Paciente {
+  -id : int
+  -nome : String
+  -dataNascimento : Date
+  -fichaTecnica : String
+}
+
+class Documento {
+  -id : int
+  -tipo : String
+  -arquivo : File
+}
+
+class Agenda {
+  -id : int
+  -data : Date
+  -atividade : String
+}
+
+class RelatorioDiario {
+  -id : int
+  -data : Date
+  -conteudo : String
+}
+
+class Observacao {
+  -id : int
+  -texto : String
+  -data : Date
+}
+
+class Cuidador {
+  -id : int
+  -nome : String
+  +cadastrarPaciente()
+  +editarFichaTecnica()
+  +editarAgenda()
+  +editarRelatorio()
+  +anexarDocumento()
+  +visualizarObservacoes()
+}
+
+class Familiar {
+  -id : int
+  -nome : String
+  +visualizarAgenda()
+  +visualizarDocumentos()
+  +visualizarFichaTecnica()
+  +visualizarRelatorio()
+  +cadastrarObservacao()
+}
+
+' RELACIONAMENTOS
+Paciente "1" -- "*" Documento
+Paciente "1" -- "*" Agenda
+Paciente "1" -- "*" RelatorioDiario
+Paciente "1" -- "*" Observacao
+Cuidador "1" -- "*" Paciente
+Familiar "1" -- "*" Paciente
+@enduml
