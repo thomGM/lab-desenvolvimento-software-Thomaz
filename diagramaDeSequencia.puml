@@ -1,30 +1,93 @@
 @startuml
 actor Cuidador
 actor Familiar
-participant Paciente
 participant Sistema
+participant Paciente
+participant FichaTecnica
+participant historicoMedico
+participant tipoHistoricoMedico
+participant Medicamento
+participant RestricaoAlimentar
+participant ProcedimentoEspecifico
+participant Procedimento
+participant Documento
+participant Agenda
+participant RelatorioDiario
+participant Observacao
+participant usuario_familiar
 
-== Cadastro de Paciente ==
-Cuidador -> Sistema: cadastrarPaciente(dados)
-Sistema -> Paciente: criar novo registro
-Sistema --> Cuidador: confirmação
+' ---------------------------
+' Fluxo do Cuidador
+' ---------------------------
+Cuidador -> Sistema : cadastrarPaciente(dadosPaciente)
+Sistema -> Paciente : salvar(dadosPaciente)
+Paciente --> Sistema : confirmacao
 
-== Registro de Agenda ==
-Cuidador -> Sistema: editarAgenda(paciente, atividades)
-Sistema -> Paciente: salvar agenda
-Sistema --> Cuidador: confirmação
+Cuidador -> Sistema : criarFichaTecnica(pacienteId)
+Sistema -> FichaTecnica : salvarFicha(pacienteId)
+FichaTecnica --> Sistema : confirmacao
 
-== Consulta da Agenda pelo Familiar ==
-Familiar -> Sistema: visualizarAgenda(paciente)
-Sistema -> Paciente: buscar agenda
-Sistema --> Familiar: agenda do paciente
+Cuidador -> Sistema : adicionarHistoricoMedico()
+Sistema -> historicoMedico : salvar()
+historicoMedico -> tipoHistoricoMedico : associarTipo()
+tipoHistoricoMedico --> historicoMedico : tipoAssociado
+historicoMedico --> Sistema : confirmacao
 
-== Observações ==
-Familiar -> Sistema: cadastrarObservacao(paciente, texto)
-Sistema -> Paciente: salvar observação
-Sistema --> Familiar: confirmação
+Cuidador -> Sistema : adicionarMedicamento()
+Sistema -> Medicamento : salvar()
+Medicamento --> Sistema : confirmacao
 
-Cuidador -> Sistema: visualizarObservacoes(paciente)
-Sistema -> Paciente: buscar observações
-Sistema --> Cuidador: lista de observações
+Cuidador -> Sistema : adicionarRestricaoAlimentar()
+Sistema -> RestricaoAlimentar : salvar()
+RestricaoAlimentar --> Sistema : confirmacao
+
+Cuidador -> Sistema : adicionarProcedimentoEspecifico()
+Sistema -> ProcedimentoEspecifico : salvar()
+ProcedimentoEspecifico -> Procedimento : associarProcedimento()
+Procedimento --> ProcedimentoEspecifico : confirmacao
+ProcedimentoEspecifico --> Sistema : confirmacao
+
+Cuidador -> Sistema : anexarDocumento()
+Sistema -> Documento : salvar()
+Documento --> Sistema : confirmacao
+
+Cuidador -> Sistema : cadastrarAgenda()
+Sistema -> Agenda : salvar()
+Agenda --> Sistema : confirmacao
+
+Cuidador -> Sistema : registrarRelatorio()
+Sistema -> RelatorioDiario : salvar()
+RelatorioDiario --> Sistema : confirmacao
+
+Cuidador -> Sistema : cadastrarUsuarioFamiliar(dados)
+Sistema -> usuario_familiar : salvar(dados)
+usuario_familiar --> Sistema : confirmacao
+
+' ---------------------------
+' Fluxo do Familiar
+' ---------------------------
+Familiar -> Sistema : acessaSistema(pacienteId)
+Sistema -> FichaTecnica : carregar()
+FichaTecnica --> Sistema : ficha
+
+Familiar -> Sistema : visualizarFichaTecnica(pacienteId)
+Sistema -> FichaTecnica : carregar()
+FichaTecnica --> Sistema : ficha
+
+Familiar -> Sistema : visualizarAgenda(pacienteId)
+Sistema -> Agenda : carregar()
+Agenda --> Sistema : listaAtividades
+
+Familiar -> Sistema : visualizarDocumentos(pacienteId)
+Sistema -> Documento : carregar()
+Documento --> Sistema : arquivos
+
+Familiar -> Sistema : visualizarRelatorio(pacienteId)
+Sistema -> RelatorioDiario : carregar()
+RelatorioDiario --> Sistema : relatorios
+
+Familiar -> Sistema : cadastrarObservacao(texto)
+Sistema -> Observacao : salvar()
+Observacao --> Sistema : confirmacao
+
 @enduml
