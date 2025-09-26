@@ -97,18 +97,11 @@ class Observacao {
   -familiar: int
 }
 
-class usuario_familiar {
-  -id : int
-  -nome : String
-  -paciente: int
-  -email : String
-  -senha : String
-  -tipo : int
-}
-
 class Cuidador {
   -id : int
   -nome : String
+  -email : String
+  -senha : String
   +cadastrarPaciente()
   +editarFichaTecnica()
   +editarAgenda()
@@ -148,8 +141,6 @@ FichaTecnica "1" -- "*" RestricaoAlimentar
 FichaTecnica "1" -- "*" ProcedimentoEspecifico
 ProcedimentoEspecifico "*" -- "1" Procedimento
 FichaTecnica "1" -- "*" Observacao
-
-usuario_familiar "1" -- "1" Familiar
 
 Cuidador "1" -- "*" Paciente
 Familiar "1" -- "1" Paciente

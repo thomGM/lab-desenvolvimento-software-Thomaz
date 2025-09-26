@@ -1,0 +1,142 @@
+@startuml
+!theme plain
+
+entity paciente {
+  *id : INT <<PK>>
+  nome : VARCHAR(100)
+  dataNascimento : DATE
+  endereco : VARCHAR(255)
+  telefone : VARCHAR(20)
+  telefoneEmergencia : VARCHAR(20)
+}
+
+entity fichaTecnica {
+  *id : INT <<PK>>
+  paciente : INT <<FK>>
+  historicoMedico : INT
+  medicamentos : INT
+  restricoesAlimentares : INT
+  procedimentosEspecificos : INT
+  observacoes : TEXT
+}
+
+entity tipoHistoricoMedico {
+  *id : INT <<PK>>
+  descricao : VARCHAR(255)
+}
+
+entity historicoMedico {
+  *id : INT <<PK>>
+  id_ficha : INT <<FK>>
+  tipo : INT <<FK>>
+  descricao : TEXT
+}
+
+entity Medicamento {
+  *id : INT <<PK>>
+  id_ficha : INT <<FK>>
+  nome : VARCHAR(100)
+  dosagem : VARCHAR(100)
+  frequencia : VARCHAR(100)
+  viaAdministracao : VARCHAR(50)
+  inicioTratamento : DATE
+  fimTratamento : DATE
+  ultima_aplicacao : DATETIME
+}
+
+entity RestricaoAlimentar {
+  *id : INT <<PK>>
+  id_ficha : INT <<FK>>
+  descricao : VARCHAR(255)
+}
+
+entity procedimento {
+  *id : INT <<PK>>
+  nome : VARCHAR(100)
+}
+
+entity ProcedimentoEspecifico {
+  *id : INT <<PK>>
+  id_ficha : INT <<FK>>
+  id_procedimento : INT <<FK>>
+  horarios : VARCHAR(100)
+  descricao : TEXT
+}
+
+entity documento {
+  *id : INT <<PK>>
+  tipo : VARCHAR(50)
+  paciente : INT <<FK>>
+  descricao : VARCHAR(255)
+  arquivo : LONGBLOB
+}
+
+entity agenda_paciente {
+  *id : INT <<PK>>
+  data : DATE
+  atividade : VARCHAR(255)
+  paciente : INT <<FK>>
+}
+
+entity relatorioDiario {
+  *id : INT <<PK>>
+  paciente : INT <<FK>>
+  data : DATE
+  conteudo : TEXT
+}
+
+entity cuidador {
+  *id : INT <<PK>>
+  nome : VARCHAR(100)
+  email : VARCHAR(100) <<UNIQUE>>
+  senha : VARCHAR(255)
+}
+
+entity agenda {
+  *id : INT <<PK>>
+  data : DATE
+  atividade : VARCHAR(255)
+  cuidador : INT <<FK>>
+}
+
+entity familiar {
+  *id : INT <<PK>>
+  nome : VARCHAR(100)
+  email : VARCHAR(100) <<UNIQUE>>
+  senha : VARCHAR(255)
+  paciente : INT <<FK>>
+}
+
+entity observacao {
+  *id : INT <<PK>>
+  texto : TEXT
+  data : DATE
+  familiar : INT <<FK>>
+}
+
+entity cuidador_paciente {
+  *id : INT <<PK>>
+  cuidador_id : INT <<FK>>
+  paciente_id : INT <<FK>>
+}
+
+' ================================
+' RELACIONAMENTOS
+' ================================
+
+paciente ||--o{ fichaTecnica : possui
+fichaTecnica ||--o{ historicoMedico : tem
+tipoHistoricoMedico ||--o{ historicoMedico : classifica
+fichaTecnica ||--o{ Medicamento : usa
+fichaTecnica ||--o{ RestricaoAlimentar : possui
+fichaTecnica ||--o{ ProcedimentoEspecifico : aplica
+procedimento ||--o{ ProcedimentoEspecifico : detalha
+paciente ||--o{ documento : possui
+paciente ||--o{ agenda_paciente : organiza
+paciente ||--o{ relatorioDiario : gera
+paciente ||--o{ familiar : vincula
+familiar ||--o{ observacao : registra
+cuidador ||--o{ agenda : organiza
+cuidador ||--o{ cuidador_paciente : relaciona
+paciente ||--o{ cuidador_paciente : acompanha
+@enduml
