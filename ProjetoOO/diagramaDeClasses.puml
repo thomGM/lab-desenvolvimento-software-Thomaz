@@ -131,7 +131,6 @@ Paciente "1" -- "*" Documento
 Paciente "1" -- "*" Agenda
 Paciente "1" -- "*" RelatorioDiario
 Paciente "1" -- "*" Observacao
-Paciente "1" -- "*" usuario_familiar
 Paciente "1" -- "*" Familiar
 
 FichaTecnica "1" -- "*" historicoMedico
