@@ -13,7 +13,7 @@ O sistema tem como principal objetivo resolver a falta de visibilidade sobre os 
 - Garantir que o sistema seja de fácil instalação e utilização, mesmo para usuários com pouca experiência técnica. 
  
 # 4. Escopo do Projeto
-O escopo do projeto está documentado no arquivo [escopo.md](./escopo.md)
+O escopo do projeto está documentado no arquivo [ESCOPO.md](./ESCOPO.md)
  
 # 5. Tecnologias
 
