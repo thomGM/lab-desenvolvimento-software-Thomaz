@@ -1,7 +1,7 @@
 <?php
 
 function conexao(){
-    $dsn = "mysql:host=localhost;dbname=aula_pdo";
+    $dsn = "mysql:host=localhost;dbname=homecare";
     $usuario = "root";
     $senha = "";
 
