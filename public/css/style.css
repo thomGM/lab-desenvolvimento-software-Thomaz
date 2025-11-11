@@ -25,6 +25,8 @@ html,body{
     padding-top:1rem;
     box-shadow:2px 0 6px rgba(0,0,0,0.08);
     z-index:1000;
+    transition: transform 220ms ease;
+    will-change: transform;
 }
 
 .sidebar ul{
@@ -61,10 +63,63 @@ html,body{
     background-color: rgba(255,255,255,0.03);
 }
 
+/* Estilos do submenu */
+.submenu {
+    display: none;
+    padding-left: 20px;
+}
+
+.submenu li {
+    margin-top: 5px;
+}
+
+.submenu li a {
+    font-size: 0.95em;
+    padding: 8px 15px;
+}
+
+.has-submenu.active .arrow {
+    transform: rotate(180deg);
+}
+
+.arrow {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+/* Submenu styles */
+.submenu {
+    display: none;
+    margin-left: 1rem !important;
+    background: rgba(255,255,255,0.05);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.has-submenu.active .submenu {
+    display: block;
+}
+
+.has-submenu .arrow {
+    display: inline-block;
+    margin-left: 5px;
+    transition: transform 0.2s ease;
+}
+
+.has-submenu.active .arrow {
+    transform: rotate(180deg);
+}
+
+.submenu a {
+    padding: 0.5rem 1rem !important;
+    font-size: 0.95em;
+}
+
 /* Page content area (pushed to right of sidebar) */
 .content{
     margin-left:220px;
     padding:1rem;
+    transition: margin-left 220ms ease;
 }
 
 h1{ 
@@ -99,9 +154,25 @@ h1{
 
 .desabilitar:hover{ background: rgba(255,255,255,0.12); }
 
-/* Hidden state for sidebar (used by JS) */
+/* Hidden / collapsed state for sidebar (used by JS)
+   Instead of removing the sidebar from layout (display:none), we translate it
+   left so the content can animate its margin and give the impression of
+   opening/closing an actual panel. */
 #sidebar.hidden{
-    display:none !important;
+    transform: translateX(-220px);
+}
+
+/* When sidebar is collapsed, shift the page content closer to the left edge */
+#sidebar.hidden ~ .content{
+    margin-left:20px;
+}
+
+/* Also support toggling via a class on the body in case .content isn't a sibling */
+body.sidebar-collapsed #sidebar{
+    transform: translateX(-220px);
+}
+body.sidebar-collapsed .content{
+    margin-left:20px;
 }
 
 /* open-sidebar button (shows when sidebar is hidden) */

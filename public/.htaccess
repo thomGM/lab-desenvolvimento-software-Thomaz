@@ -1,0 +1,12 @@
+# Ativa o "motor de re-escrita" de URLs
+RewriteEngine On
+
+# Define a pasta "base" do projeto
+RewriteBase /homeCare/lab-desenvolvimento-software-Thomaz/public/
+
+# Não mexe em arquivos ou pastas que realmente existem
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Para todas as outras requisições, envia para o index.php
+RewriteRule ^ index.php [L]

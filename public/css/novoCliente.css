@@ -1,0 +1,253 @@
+/* Estilização dos campos de formulário */
+.form-group {
+    margin-bottom: 1.5rem;
+    width: 100%;
+    max-width: 500px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #333;
+    font-weight: 500;
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    border: 2px solid #e1e1e1;
+    border-radius: 4px;
+    background-color: #fff;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-control:focus {
+    border-color: #2b6cb0;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(43, 108, 176, 0.1);
+}
+
+.form-control:hover {
+    border-color: #cbd5e0;
+}
+
+/* Estilização para campos inválidos */
+.form-control:invalid {
+    border-color: #e53e3e;
+}
+
+/* Estilização para campos desabilitados */
+.form-control:disabled {
+    background-color: #f7f7f7;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+/* Estilo para campos obrigatórios */
+.required::after {
+    content: "*";
+    color: #e53e3e;
+    margin-left: 4px;
+}
+
+/* Container do formulário */
+.form-container {
+    padding: 2rem;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 2rem auto;
+}
+
+/* Botões do formulário */
+.btn {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn-primary {
+    background-color: #2b6cb0;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #2c5282;
+}
+
+.btn-secondary {
+    background-color: #718096;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #4a5568;
+}
+
+/* Estilos para seções do formulário */
+.form-section {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background-color: #f8f9fa;
+    border-radius: 6px;
+    border: 1px solid #e9ecef;
+}
+
+.form-section h3 {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    color: #2d3748;
+    font-size: 1.25rem;
+}
+
+/* Cabeçalho da seção com título à esquerda e botão adicionar à direita */
+.form-section .section-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:1rem;
+}
+.form-section .section-header h3{ margin-bottom:0; }
+
+/* Grupo de inputs (para data + hora) */
+.input-group {
+    display: flex;
+    gap: 1rem;
+}
+
+.input-group .form-control {
+    flex: 1;
+}
+
+/* Checkbox personalizado */
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: 1.2rem;
+    height: 1.2rem;
+    cursor: pointer;
+}
+
+/* Estilos para textarea */
+textarea.form-control {
+    min-height: 100px;
+    resize: vertical;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .form-container {
+        margin: 1rem;
+        padding: 1rem;
+    }
+    
+    .form-group {
+        max-width: 100%;
+    }
+
+    .input-group {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .form-section {
+        padding: 1rem;
+    }
+}
+
+/* Grupo de botões */
+.button-group {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.adicionar {
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 36px;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #ffffff; /* '+' em branco */
+    background-color: #2b6cb0; /* botão todo azul */
+    border: 2px solid #2b6cb0;
+    padding: 0;
+    border-radius: 8px; /* meio arredondado */
+    box-sizing: border-box;
+    transition: background-color 160ms ease, transform 120ms ease;
+}
+
+.adicionar:hover{
+    background-color: #245a96; /* tom mais escuro no hover */
+    transform: translateY(-1px);
+}
+
+.adicionar:focus{
+    outline: 3px solid rgba(43,108,176,0.18);
+    outline-offset: 2px;
+}
+/* Estilização para grupos flexíveis com botão remover alinhado */
+.item .form-group.flex-group{
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap; /* permite empilhar em telas pequenas */
+}
+
+.item .form-group.medico-group label{
+    margin: 0; /* remove espaçamento extra do label dentro do flex */
+    white-space: nowrap;
+}
+
+.item .form-group.medico-group .form-control{
+    flex: 1 1 180px; /* ocupar o espaço restante, mas respeitar uma largura mínima */
+    min-width: 140px;
+}
+
+/* Força a ordem visual apenas no grupo médico: label (0), select/inputs (1), botão remover (2) */
+.item .form-group.medico-group label{ order: 0; }
+.item .form-group.medico-group select, .item .form-group.medico-group input, .item .form-group.medico-group textarea{ order: 1; }
+.item .form-group.medico-group .remover{ order: 2; }
+
+/* Botão remover (pequeno, vermelho, alinhado ao campo) */
+.remover{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #ffffff;
+    background-color: #e53e3e; /* vermelho */
+    border: 2px solid #e53e3e;
+    border-radius: 8px;
+    cursor: pointer;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.remover:hover{
+    background-color: #c53030;
+    border-color: #c53030;
+    transform: translateY(-1px);
+}
+
+@media (max-width: 480px){
+    .item .form-group.medico-group .form-control{ min-width: 0; width: 100%; }
+    .item .form-group.medico-group .remover{ order: 3; margin-top: 0.25rem; }
+}

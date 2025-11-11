@@ -1,3 +1,6 @@
+<?php 
+    include 'includes/global.php';
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -6,7 +9,7 @@
     <title>Clientes</title>
 </head>
 <body>
-    <?php include __DIR__ . '/../app/Views/includes/menu.php'; ?>
+    <?php include __DIR__ . '/includes/menu.php'; ?>
     <main class="content">
         <h1>Clientes</h1>
         <label for="nome"><select id="nome" name="nome">
@@ -15,6 +18,7 @@
         </select></label>
         <input type="text" id="cliente-nome" name="cliente-nome">
         <button type="button" onclick="pesquisar()">Buscar</button>
+        <button type="button" onclick="incluirNovo()">Incluir Novo +</button>
     </main>
 </body>
 </html>
