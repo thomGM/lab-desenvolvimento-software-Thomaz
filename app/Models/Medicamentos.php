@@ -67,4 +67,17 @@ class Medicamentos {
         $stmt->execute(['id_ficha' => $id_ficha]);
         return ;
     }
+
+    public function listarParaAgenda($id_ficha, $ano, $mes) {
+        $stmt = $this->conexao->prepare("
+            SELECT 
+                nome, 
+                inicioTratamento AS data_evento,
+                'Medicamento' AS tipo_evento
+            FROM Medicamento 
+            WHERE id_ficha = :id_ficha 
+            AND YEAR(inicioTratamento) = :ano AND MONTH(inicioTratamento) = :mes");
+        $stmt->execute(['id_ficha' => $id_ficha, 'ano' => $ano, 'mes' => $mes]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }

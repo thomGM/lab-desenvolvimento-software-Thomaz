@@ -1,0 +1,68 @@
+body {
+    background-color: #f4f7f6;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.calendar-header h1 {
+    margin: 0;
+    font-size: 1.8em;
+}
+
+.calendar-header button {
+    background: #3498db;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1.5em;
+    cursor: pointer;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+}
+
+.day-cell {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    min-height: 120px;
+    padding: 8px;
+    position: relative;
+}
+
+.day-number {
+    font-weight: bold;
+    font-size: 0.9em;
+    color: #333;
+}
+
+.event-postit {
+    background-color: #fffbe6;
+    border-left: 4px solid #f0c419;
+    border-radius: 3px;
+    padding: 5px;
+    margin-top: 5px;
+    font-size: 0.8em;
+    cursor: pointer;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.event-postit.tipo-procedimento {
+    background-color: #e6f7ff;
+    border-left-color: #1890ff;
+}
+
+.event-postit.tipo-medicamento {
+    background-color: #f6ffed;
+    border-left-color: #52c41a;
+}

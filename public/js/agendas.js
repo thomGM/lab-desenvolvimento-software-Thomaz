@@ -1,7 +1,21 @@
 var BASE_URL = '/homeCare/lab-desenvolvimento-software-Thomaz/public';
+var BASE_APP = '/homeCare/lab-desenvolvimento-software-Thomaz/app/Views/';
 
 $(document).ready(function() {
     carregarClientes();
+
+    $('#search-cliente').on('keyup', function() {
+        const searchTerm = $(this).val().toLowerCase();
+
+        $('.cliente-card').each(function() {
+            const nomeCliente = $(this).find('.cliente-nome').text().toLowerCase();
+            if (nomeCliente.includes(searchTerm)) {
+                $(this).show(); 
+            } else {
+                $(this).hide(); 
+            }
+        });
+    });
 });
 
 function carregarClientes() {
@@ -11,7 +25,7 @@ function carregarClientes() {
         dataType: 'json',
         success: function(clientes) {
             const container = $('#clientes-container');
-            container.empty(); // Limpa o container antes de adicionar os novos cartões
+            container.empty(); 
 
             if (clientes && clientes.length > 0) {
                 clientes.forEach(function(cliente) {
@@ -32,14 +46,10 @@ function carregarClientes() {
         }
     });
 
-    // Adiciona o evento de clique nos cartões
     $(document).on('click', '.cliente-card', function() {
         const clienteId = $(this).data('id');
         const clienteNome = $(this).find('.cliente-nome').text();
-        // Por enquanto, vamos apenas mostrar um alerta.
-        // No futuro, aqui você pode redirecionar para a página da agenda do cliente.
-        alert(`Você clicou no cliente: ${clienteNome} (ID: ${clienteId}).\nAqui abriria a agenda dele.`);
-        // Exemplo de redirecionamento:
-        // window.location.href = 'agendaCliente.php?id=' + clienteId;
+
+        window.location.href = BASE_APP + 'agendaCliente.php?id=' + clienteId;
     });
 }

@@ -1,3 +1,15 @@
+.search-container {
+    margin: 20px 0;
+    text-align: center;
+}
+
+#search-cliente {
+    width: 50%;
+    max-width: 400px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
 .clientes-container {
     display: flex;
     flex-wrap: wrap;
@@ -31,4 +43,12 @@
     font-weight: bold;
     font-size: 1.1em;
     margin-top: 10px;
+}
+
+select, input[type="text"] {
+    padding: 6px 10px;
+    border: 1px solid #bfc9d1;
+    border-radius: 4px;
+    background: #f9fafb;
+    transition: border-color 0.2s;
 }

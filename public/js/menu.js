@@ -3,7 +3,7 @@
     'use strict';
     
     $('.submenu').hide();
-
+	
     $(document).on('click', '.submenu-trigger', function(e){
         e.preventDefault();
         $(this).parent().find('.submenu').slideToggle();

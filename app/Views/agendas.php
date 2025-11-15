@@ -15,6 +15,11 @@
     <main class="content">
         <h1>Agendas dos Clientes</h1>
         <p>Selecione um cliente para visualizar a agenda.</p>
+
+        <div class="search-container">
+            <input type="text" id="search-cliente" placeholder="Pesquisar cliente por nome...">
+        </div>
+
         <div id="clientes-container" class="clientes-container">
             <!-- Os cartões dos clientes serão inseridos aqui pelo JavaScript -->
         </div>
