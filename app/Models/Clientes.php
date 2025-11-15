@@ -8,6 +8,7 @@ class Clientes {
     public $endereco;
     public $telefone;
     public $telefoneEmergencia;
+    public $cpf;
 
     public function __construct() {
         $this->conexao = conexao();
@@ -18,20 +19,27 @@ class Clientes {
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-    public function buscar($nome) {
-        $stmt = $this->conexao->prepare("SELECT * FROM paciente WHERE nome LIKE :nome");
-        $stmt->execute(['nome' => "%$nome%"]);
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    public function buscar($nome, $tipo) {
+        if ($tipo == 'id') {
+            $stmt = $this->conexao->prepare("SELECT * FROM paciente WHERE $tipo = :nome");
+            $stmt->execute(['nome' => $nome]);
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } else {
+             $stmt = $this->conexao->prepare("SELECT * FROM paciente WHERE $tipo LIKE :nome");
+            $stmt->execute(['nome' => "%$nome%"]);
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
     }
 
     public function salvar() {
-        $stmt = $this->conexao->prepare("INSERT INTO paciente (nome, dataNascimento, endereco, telefone, telefoneEmergencia) VALUES (:nome, :dataNascimento, :endereco, :telefone, :telefoneEmergencia)");
+        $stmt = $this->conexao->prepare("INSERT INTO paciente (nome, dataNascimento, endereco, telefone, telefoneEmergencia, cpf) VALUES (:nome, :dataNascimento, :endereco, :telefone, :telefoneEmergencia, :cpf)");
         $stmt->execute([
             'nome' => $this->nome,
             'dataNascimento' => $this->dataNascimento,
             'endereco' => $this->endereco,
             'telefone' => $this->telefone,
-            'telefoneEmergencia' => $this->telefoneEmergencia
+            'telefoneEmergencia' => $this->telefoneEmergencia,
+            'cpf' => $this->cpf
         ]);
         $this->setId($this->conexao->lastInsertId());
         return;

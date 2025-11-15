@@ -22,6 +22,11 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="cpf" class="required">CPF</label>
+                    <input type="text" class="form-control" id="cpf" name="cpf" required>
+                </div>
+
+                <div class="form-group">
                     <label for="dataNascimento" class="required">Data de Nascimento</label>
                     <input type="date" class="form-control" id="dataNascimento" name="dataNascimento" required>
                 </div>
