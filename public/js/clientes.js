@@ -71,7 +71,7 @@ function novoHistoricoMedico(index, item = {}) {
             </div>
             <div class="form-group">
                 <label for="descricaoHistorico_${index}">Descrição</label>
-                <textarea id="descricaoHistorico_${index}" name="historicoMedico[${index}][descricao]" class="form-control" rows="4"></textarea>
+                <textarea id="descricaoHistorico_${index}" name="historicoMedico[${index}][descricao]" class="form-control" rows="4">${item.descricao || ''}</textarea>
             </div>
         </div>
     `;
@@ -96,6 +96,25 @@ function novoHistoricoMedico(index, item = {}) {
 
 function novoMedicamentos(index, item = {}) {
     console.log("Adicionando novo medicamento com índice:", index);
+    var ultima_aplicacao_data = '';
+    var ultima_aplicacao_hora = '';
+    var inicioTratamento_data = '';
+    var fimTratamento_data = '';
+
+    // Verifica se item.ultima_aplicacao existe antes de usar .split()
+    if (item.ultima_aplicacao) {
+        var partes = item.ultima_aplicacao.split(' ');
+        ultima_aplicacao_data = partes[0].split(' ')[0];
+        ultima_aplicacao_hora = partes[1];
+    }
+    // Verifica se item.inicioTratamento existe antes de usar .split()
+    if (item.inicioTratamento) {
+        inicioTratamento_data = item.inicioTratamento.split(' ')[0];
+    }
+    // Verifica se item.fimTratamento existe antes de usar .split()
+    if (item.fimTratamento) {
+        fimTratamento_data = item.fimTratamento.split(' ')[0];
+    }
     const novoMedicamento = `
         <div class="item" data-index="${index}">           
             <div class="form-group flex-group">
@@ -107,33 +126,57 @@ function novoMedicamentos(index, item = {}) {
                 <label for="dosagemMedicamento_${index}" class="required">Dosagem</label>
                 <input type="text" class="form-control" id="dosagemMedicamento_${index}" name="medicamentos[${index}][dosagem]" value="${item.dosagem || ''}" required>
             </div>
-            <div class="form-group flex-group">
-                <label for="frequenciaMedicamento_${index}" class="required">Frequência</label>
-                <input type="text" class="form-control" id="frequenciaMedicamento_${index}" name="medicamentos[${index}][frequencia]" value="${item.frequencia || ''}" required>
-            </div>
             <div class="form-group">
                 <label for="viaAdministracao_${index}">Via de Administração</label>
-                <input type="text" class="form-control" id="viaAdministracao_${index}" name="medicamentos[${index}][via]" value="${item.via || ''}" required>
+                <input type="text" class="form-control" id="viaAdministracao_${index}" name="medicamentos[${index}][viaAdministracao]" value="${item.viaAdministracao || ''}" required>
             </div>
             <div class="form-group">
                 <label for="inicioTratamento_${index}">Início do Tratamento</label>
-                <div class="input-group">
-                    <input type="date" class="form-control" id="inicioTratamento_${index}" name="medicamentos[${index}][dataInicio]" value="${item.dataInicio || ''}">
-                    <input type="time" class="form-control" id="horaInicio_${index}" name="medicamentos[${index}][horaInicio]" value="${item.horaInicio || ''}">
-                </div>
+                <input type="date" class="form-control" id="inicioTratamento_${index}" name="medicamentos[${index}][dataInicio]" value="${inicioTratamento_data}">
             </div>
             <div class="form-group">
                 <label for="fimTratamento_${index}">Fim do Tratamento</label>
-                <div class="input-group">
-                    <input type="date" class="form-control" id="fimTratamento_${index}" name="medicamentos[${index}][dataFim]" value="${item.dataFim || ''}">
-                    <input type="time" class="form-control" id="horaFim_${index}" name="medicamentos[${index}][horaFim]" value="${item.horaFim || ''}">
+                <input type="date" class="form-control" id="fimTratamento_${index}" name="medicamentos[${index}][dataFim]" value="${fimTratamento_data}">
+            </div>
+            <div class="form-group">
+                <label for="ultima_aplicacao_${index}">Ultima Aplicação</label>
+                <div class="form-group">
+                    <input type="date" class="form-control" id="ultima_aplicacao_data${index}" name="medicamentos[${index}][ultima_aplicacao_data]" value="${ultima_aplicacao_data}">
+                    <input type="time" class="form-control" id="ultima_aplicacao_hora${index}" name="medicamentos[${index}][ultima_aplicacao_hora]" value="${ultima_aplicacao_hora}">
                 </div>
             </div>
+            <div class="form-group">
+                <label for="repetir_${index}">Repetir:</label>
+                <select class="form-control" id="repetir_${index}" name="medicamentos[${index}][repetir]">
+                    <option value="1" ${item.repetir == 1 ? 'selected' : ''}>Todos os dias</option>
+                    <option value="2" ${item.repetir == 2 ? 'selected' : ''}>Dias especificos</option>
+                    <option value="3" ${item.repetir == 3 ? 'selected' : ''}>Intervalo de dias</option>
+                </select>
+            </div>
+            <div id="diasMedicamento_${index}" class="form-group"></div>
+            <div class="form-group">
+                <label for="intervalo_${index}">Intervalo (Horário)</label>
+                <select class="form-control" id="intervalo_${index}" name="medicamentos[${index}][intervalo]">
+                    <option value="">Selecione</option>
+                    <option value="1" ${item.intervalo == 1 ? 'selected' : ''}>Intervalo em horas</option>
+                    <option value="2" ${item.intervalo == 2 ? 'selected' : ''}>Intervalo em minutos</option>
+                    <option value="3" ${item.intervalo == 3 ? 'selected' : ''}>Intervalo especifico</option>
+                </select>
+            </div>
+            <div id="horasMedicamento_${index}" class="form-group"></div>
         </div>
     `;
     
     $('#divMedicamentos').append(novoMedicamento);
     
+    // Se estiver editando (item existe), chama as funções para criar e preencher os campos dinâmicos
+    if (item.repetir) {
+        atualizarCamposRepetir(index, item.repetir, item);
+    }
+    if (item.intervalo) {
+        atualizarCamposIntervalo(index, item.intervalo, item);
+    }
+
     const novoIndice = index + 1;
     $('.adicionar[onclick*="novoMedicamentos"]').attr('onclick', `novoMedicamentos(${novoIndice})`);
 }
@@ -145,7 +188,7 @@ function novoRestricoesAlimentares(index, item = {}) {
             <div class="form-group flex-group">
                 <label for="descricaoRestricao_${index}">Detalhes</label>
                 <button type="button" class="remover" aria-label="Remover restrição">-</button>
-                <textarea id="descricaoRestricao_${index}" name="restricoesAlimentares[${index}][descricao]" class="form-control" rows="4"></textarea>
+                <textarea id="descricaoRestricao_${index}" name="restricoesAlimentares[${index}][descricao]" class="form-control" rows="4">${item.descricao || ''}</textarea>
             </div>
         </div>
     `;
@@ -169,7 +212,7 @@ function novoProcedimentosEspecificos(index, item = {}) {
             </div>
             <div class="form-group flex-group">
                 <label for="horaProcedimento_${index}">Hora do Procedimento</label>
-                <input type="time" class="form-control" id="horaProcedimento_${index}" name="procedimentosEspecificos[${index}][hora]" value="${item.hora || ''}">
+                <input type="time" class="form-control" id="horaProcedimento_${index}" name="procedimentosEspecificos[${index}][hora]" value="${item.horarios || ''}">
             </div>
             <div class="form-group">
                 <label for="descricaoProcedimento_${index}">Detalhes</label>
@@ -260,4 +303,77 @@ $(document).ready(function() {
         var $item = $(this).closest('.item');
         $item.slideUp(150, function(){ $item.remove(); });
     });
+
+    $(document).on('change', 'select[name*="[repetir]"]', function() {
+        var index = $(this).closest('.item').data('index');
+        var valor = $(this).val();
+        atualizarCamposRepetir(index, valor);
+    });
+
+    $(document).on('change', 'select[name*="[intervalo]"]', function() {
+        var index = $(this).closest('.item').data('index');
+        var valor = $(this).val();
+        atualizarCamposIntervalo(index, valor);
+    });    
 });
+
+function atualizarCamposRepetir(index, valor, item = {}) {
+    var $targetDiv = $(`#diasMedicamento_${index}`);
+    var html = '';
+    $targetDiv.empty();
+
+    switch (String(valor)) {
+        case '2':
+            html = `<label for="diasSemana_${index}">Selecione os dias da semana:</label><br>
+                    <select id="diasSemana_${index}" name="medicamentos[${index}][diasSemana][]" class="form-control" multiple>
+                        <option value="1">Domingo</option>
+                        <option value="2">Segunda</option>
+                        <option value="3">Terça</option>
+                        <option value="4">Quarta</option>
+                        <option value="5">Quinta</option>
+                        <option value="6">Sexta</option>
+                        <option value="7">Sábado</option>
+                    </select>`;
+            $targetDiv.html(html);
+            if (item.diasMedicamento) {
+                const dias = typeof item.diasMedicamento === 'string' ? item.diasMedicamento.split(',') : item.diasMedicamento;
+                $(`#diasSemana_${index}`).val(dias);
+            }
+            break;
+        case '3':
+            html = `<label for="intervaloDias_${index}">Intervalo de dias:</label>
+                    <input type="number" id="intervaloDias_${index}" name="medicamentos[${index}][intervaloDias]" class="form-control" min="1" placeholder="Número de dias">`;
+            $targetDiv.html(html);
+            if (item.diasMedicamento) {
+                $(`#intervaloDias_${index}`).val(item.diasMedicamento);
+            }
+            break;
+    }
+}
+
+function atualizarCamposIntervalo(index, valor, item = {}) {
+    var $targetDiv = $(`#horasMedicamento_${index}`);
+    var html = '';
+    $targetDiv.empty();
+
+    switch (String(valor)) {
+        case '1':
+            html = `<label for="horasIntervalo_${index}">Intervalo em horas:</label>
+                    <input type="number" id="horasIntervalo_${index}" name="medicamentos[${index}][horasIntervalo]" class="form-control" min="1" placeholder="Número de horas">`;
+            $targetDiv.html(html);
+            if (item.horasMedicamento) $(`#horasIntervalo_${index}`).val(item.horasMedicamento);
+            break;
+        case '2':
+            html = `<label for="minutosIntervalo_${index}">Intervalo em minutos:</label>
+                    <input type="number" id="minutosIntervalo_${index}" name="medicamentos[${index}][minutosIntervalo]" class="form-control" min="1" placeholder="Número de minutos">`;
+            $targetDiv.html(html);
+            if (item.horasMedicamento) $(`#minutosIntervalo_${index}`).val(item.horasMedicamento);
+            break;
+        case '3':
+            html = `<label for="horariosEspecificos_${index}">Horários específicos (separados por vírgula):</label>
+                    <input type="text" id="horariosEspecificos_${index}" name="medicamentos[${index}][horariosEspecificos]" class="form-control" placeholder="Ex: 08:00, 12:00, 18:00">`;
+            $targetDiv.html(html);
+            if (item.horasMedicamento) $(`#horariosEspecificos_${index}`).val(item.horasMedicamento);
+            break;
+    }
+}

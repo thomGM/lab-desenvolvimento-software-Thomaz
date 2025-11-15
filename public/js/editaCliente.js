@@ -8,13 +8,6 @@ $(document).ready(function() {
         data: {id: CLIENTE_ID},
         dataType: 'json',
         success: function(response) {
-            // Preencher o formulário com os dados do cliente
-            $('#nome').val(response.nome);
-            $('#cpf').val(response.cpf);
-            $('#dataNascimento').val(response.dataNascimento);
-            $('#endereco').val(response.endereco);
-            $('#telefone').val(response.telefone);
-            $('#telefoneEmergencia').val(response.telefoneEmergencia);
             if (response.success && response.data) {
                 const data = response.data;
 
@@ -76,3 +69,23 @@ $(document).ready(function() {
         }
     });
 });
+
+function atualizarCliente() {
+    $.ajax({
+        url: BASE_URL + '/clientes/atualizar',
+        method: 'POST',
+        data: {formData: $('#formCliente').serialize()},
+        dataType: 'json',
+        success: function(response) {
+            if (response.success) {
+                alert('Cliente atualizado com sucesso!');
+                window.location.href = BASE_APP + 'clientes.php';
+            } else {
+                alert(response.message || 'Erro ao atualizar cliente');
+            }
+        },
+        error: function(xhr, status, error) {
+            console.error('Erro ao atualizar cliente:', error);
+        }
+    });
+}

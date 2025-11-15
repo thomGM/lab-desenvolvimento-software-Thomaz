@@ -23,4 +23,19 @@ class RestricoesAlimentares {
         ]);
         return $this->conexao->lastInsertId();
     }
+    public function atualizar() {
+        $stmt = $this->conexao->prepare("UPDATE RestricaoAlimentar SET id_ficha = :id_ficha, descricao = :descricao WHERE id = :id");
+        $stmt->execute([
+            'id_ficha' => $this->id_ficha,
+            'descricao' => $this->descricao,
+            'id' => $this->id
+        ]);
+        return ;
+    }
+
+    public function deletar($id_ficha) {
+        $stmt = $this->conexao->prepare("DELETE FROM RestricaoAlimentar WHERE id_ficha = :id_ficha");
+        $stmt->execute(['id_ficha' => $id_ficha]);
+        return ;
+    }
 }

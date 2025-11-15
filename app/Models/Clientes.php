@@ -45,6 +45,20 @@ class Clientes {
         return;
     }
 
+    public function atualizar() {
+        $stmt = $this->conexao->prepare("UPDATE paciente SET nome = :nome, dataNascimento = :dataNascimento, endereco = :endereco, telefone = :telefone, telefoneEmergencia = :telefoneEmergencia, cpf = :cpf WHERE id = :id");
+        $stmt->execute([
+            'nome' => $this->nome,
+            'dataNascimento' => $this->dataNascimento,
+            'endereco' => $this->endereco,
+            'telefone' => $this->telefone,
+            'telefoneEmergencia' => $this->telefoneEmergencia,
+            'cpf' => $this->cpf,
+            'id' => $this->id
+        ]);
+        return;
+    }
+
     public function getId() {
         return $this->id;
     }

@@ -8,9 +8,15 @@
             <a href="#" class="submenu-trigger">Clientes <span class="arrow">▼</span></a>
             <ul class="submenu">
                 <li><a href="novoCliente.php">Cadastrar Cliente</a></li>
+                <li><a href="clientes.php">Pesquisar Clientes</a></li>
             </ul>
         </li>
-        <li><a href="services.php">Serviços</a></li>
+        <li class="has-submenu">
+            <a href="#" class="submenu-trigger">Agendas <span class="arrow">▼</span></a>
+            <ul class="submenu">
+                <li><a href="agendas.php">Visualizar Agendas</a></li>
+            </ul>
+        </li>
         <li><a href="contact.php">Contato</a></li>
     </ul>
 </nav>

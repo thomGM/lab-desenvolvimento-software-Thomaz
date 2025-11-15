@@ -31,6 +31,19 @@ class FichaTecnica {
         return ;
     }
 
+    public function atualizar() {
+        $stmt = $this->conexao->prepare("UPDATE fichaTecnica SET paciente = :paciente, historicoMedico = :historicoMedico, medicamentos = :medicamentos, restricoesAlimentares = :restricoesAlimentares, procedimentosEspecificos = :procedimentosEspecificos WHERE id = :id");
+        $stmt->execute([
+            'paciente' => $this->paciente,
+            'historicoMedico' => $this->historicoMedico,
+            'medicamentos' => $this->medicamentos,
+            'restricoesAlimentares' => $this->restricoesAlimentares,
+            'procedimentosEspecificos' => $this->procedimentosEspecificos,
+            'id' => $this->id
+        ]);
+        return ;
+    }   
+
     public function getId() {
         return $this->id;
     }

@@ -27,4 +27,20 @@ class ProcedimentosEspecificos {
         ]);
         return $this->conexao->lastInsertId();
     }
+    public function atualizar() {
+        $stmt = $this->conexao->prepare("UPDATE ProcedimentoEspecifico SET id_ficha = :id_ficha, id_procedimento = :id_procedimento, horarios = :horarios, descricao = :descricao WHERE id = :id");
+        $stmt->execute([
+            'id_ficha' => $this->id_ficha,
+            'id_procedimento' => $this->id_procedimento,
+            'horarios' => $this->horarios,
+            'descricao' => $this->descricao,
+            'id' => $this->id
+        ]);
+        return ;
+    }
+    public function deletar($id_ficha) {
+        $stmt = $this->conexao->prepare("DELETE FROM ProcedimentoEspecifico WHERE id_ficha = :id_ficha");
+        $stmt->execute(['id_ficha' => $id_ficha]);
+        return ;
+    }
 }

@@ -16,6 +16,7 @@
 	<main class="content">
 		<div class="form-container">
 			<form id="formCliente">
+				<input type="hidden" name="id" value="<?= $_GET['id'] ?>">
 				<h2>Editar Dados Pessoais</h2>
 				<div class="form-group">
 					<label for="nome" class="required">Nome</label>
@@ -85,7 +86,7 @@
 		</div>
 
 		<div class="button-group">
-			<button type="button" class="btn btn-primary" onclick="atualizarCliente(<?= $_GET['id'] ?>)">Salvar Alterações</button>
+			<button type="button" class="btn btn-primary" onclick="atualizarCliente()">Salvar Alterações</button>
 			<button type="button" class="btn btn-secondary" onclick="cancelar()">Cancelar</button>
 		</div>
 	</form>
