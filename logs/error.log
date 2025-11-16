@@ -1,3 +1,112 @@
-[2025-11-11 01:54:20] Cliente salvo com ID: 7
-[2025-11-11 01:55:14] Cliente salvo com ID: 8
-[2025-11-11 01:55:32] Cliente salvo com ID: 9
+[2025-11-16 01:59:30] id_ficha 9 ano 2025-11
+[2025-11-16 01:59:30] Medicamentos para agenda: [{"id":11,"id_ficha":9,"nome":"312","dosagem":"312","viaAdministracao":"312","inicioTratamento":"2025-11-01","fimTratamento":"2025-11-30","ultima_aplicacao":"2025-11-16 13:00:00","repetir":3,"intervalo":3,"diasMedicamento":"10","horasMedicamento":"12:00, 15:00"}]
+[2025-11-16 01:59:30] datasAplicacao: Array
+(
+)
+
+[2025-11-16 02:01:53] id_ficha 9 ano 2025-11
+[2025-11-16 02:01:53] Medicamentos para agenda: [{"id":11,"id_ficha":9,"nome":"312","dosagem":"312","viaAdministracao":"312","inicioTratamento":"2025-11-01","fimTratamento":"2025-11-30","ultima_aplicacao":"2025-11-16 13:00:00","repetir":3,"intervalo":3,"diasMedicamento":"10","horasMedicamento":"12:00, 15:00"}]
+[2025-11-16 02:01:53] datasAplicacao: Array
+(
+)
+
+[2025-11-16 02:03:00] id_ficha 9 ano 2025-11
+[2025-11-16 02:03:00] Medicamentos para agenda: [{"id":11,"id_ficha":9,"nome":"312","dosagem":"312","viaAdministracao":"312","inicioTratamento":"2025-11-01","fimTratamento":"2025-11-30","ultima_aplicacao":"2025-11-16 13:00:00","repetir":3,"intervalo":3,"diasMedicamento":"10","horasMedicamento":"12:00, 15:00"}]
+[2025-11-16 02:03:00] datasAplicacao: Array
+(
+)
+
+[2025-11-16 02:04:04] id_ficha 9 ano 2025-11
+[2025-11-16 02:04:04] Medicamentos para agenda: [{"id":11,"id_ficha":9,"nome":"312","dosagem":"312","viaAdministracao":"312","inicioTratamento":"2025-11-01","fimTratamento":"2025-11-30","ultima_aplicacao":"2025-11-16 13:00:00","repetir":3,"intervalo":3,"diasMedicamento":"10","horasMedicamento":"12:00, 15:00"}]
+[2025-11-16 02:04:04] Processando medicamento: 
+[2025-11-16 02:04:04] datasAplicacao: Array
+(
+)
+
+[2025-11-16 02:04:54] id_ficha 9 ano 2025-11
+[2025-11-16 02:04:54] Medicamentos para agenda: [{"id":11,"id_ficha":9,"nome":"312","dosagem":"312","viaAdministracao":"312","inicioTratamento":"2025-11-01","fimTratamento":"2025-11-30","ultima_aplicacao":"2025-11-16 13:00:00","repetir":3,"intervalo":3,"diasMedicamento":"10","horasMedicamento":"12:00, 15:00"}]
+[2025-11-16 02:04:54] Processando medicamento: 
+[2025-11-16 02:04:54] Ultima aplicacao: 2025-11-16 13:00
+[2025-11-16 02:04:54] datasAplicacao: Array
+(
+)
+
+[2025-11-16 02:08:29] id_ficha 9 ano 2025-11
+[2025-11-16 02:08:29] Medicamentos para agenda: [{"id":11,"id_ficha":9,"nome":"312","dosagem":"312","viaAdministracao":"312","inicioTratamento":"2025-11-01","fimTratamento":"2025-11-30","ultima_aplicacao":"2025-11-16 13:00:00","repetir":3,"intervalo":3,"diasMedicamento":"10","horasMedicamento":"12:00, 15:00"}]
+[2025-11-16 02:08:29] Processando medicamento: 
+[2025-11-16 02:08:29] Ultima aplicacao: 2025-11-16 13:00
+[2025-11-16 02:08:29] Repetir: 3 Intervalo: 3
+[2025-11-16 02:08:29] datasAplicacao: Array
+(
+)
+
+[2025-11-16 02:10:06] id_ficha 9 ano 2025-11
+[2025-11-16 02:10:06] Medicamentos para agenda: [{"id":12,"id_ficha":9,"nome":"312","dosagem":"312","viaAdministracao":"312","inicioTratamento":"2025-11-01","fimTratamento":"2025-11-30","ultima_aplicacao":"2025-11-16 13:00:00","repetir":1,"intervalo":3,"diasMedicamento":"","horasMedicamento":"12:00, 15:00"}]
+[2025-11-16 02:10:06] Processando medicamento: 
+[2025-11-16 02:10:06] Ultima aplicacao: 2025-11-16 13:00
+[2025-11-16 02:10:06] Repetir: 1 Intervalo: 3
+[2025-11-16 02:10:06] Repetir diariamente
+[2025-11-16 02:10:06] Repetir em horas específicas
+[2025-11-16 02:10:06] Horarios: ["12:00"," 15:00"]
+[2025-11-16 02:10:06] datasAplicacao: Array
+(
+    [0] => 2025-11-16 12:00
+    [1] => 2025-11-16 15:00
+)
+
+[2025-11-16 02:10:16] id_ficha 9 ano 2025-11
+[2025-11-16 02:10:16] Medicamentos para agenda: [{"id":12,"id_ficha":9,"nome":"312","dosagem":"312","viaAdministracao":"312","inicioTratamento":"2025-11-01","fimTratamento":"2025-11-30","ultima_aplicacao":"2025-11-16 13:00:00","repetir":1,"intervalo":3,"diasMedicamento":"","horasMedicamento":"12:00, 15:00"}]
+[2025-11-16 02:10:16] Processando medicamento: 
+[2025-11-16 02:10:16] Ultima aplicacao: 2025-11-16 13:00
+[2025-11-16 02:10:16] Repetir: 1 Intervalo: 3
+[2025-11-16 02:10:16] Repetir diariamente
+[2025-11-16 02:10:16] Repetir em horas específicas
+[2025-11-16 02:10:16] Horarios: ["12:00"," 15:00"]
+[2025-11-16 02:10:16] datasAplicacao: Array
+(
+    [0] => 2025-11-16 12:00
+    [1] => 2025-11-16 15:00
+)
+
+[2025-11-16 02:13:23] id_ficha 9 ano 2025-11
+[2025-11-16 02:13:23] Medicamentos para agenda: [{"id":12,"id_ficha":9,"nome":"312","dosagem":"312","viaAdministracao":"312","inicioTratamento":"2025-11-01","fimTratamento":"2025-11-30","ultima_aplicacao":"2025-11-16 13:00:00","repetir":1,"intervalo":3,"diasMedicamento":"","horasMedicamento":"12:00, 15:00"}]
+[2025-11-16 02:13:23] Processando medicamento: 
+[2025-11-16 02:13:23] Ultima aplicacao: 2025-11-16 13:00
+[2025-11-16 02:13:23] Repetir: 1 Intervalo: 3
+[2025-11-16 02:13:23] Repetir diariamente
+[2025-11-16 02:13:23] Repetir em horas específicas
+[2025-11-16 02:13:23] Horarios: ["12:00"," 15:00"]
+[2025-11-16 02:13:23] datasAplicacao: Array
+(
+    [0] => 2025-11-16 12:00
+    [1] => 2025-11-16 15:00
+)
+
+[2025-11-16 02:13:59] id_ficha 9 ano 2025-11
+[2025-11-16 02:13:59] Medicamentos para agenda: [{"id":12,"id_ficha":9,"nome":"312","dosagem":"312","viaAdministracao":"312","inicioTratamento":"2025-11-01","fimTratamento":"2025-11-30","ultima_aplicacao":"2025-11-16 13:00:00","repetir":1,"intervalo":3,"diasMedicamento":"","horasMedicamento":"12:00, 15:00"}]
+[2025-11-16 02:13:59] Processando medicamento: 
+[2025-11-16 02:13:59] Ultima aplicacao: 2025-11-16 13:00
+[2025-11-16 02:13:59] Repetir: 1 Intervalo: 3
+[2025-11-16 02:13:59] Repetir diariamente
+[2025-11-16 02:13:59] Repetir em horas específicas
+[2025-11-16 02:13:59] Horarios: ["12:00"," 15:00"]
+[2025-11-16 02:13:59] datasAplicacao: Array
+(
+    [0] => 2025-11-16 12:00
+    [1] => 2025-11-16 15:00
+)
+
+[2025-11-16 02:17:34] id_ficha 9 ano 2025-11
+[2025-11-16 02:17:34] Medicamentos para agenda: [{"id":12,"id_ficha":9,"nome":"312","dosagem":"312","viaAdministracao":"312","inicioTratamento":"2025-11-01","fimTratamento":"2025-11-30","ultima_aplicacao":"2025-11-16 13:00:00","repetir":1,"intervalo":3,"diasMedicamento":"","horasMedicamento":"12:00, 15:00"}]
+[2025-11-16 02:17:34] Processando medicamento: 
+[2025-11-16 02:17:34] Ultima aplicacao: 2025-11-16 13:00
+[2025-11-16 02:17:34] Repetir: 1 Intervalo: 3
+[2025-11-16 02:17:34] Repetir diariamente
+[2025-11-16 02:17:34] Repetir em horas específicas
+[2025-11-16 02:17:34] Horarios: ["12:00"," 15:00"]
+[2025-11-16 02:17:34] datasAplicacao: Array
+(
+    [0] => 2025-11-16 12:00:00
+    [1] => 2025-11-16 15:00:00
+)
+

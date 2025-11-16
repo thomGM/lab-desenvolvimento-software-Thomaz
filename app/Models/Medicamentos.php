@@ -69,15 +69,18 @@ class Medicamentos {
     }
 
     public function listarParaAgenda($id_ficha, $ano, $mes) {
+         require_once __DIR__ . '/../Core/log.php';
+
+         $data = $ano . '-' . $mes;
+         log_error('id_ficha ' . $id_ficha . ' ano ' . $data);
+
         $stmt = $this->conexao->prepare("
-            SELECT 
-                nome, 
-                inicioTratamento AS data_evento,
-                'Medicamento' AS tipo_evento
-            FROM Medicamento 
-            WHERE id_ficha = :id_ficha 
-            AND YEAR(inicioTratamento) = :ano AND MONTH(inicioTratamento) = :mes");
-        $stmt->execute(['id_ficha' => $id_ficha, 'ano' => $ano, 'mes' => $mes]);
+            select m.* from medicamento m 
+            where id_ficha = :id_ficha and DATE_FORMAT(m.inicioTratamento, '%Y-%m') <= :dataInicio 
+            and DATE_FORMAT(m.fimTratamento, '%Y-%m') >= :dataFim");
+        
+        $stmt->execute(['id_ficha' => $id_ficha, 'dataInicio' => $data, 'dataFim' => $data]);
+       
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }

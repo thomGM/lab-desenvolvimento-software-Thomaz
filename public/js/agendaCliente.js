@@ -46,11 +46,11 @@ $(document).ready(function() {
             dataType: 'json',
             success: function(response) {
                 if (response.success) {
-                    response.data.forEach(event => {
+                    // A resposta agora é um array de eventos, podemos iterar diretamente
+                    response.data.forEach(function(event) {
                         const eventDate = new Date(event.data_evento);
-                        const day = eventDate.getDate() + 1; // Ajuste de fuso horário pode ser necessário
-                        
-                        const eventTypeClass = 'tipo-' + event.tipo_evento.toLowerCase();
+                        const day = eventDate.getDate(); // Não precisa mais do ajuste +1
+                        const eventTypeClass = 'tipo-' + (event.tipo_evento || 'default').toLowerCase();
 
                         $(`#day-${day}`).append(`
                             <div class="event-postit ${eventTypeClass}" title="${event.nome}">
@@ -60,7 +60,8 @@ $(document).ready(function() {
                     });
                 }
             },
-            error: function() {
+            error: function(xhr) {
+                console.error("Erro na requisição:", xhr.responseText);
                 alert('Erro ao carregar os eventos da agenda.');
             }
         });

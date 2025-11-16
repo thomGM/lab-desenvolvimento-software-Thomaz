@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/../Core/log.php';
 
 class AgendaController {
 
@@ -32,13 +33,73 @@ class AgendaController {
             // Buscar medicamentos e procedimentos
             $medicamentosModel = new Medicamentos();
             $medicamentos = $medicamentosModel->listarParaAgenda($fichaId, $ano, $mes);
+            log_error('Medicamentos para agenda: ' . json_encode($medicamentos));
+            $eventos = [];
 
-            $procedimentosModel = new ProcedimentosEspecificos();
-            $procedimentos = $procedimentosModel->listarParaAgenda($fichaId, $ano, $mes);
+            foreach ($medicamentos as $medicamento) {
+                log_error('Processando medicamento: ');
+                // Calcular as datas de aplicação com base na última aplicação e frequência
+                $datasAplicacao = [];
+                if (!empty($medicamento['ultima_aplicacao'])) {
+                    $ultimaAplicacao = new DateTime($medicamento['ultima_aplicacao']);
+                    log_error('Ultima aplicacao: ' . $ultimaAplicacao->format('Y-m-d H:i'));
+                    log_error('Repetir: ' . $medicamento['repetir'] . ' Intervalo: ' . $medicamento['intervalo']);
+    
+                    if ($medicamento['repetir'] == 1) { // Todos os dias
+                        log_error('Repetir diariamente');
+                        if ($medicamento['intervalo'] ==  1) { // Intervalo em horas
+                               $intervaloHoras = (int)$medicamento['horasMedicamento'];
+                                if ($intervaloHoras > 0) {
+                                    $proximaAplicacao = clone $ultimaAplicacao; 
+                                    $proximaAplicacao->modify("+{$intervaloHoras} hours"); 
+                                    $datasAplicacao[] = $proximaAplicacao->format('Y-m-d H:i:s');
+                                }
+    
+                            } else if ($medicamento['intervalo'] == 2) { // Intervalo em minutos
+                               $intervaloMinutos = (int)$medicamento['horasMedicamento']; // O campo é o mesmo
+                                if ($intervaloMinutos > 0) {
+                                    $proximaAplicacao = clone $ultimaAplicacao; 
+                                    $proximaAplicacao->modify("+{$intervaloMinutos} minutes"); 
+                                    $datasAplicacao[] = $proximaAplicacao->format('Y-m-d H:i:s');
+                                }
+    
+                            } else if ($medicamento['intervalo'] == 3) { // Horas específicas
+                                log_error('Repetir em horas específicas');
+                                $horarios = explode(',', $medicamento['horasMedicamento']); 
+                                log_error('Horarios: ' . json_encode($horarios));
+                                foreach ($horarios as $horario) {
+                                    $horario = trim($horario); 
+                                    if (!empty($horario)) {
+                                        $hora = (int)substr($horario, 0, 2);
+                                        $minuto = (int)substr($horario, 3, 2);
+                                        
+                                        $dataEspecifica = clone $ultimaAplicacao;
+                                        $dataEspecifica->setTime($hora, $minuto, 0); 
+                                        
+                                        $datasAplicacao[] = $dataEspecifica->format('Y-m-d H:i:s');
+                                    }
+                                }
+                            }
+                        }
+                }
+ 
+                // Adiciona cada data calculada como um evento separado
+                foreach ($datasAplicacao as $data) {
+                    $eventos[] = [
+                        'nome' => $medicamento['nome'],
+                        'data_evento' => $data,
+                        'tipo_evento' => 'medicamento'
+                    ];
+                }
+                log_error('datasAplicacao: ' . print_r($datasAplicacao, true));
 
-            $eventos = array_merge($medicamentos, $procedimentos);
-
-            echo json_encode(['success' => true, 'data' => $eventos]);
+            }
+            if (!empty($eventos)) {
+                echo json_encode(['success' => true, 'data' => $eventos]);
+            } else {
+                // Se não houver eventos calculados, retorna sucesso com dados vazios
+                echo json_encode(['success' => true, 'data' => []]);
+            }
 
         } catch (Exception $e) {
             http_response_code(500);
