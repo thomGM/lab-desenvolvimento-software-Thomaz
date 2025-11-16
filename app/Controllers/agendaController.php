@@ -45,48 +45,147 @@ class AgendaController {
                     log_error('Ultima aplicacao: ' . $ultimaAplicacao->format('Y-m-d H:i'));
                     log_error('Repetir: ' . $medicamento['repetir'] . ' Intervalo: ' . $medicamento['intervalo']);
     
+                    // Define o limite para o loop
+                    $dataFimTratamento = new DateTime($medicamento['fimTratamento']);
+                    $proximaAplicacao = clone $ultimaAplicacao;
+
                     if ($medicamento['repetir'] == 1) { // Todos os dias
                         log_error('Repetir diariamente');
                         if ($medicamento['intervalo'] ==  1) { // Intervalo em horas
-                               $intervaloHoras = (int)$medicamento['horasMedicamento'];
-                                if ($intervaloHoras > 0) {
-                                    $proximaAplicacao = clone $ultimaAplicacao; 
-                                    $proximaAplicacao->modify("+{$intervaloHoras} hours"); 
-                                    $datasAplicacao[] = $proximaAplicacao->format('Y-m-d H:i:s');
-                                }
-    
-                            } else if ($medicamento['intervalo'] == 2) { // Intervalo em minutos
-                               $intervaloMinutos = (int)$medicamento['horasMedicamento']; // O campo é o mesmo
-                                if ($intervaloMinutos > 0) {
-                                    $proximaAplicacao = clone $ultimaAplicacao; 
-                                    $proximaAplicacao->modify("+{$intervaloMinutos} minutes"); 
-                                    $datasAplicacao[] = $proximaAplicacao->format('Y-m-d H:i:s');
-                                }
-    
-                            } else if ($medicamento['intervalo'] == 3) { // Horas específicas
-                                log_error('Repetir em horas específicas');
-                                $horarios = explode(',', $medicamento['horasMedicamento']); 
-                                log_error('Horarios: ' . json_encode($horarios));
-                                foreach ($horarios as $horario) {
-                                    $horario = trim($horario); 
-                                    if (!empty($horario)) {
-                                        $hora = (int)substr($horario, 0, 2);
-                                        $minuto = (int)substr($horario, 3, 2);
-                                        
-                                        $dataEspecifica = clone $ultimaAplicacao;
-                                        $dataEspecifica->setTime($hora, $minuto, 0); 
-                                        
-                                        $datasAplicacao[] = $dataEspecifica->format('Y-m-d H:i:s');
+                            $intervaloHoras = (int)$medicamento['horasMedicamento'];
+                            if ($intervaloHoras > 0) {
+                                while ($proximaAplicacao <= $dataFimTratamento) {
+                                    $proximaAplicacao->modify("+{$intervaloHoras} hours");
+                                    if ($proximaAplicacao <= $dataFimTratamento) {
+                                        $datasAplicacao[] = $proximaAplicacao->format('Y-m-d H:i:s');
                                     }
                                 }
                             }
+    
+                        } else if ($medicamento['intervalo'] == 2) { // Intervalo em minutos
+                            $intervaloMinutos = (int)$medicamento['horasMedicamento']; // O campo é o mesmo
+                            if ($intervaloMinutos > 0) {
+                                while ($proximaAplicacao <= $dataFimTratamento) {
+                                    $proximaAplicacao->modify("+{$intervaloMinutos} minutes");
+                                    if ($proximaAplicacao <= $dataFimTratamento) {
+                                        $datasAplicacao[] = $proximaAplicacao->format('Y-m-d H:i:s');
+                                    }
+                                }
+                            }
+    
+                        } else if ($medicamento['intervalo'] == 3) { // Horas específicas
+                            log_error('Repetir em horas específicas');
+                            $horarios = explode(',', $medicamento['horasMedicamento']);
+                            $dataCorrente = clone $ultimaAplicacao;
+                            $dataCorrente->setTime(0, 0, 0); // Zera a hora para iterar pelos dias
+
+                            while ($dataCorrente <= $dataFimTratamento) {
+                                foreach ($horarios as $horario) {
+                                    $horario = trim($horario);
+                                    if (!empty($horario)) {
+                                        $hora = (int)substr($horario, 0, 2);
+                                        $minuto = (int)substr($horario, 3, 2);
+                                        $dataEspecifica = clone $dataCorrente;
+                                        $dataEspecifica->setTime($hora, $minuto, 0);
+
+                                        // Adiciona apenas se for no futuro em relação à última aplicação e dentro do tratamento
+                                        if ($dataEspecifica > $ultimaAplicacao && $dataEspecifica <= $dataFimTratamento) {
+                                            $datasAplicacao[] = $dataEspecifica->format('Y-m-d H:i:s');
+                                        }
+                                    }
+                                }
+                                $dataCorrente->modify('+1 day');
+                            }
                         }
+                    } else if ($medicamento['repetir'] == 2) { // Dias específicos da semana
+                        $diasSemana = explode(',', $medicamento['diasMedicamento']); // Ex: [2, 4, 6] para Seg, Qua, Sex
+                        $dataCorrente = clone $ultimaAplicacao;
+                        $dataCorrente->setTime(0, 0, 0);
+
+                        while ($dataCorrente <= $dataFimTratamento) {
+                            $diaDaSemanaPHP = $dataCorrente->format('N'); // 1 (Seg) a 7 (Dom)
+                            $diaDaSemanaJS = ($diaDaSemanaPHP % 7) + 1;
+
+                            if (in_array($diaDaSemanaJS, $diasSemana)) {
+                                // É um dia válido, agora aplicamos a lógica de intervalo
+                                if ($medicamento['intervalo'] == 3) { // Horas específicas
+                                    $horarios = explode(',', $medicamento['horasMedicamento']);
+                                    foreach ($horarios as $horario) {
+                                        $horario = trim($horario);
+                                        if (!empty($horario)) {
+                                            $hora = (int)substr($horario, 0, 2);
+                                            $minuto = (int)substr($horario, 3, 2);
+                                            $dataEspecifica = clone $dataCorrente;
+                                            $dataEspecifica->setTime($hora, $minuto, 0);
+    
+                                            if ($dataEspecifica > $ultimaAplicacao && $dataEspecifica <= $dataFimTratamento) {
+                                                $datasAplicacao[] = $dataEspecifica->format('Y-m-d H:i:s');
+                                            }
+                                        }
+                                    }
+                                } else { // Intervalo em horas ou minutos
+                                    // Para dias específicos, o primeiro evento do dia começa no início do dia
+                                    $proximaDoDia = clone $dataCorrente;
+                                    while($proximaDoDia < (clone $dataCorrente)->modify('+1 day') && $proximaDoDia <= $dataFimTratamento) {
+                                        if ($proximaDoDia > $ultimaAplicacao) {
+                                            $datasAplicacao[] = $proximaDoDia->format('Y-m-d H:i:s');
+                                        }
+                                        if ($medicamento['intervalo'] == 1 && (int)$medicamento['horasMedicamento'] > 0) { // Horas
+                                            $proximaDoDia->modify('+' . (int)$medicamento['horasMedicamento'] . ' hours');
+                                        } else if ($medicamento['intervalo'] == 2 && (int)$medicamento['horasMedicamento'] > 0) { // Minutos
+                                            $proximaDoDia->modify('+' . (int)$medicamento['horasMedicamento'] . ' minutes');
+                                        }
+                                    }
+                                }
+                            }
+                            $dataCorrente->modify('+1 day');
+                        }
+                    } else if ($medicamento['repetir'] == 3) { // Semanalmente
+                        log_error('Repetir semanalmente');
+                        $dataCorrente = clone $ultimaAplicacao;
+                        $dataCorrente->setTime(0, 0, 0);
+
+                        while ($dataCorrente <= $dataFimTratamento) {
+                            if ($dataCorrente > $ultimaAplicacao) {
+                                // Aplica a lógica de intervalo dentro do dia
+                                if ($medicamento['intervalo'] == 3) { // Horas específicas
+                                    $horarios = explode(',', $medicamento['horasMedicamento']);
+                                    foreach ($horarios as $horario) {
+                                        $horario = trim($horario);
+                                        if (!empty($horario)) {
+                                            $hora = (int)substr($horario, 0, 2);
+                                            $minuto = (int)substr($horario, 3, 2);
+                                            $dataEspecifica = clone $dataCorrente;
+                                            $dataEspecifica->setTime($hora, $minuto, 0);
+    
+                                            if ($dataEspecifica > $ultimaAplicacao && $dataEspecifica <= $dataFimTratamento) {
+                                                $datasAplicacao[] = $dataEspecifica->format('Y-m-d H:i:s');
+                                            }
+                                        }
+                                    }
+                                } else { // Intervalo em horas ou minutos
+                                    $proximaDoDia = clone $dataCorrente;
+                                    while($proximaDoDia < (clone $dataCorrente)->modify('+1 day') && $proximaDoDia <= $dataFimTratamento) {
+                                        if ($proximaDoDia > $ultimaAplicacao) {
+                                            $datasAplicacao[] = $proximaDoDia->format('Y-m-d H:i:s');
+                                        }
+                                        if ($medicamento['intervalo'] == 1 && (int)$medicamento['horasMedicamento'] > 0) { // Horas
+                                            $proximaDoDia->modify('+' . (int)$medicamento['horasMedicamento'] . ' hours');
+                                        } else if ($medicamento['intervalo'] == 2 && (int)$medicamento['horasMedicamento'] > 0) { // Minutos
+                                            $proximaDoDia->modify('+' . (int)$medicamento['horasMedicamento'] . ' minutes');
+                                        }
+                                    }
+                                }
+                            }
+                            $dataCorrente->modify('+1 day');
+                        }
+                    }
                 }
  
                 // Adiciona cada data calculada como um evento separado
                 foreach ($datasAplicacao as $data) {
                     $eventos[] = [
-                        'nome' => $medicamento['nome'],
+                        'nome' => 'Medicamento: ' . $medicamento['nome'] . ' : ' . (new DateTime($data))->format('H:i'),
                         'data_evento' => $data,
                         'tipo_evento' => 'medicamento'
                     ];
