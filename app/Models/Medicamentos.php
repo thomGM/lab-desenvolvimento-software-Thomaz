@@ -32,7 +32,7 @@ class Medicamentos {
             'nome' => $this->nome,
             'dosagem' => $this->dosagem,
             'viaAdministracao' => $this->viaAdministracao,
-            'inicioTratamento' => $this->inicioTratamento,
+            'inicioTratamento' => $this->inicioTratamento . date(' H:i'),
             'fimTratamento' => $this->fimTratamento,
             'ultima_aplicacao' => $this->ultima_aplicacao,
             'repetir' => $this->repetir,

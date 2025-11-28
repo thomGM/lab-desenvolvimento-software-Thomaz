@@ -19,7 +19,7 @@ O sistema tem como principal objetivo resolver a falta de visibilidade sobre os 
 
 ## Requisitos:
 - Funcionais: Cadastro de pacientes, funcionários e familiares, Planner de Atividades e Medicamentos, histórico de alteração.
-- Não Funcionais: Desempenho eficiente, usabilidade amigável, segurança básica, acessível pelo telefone ou computador.
+- Não Funcionais: Desempenho eficiente, usabilidade amigável, segurança básica, acessível pelo computador.
  
 ## Exclusões:
 - Gestão Elaborada de cuidadores e pacientes.

@@ -13,7 +13,9 @@ class ProcedimentosEspecificos {
     }
 
     public function listarPorCliente($idCliente) {
-        $stmt = $this->conexao->prepare("SELECT * FROM ProcedimentoEspecifico WHERE id_ficha = :id_ficha");
+        $stmt = $this->conexao->prepare("
+                SELECT ProcedimentoEspecifico.*, Procedimento.nome FROM ProcedimentoEspecifico 
+                left join Procedimento on ProcedimentoEspecifico.id_procedimento = Procedimento.id WHERE id_ficha = :id_ficha");
         $stmt->execute(['id_ficha' => $idCliente]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }

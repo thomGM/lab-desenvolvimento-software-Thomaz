@@ -79,4 +79,5 @@ $(document).ready(function() {
 
     // Renderização inicial
     renderCalendar(currentDate);
+    
 });

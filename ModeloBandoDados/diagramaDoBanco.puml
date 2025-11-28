@@ -1,6 +1,9 @@
 @startuml
 !theme plain
 
+' ================================
+' ENTIDADES PRINCIPAIS
+' ================================
 entity paciente {
   *id : INT <<PK>>
   nome : VARCHAR(100)
@@ -8,28 +11,28 @@ entity paciente {
   endereco : VARCHAR(255)
   telefone : VARCHAR(20)
   telefoneEmergencia : VARCHAR(20)
+  cpf: VARCHAR(14)
 }
 
 entity fichaTecnica {
   *id : INT <<PK>>
-  paciente : INT <<FK>>
-  historicoMedico : INT
-  medicamentos : INT
-  restricoesAlimentares : INT
-  procedimentosEspecificos : INT
-  observacoes : TEXT
+  paciente_id : INT <<FK>>
+  historicoMedico : BOOLEAN
+  medicamentos : BOOLEAN
+  restricoesAlimentares : BOOLEAN
+  procedimentosEspecificos : BOOLEAN
 }
 
-entity tipoHistoricoMedico {
-  *id : INT <<PK>>
-  descricao : VARCHAR(255)
-}
+' ================================
+' COMPONENTES DA FICHA TÉCNICA
+' ================================
+
 
 entity historicoMedico {
   *id : INT <<PK>>
   id_ficha : INT <<FK>>
-  tipo : INT <<FK>>
   descricao : TEXT
+  id_medico: INT <<FK>>
 }
 
 entity Medicamento {
@@ -37,17 +40,20 @@ entity Medicamento {
   id_ficha : INT <<FK>>
   nome : VARCHAR(100)
   dosagem : VARCHAR(100)
-  frequencia : VARCHAR(100)
   viaAdministracao : VARCHAR(50)
   inicioTratamento : DATE
   fimTratamento : DATE
   ultima_aplicacao : DATETIME
+  repetir: INT
+  intervalo: INT
+  diasMedicamento: VARCHAR(255)
+  horasMedicamento: VARCHAR(255)
 }
 
 entity RestricaoAlimentar {
   *id : INT <<PK>>
   id_ficha : INT <<FK>>
-  descricao : VARCHAR(255)
+  descricao : TEXT
 }
 
 entity procedimento {
@@ -55,7 +61,7 @@ entity procedimento {
   nome : VARCHAR(100)
 }
 
-entity ProcedimentoEspecifico {
+entity procedimentoEspecifico {
   *id : INT <<PK>>
   id_ficha : INT <<FK>>
   id_procedimento : INT <<FK>>
@@ -63,80 +69,52 @@ entity ProcedimentoEspecifico {
   descricao : TEXT
 }
 
+entity medicos {
+  *id: INT <<PK>>
+  nome: VARCHAR(100)
+  crm: VARCHAR(20)
+  especialidade: VARCHAR(100)
+  telefone: VARCHAR(20)
+}
+
+' ================================
+' ENTIDADES DE REGISTROS
+' ================================
 entity documento {
   *id : INT <<PK>>
-  tipo : VARCHAR(50)
-  paciente : INT <<FK>>
+  tipo : INT
+  paciente_id : INT <<FK>>
   descricao : VARCHAR(255)
   arquivo : LONGBLOB
-}
-
-entity agenda_paciente {
-  *id : INT <<PK>>
-  data : DATE
-  atividade : VARCHAR(255)
-  paciente : INT <<FK>>
-}
-
-entity relatorioDiario {
-  *id : INT <<PK>>
-  paciente : INT <<FK>>
-  data : DATE
-  conteudo : TEXT
-}
-
-entity cuidador {
-  *id : INT <<PK>>
-  nome : VARCHAR(100)
-  email : VARCHAR(100) <<UNIQUE>>
-  senha : VARCHAR(255)
 }
 
 entity agenda {
   *id : INT <<PK>>
   data : DATE
   atividade : VARCHAR(255)
-  cuidador : INT <<FK>>
-}
-
-entity familiar {
-  *id : INT <<PK>>
-  nome : VARCHAR(100)
-  email : VARCHAR(100) <<UNIQUE>>
-  senha : VARCHAR(255)
-  paciente : INT <<FK>>
-}
-
-entity observacao {
-  *id : INT <<PK>>
-  texto : TEXT
-  data : DATE
-  familiar : INT <<FK>>
-}
-
-entity cuidador_paciente {
-  *id : INT <<PK>>
-  cuidador_id : INT <<FK>>
   paciente_id : INT <<FK>>
+}
+
+entity relatorioDiario {
+  *id : INT <<PK>>
+  paciente_id : INT <<FK>>
+  data : DATE
+  conteudo : TEXT
 }
 
 ' ================================
 ' RELACIONAMENTOS
 ' ================================
 
-paciente ||--o{ fichaTecnica : possui
-fichaTecnica ||--o{ historicoMedico : tem
-tipoHistoricoMedico ||--o{ historicoMedico : classifica
-fichaTecnica ||--o{ Medicamento : usa
-fichaTecnica ||--o{ RestricaoAlimentar : possui
-fichaTecnica ||--o{ ProcedimentoEspecifico : aplica
-procedimento ||--o{ ProcedimentoEspecifico : detalha
-paciente ||--o{ documento : possui
-paciente ||--o{ agenda_paciente : organiza
-paciente ||--o{ relatorioDiario : gera
-paciente ||--o{ familiar : vincula
-familiar ||--o{ observacao : registra
-cuidador ||--o{ agenda : organiza
-cuidador ||--o{ cuidador_paciente : relaciona
-paciente ||--o{ cuidador_paciente : acompanha
+paciente ||--|{ fichaTecnica : "possui"
+paciente ||--o{ documento : "possui"
+paciente ||--o{ agenda : "tem"
+paciente ||--o{ relatorioDiario : "tem"
+
+fichaTecnica ||--o{ historicoMedico : "contém"
+historicoMedico }|--|| medicos : "registrado por"
+fichaTecnica ||--o{ Medicamento : "prescreve"
+fichaTecnica ||--o{ RestricaoAlimentar : "detalha"
+fichaTecnica ||--o{ procedimentoEspecifico : "aplica"
+procedimento }|--|| procedimentoEspecifico : "é um"
 @enduml

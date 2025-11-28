@@ -15,6 +15,7 @@
             <a href="#" class="submenu-trigger">Agendas <span class="arrow">▼</span></a>
             <ul class="submenu">
                 <li><a href="agendas.php">Visualizar Agendas</a></li>
+                <li><a href="iniciarCuidado.php">Iniciar Cuidado</a></li>
             </ul>
         </li>
         <li><a href="contact.php">Contato</a></li>

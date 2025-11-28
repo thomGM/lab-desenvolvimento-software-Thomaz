@@ -1,4 +1,12 @@
 @startuml
+' Diagrama de Classes que reflete a estrutura real do código,
+' removendo as classes que não foram implementadas.
+
+skinparam linetype ortho
+
+' -----------------------------
+' CLASSE CENTRAL
+' -----------------------------
 class Paciente {
   -id : int
   -nome : String
@@ -6,34 +14,45 @@ class Paciente {
   -endereco : String
   -telefone : String
   -telefoneEmergencia : String
+  -cpf : String
+  +listarTodos()
+  +buscar(nome, tipo)
+  +salvar()
+  +atualizar()
+  +getId()
+  +setId(id)
 }
 
 class FichaTecnica {
   -id : int
   -paciente: int
-  -historicoMedico : int
-  -medicamentos : int
-  -restricoesAlimentares : int
-  -procedimentosEspecificos : int
-  -observacoes : int
+  -historicoMedico: int
+  -medicamentos: int
+  -restricoesAlimentares: int
+  -procedimentosEspecificos: int
+  +listarPorCliente(idCliente)
+  +salvar()
+  +atualizar()
+  +getId()
+  +setId(id)
 }
 
-  ' Mobilidade: Verificar a capacidade de locomoção. 
-  ' Atividades de Vida Diária (AVDs): Avaliar a autonomia para atividades como banho, alimentação, vestir-se e uso do banheiro. 
-  ' Atividades Instrumentais de Vida Diária (AIVDs): Avaliar a capacidade de gerir o lar, como fazer compras, usar o telefone, gerenciar finanças. 
-  ' Presença de Cuidador: Se sim, especificar a jornada e as funções do cuidador. 
-
-class tipoHistoricoMedico {
-  -id : int
-  -descricao : String
-}
-
-  ' Doenças atuais e pregressas, Cirurgias, Alergias, Histórico familiar
-
+' -----------------------------
+' COMPONENTES DA FICHA TÉCNICA
+' -----------------------------
 class historicoMedico {
   -id : int
   -id_ficha: int
-  -tipo: int
+  -descricao : String
+  -id_medico: int
+  +listarPorCliente(idCliente)
+  +salvar()
+  +atualizar()
+  +deletar(id_ficha)
+}
+
+class tipoHistoricoMedico {
+  -id : int
   -descricao : String
 }
 
@@ -42,16 +61,26 @@ class Medicamento {
   -id_ficha: int
   -nome : String
   -dosagem : String
-  -frequencia : String
   -viaAdministracao : String
   -inicioTratamento : Date
   -fimTratamento : Date
+  -ultima_aplicacao: Date
+  -repetir: int
+  -intervalo: int
+  -diasMedicamento: String
+  -horasMedicamento: String
+  +listarPorCliente(idCliente)
+  +salvar()
+  +atualizar()
+  +deletar(id_ficha)
+  +listarParaAgenda(id_ficha, ano, mes)
 }
 
-class RestricaoAlimentar {
+class Procedimento {
   -id : int
-  -id_ficha: int
-  -descricao : String
+  -nome : String
+  +consulta()
+  +salvar()
 }
 
 class ProcedimentoEspecifico {
@@ -60,27 +89,41 @@ class ProcedimentoEspecifico {
   -id_procedimento : String
   -horarios : String
   -descricao : String
+  +listarPorCliente(idCliente)
+  +salvar()
+  +atualizar()
+  +deletar(id_ficha)
 }
 
-class Procedimento {
+class RestricaoAlimentar {
   -id : int
   -id_ficha: int
-  -nome : String
+  -descricao : String
+  +listarPorCliente(idCliente)
+  +salvar()
+  +atualizar()
+  +deletar(id_ficha)
 }
 
+class Medicos {
+  -id: int
+  -nome: String
+  -crm: String
+  -especialidade: String
+  -telefone: String
+  +consulta()
+  +salvar()
+}
+
+' -----------------------------
+' CLASSES DE REGISTROS
+' -----------------------------
 class Documento {
   -id : int
   -tipo : int
   -paciente: int
   -descricao : String
   -arquivo : File
-}
-
-class Agenda {
-  -id : int
-  -data : Date
-  -atividade : String
-  -paciente: int
 }
 
 class RelatorioDiario {
@@ -90,37 +133,11 @@ class RelatorioDiario {
   -conteudo : String
 }
 
-class Observacao {
+class Agenda {
   -id : int
-  -texto : String
   -data : Date
-  -familiar: int
-}
-
-class Cuidador {
-  -id : int
-  -nome : String
-  -email : String
-  -senha : String
-  +cadastrarPaciente()
-  +editarFichaTecnica()
-  +editarAgenda()
-  +editarRelatorio()
-  +anexarDocumento()
-  +visualizarObservacoes()
-}
-
-class Familiar {
-  -id : int
-  -nome : String
-  -email : String
-  -senha : String
+  -atividade : String
   -paciente: int
-  +visualizarAgenda()
-  +visualizarDocumentos()
-  +visualizarFichaTecnica()
-  +visualizarRelatorio()
-  +cadastrarObservacao()
 }
 
 ' -----------------------------
@@ -130,17 +147,13 @@ Paciente "1" -- "1" FichaTecnica
 Paciente "1" -- "*" Documento
 Paciente "1" -- "*" Agenda
 Paciente "1" -- "*" RelatorioDiario
-Paciente "1" -- "*" Observacao
-Paciente "1" -- "*" Familiar
 
 FichaTecnica "1" -- "*" historicoMedico
 historicoMedico "*" -- "1" tipoHistoricoMedico
+historicoMedico "0..*" -- "1" Medicos : registrado por
 FichaTecnica "1" -- "*" Medicamento
 FichaTecnica "1" -- "*" RestricaoAlimentar
 FichaTecnica "1" -- "*" ProcedimentoEspecifico
 ProcedimentoEspecifico "*" -- "1" Procedimento
-FichaTecnica "1" -- "*" Observacao
 
-Cuidador "1" -- "*" Paciente
-Familiar "1" -- "1" Paciente
 @enduml

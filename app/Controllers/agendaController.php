@@ -40,14 +40,14 @@ class AgendaController {
                 log_error('Processando medicamento: ');
                 // Calcular as datas de aplicação com base na última aplicação e frequência
                 $datasAplicacao = [];
-                if (!empty($medicamento['ultima_aplicacao'])) {
-                    $ultimaAplicacao = new DateTime($medicamento['ultima_aplicacao']);
-                    log_error('Ultima aplicacao: ' . $ultimaAplicacao->format('Y-m-d H:i'));
+                if (!empty($medicamento['inicioTratamento'])) {
+                    $inicioAplicacao = new DateTime($medicamento['inicioTratamento']);
+                    log_error('Ultima aplicacao: ' . $inicioAplicacao->format('Y-m-d H:i'));
                     log_error('Repetir: ' . $medicamento['repetir'] . ' Intervalo: ' . $medicamento['intervalo']);
     
-                    // Define o limite para o loop
+                    // Define o limite para the loop
                     $dataFimTratamento = new DateTime($medicamento['fimTratamento']);
-                    $proximaAplicacao = clone $ultimaAplicacao;
+                    $proximaAplicacao = clone $inicioAplicacao;
 
                     if ($medicamento['repetir'] == 1) { // Todos os dias
                         log_error('Repetir diariamente');
@@ -76,7 +76,7 @@ class AgendaController {
                         } else if ($medicamento['intervalo'] == 3) { // Horas específicas
                             log_error('Repetir em horas específicas');
                             $horarios = explode(',', $medicamento['horasMedicamento']);
-                            $dataCorrente = clone $ultimaAplicacao;
+                            $dataCorrente = clone $inicioAplicacao;
                             $dataCorrente->setTime(0, 0, 0); // Zera a hora para iterar pelos dias
 
                             while ($dataCorrente <= $dataFimTratamento) {
@@ -89,7 +89,7 @@ class AgendaController {
                                         $dataEspecifica->setTime($hora, $minuto, 0);
 
                                         // Adiciona apenas se for no futuro em relação à última aplicação e dentro do tratamento
-                                        if ($dataEspecifica > $ultimaAplicacao && $dataEspecifica <= $dataFimTratamento) {
+                                        if ($dataEspecifica > $inicioAplicacao && $dataEspecifica <= $dataFimTratamento) {
                                             $datasAplicacao[] = $dataEspecifica->format('Y-m-d H:i:s');
                                         }
                                     }
@@ -99,7 +99,7 @@ class AgendaController {
                         }
                     } else if ($medicamento['repetir'] == 2) { // Dias específicos da semana
                         $diasSemana = explode(',', $medicamento['diasMedicamento']); // Ex: [2, 4, 6] para Seg, Qua, Sex
-                        $dataCorrente = clone $ultimaAplicacao;
+                        $dataCorrente = clone $inicioAplicacao;
                         $dataCorrente->setTime(0, 0, 0);
 
                         while ($dataCorrente <= $dataFimTratamento) {
@@ -118,7 +118,7 @@ class AgendaController {
                                             $dataEspecifica = clone $dataCorrente;
                                             $dataEspecifica->setTime($hora, $minuto, 0);
     
-                                            if ($dataEspecifica > $ultimaAplicacao && $dataEspecifica <= $dataFimTratamento) {
+                                            if ($dataEspecifica > $inicioAplicacao && $dataEspecifica <= $dataFimTratamento) {
                                                 $datasAplicacao[] = $dataEspecifica->format('Y-m-d H:i:s');
                                             }
                                         }
@@ -127,7 +127,7 @@ class AgendaController {
                                     // Para dias específicos, o primeiro evento do dia começa no início do dia
                                     $proximaDoDia = clone $dataCorrente;
                                     while($proximaDoDia < (clone $dataCorrente)->modify('+1 day') && $proximaDoDia <= $dataFimTratamento) {
-                                        if ($proximaDoDia > $ultimaAplicacao) {
+                                        if ($proximaDoDia > $inicioAplicacao) {
                                             $datasAplicacao[] = $proximaDoDia->format('Y-m-d H:i:s');
                                         }
                                         if ($medicamento['intervalo'] == 1 && (int)$medicamento['horasMedicamento'] > 0) { // Horas
@@ -145,7 +145,7 @@ class AgendaController {
                         log_error('Repetir a cada ' . $intervaloEmDias . ' dias');
                         
                         if ($intervaloEmDias > 0) {
-                            $dataCorrente = clone $ultimaAplicacao;
+                            $dataCorrente = clone $inicioAplicacao;
                             
                             while ($dataCorrente <= $dataFimTratamento) {
                                 $dataCorrente->modify("+" . $intervaloEmDias . " days");
@@ -171,7 +171,7 @@ class AgendaController {
                                 } else { // Intervalo em horas ou minutos
                                     $proximaDoDia = clone $dataCorrente;
                                     while($proximaDoDia < (clone $dataCorrente)->modify('+1 day') && $proximaDoDia <= $dataFimTratamento) {
-                                        if ($proximaDoDia > $ultimaAplicacao) {
+                                        if ($proximaDoDia > $inicioAplicacao) {
                                             $datasAplicacao[] = $proximaDoDia->format('Y-m-d H:i:s');
                                     } else { // Intervalo em horas ou minutos
                                         $proximaDoDia = clone $dataCorrente;
