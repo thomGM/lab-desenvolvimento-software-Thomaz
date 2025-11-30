@@ -4,6 +4,7 @@ class Procedimento {
     private $conexao;
     public $id;
     public $nome;
+    public $status;
    
     public function __construct() {
         $this->conexao = conexao();
@@ -35,8 +36,8 @@ class Procedimento {
         return $stmt->rowCount() > 0;
     }
     public function inativar() {
-        $stmt = $this->conexao->prepare("UPDATE procedimento SET status = 0 WHERE id = :id");
-        $stmt->execute(['id' => $this->id]);
+        $stmt = $this->conexao->prepare("UPDATE procedimento SET status = :statusP WHERE id = :id");
+        $stmt->execute(['statusP' => $this->status, 'id' => $this->id]);
         return $stmt->rowCount() > 0;
     }
 }

@@ -46,12 +46,23 @@ function renderizarTabelaProcedimentos(procedimentos) {
     var tabelaBody = $('#tabelaProcedimentos tbody');
     tabelaBody.empty();
     (procedimentos || []).forEach(function(procedimento) {
-        var row = '<tr>' +
-            '<td>' + procedimento.nome + '</td>' +  
-            '<td>' + (procedimento.status == 1 ? 'Ativo' : 'Inativo') + '<input type="hidden" name="status" value="' + procedimento.status + '"></td>' +
-            '<td><button type="button" onclick="alterarProcedimento(' + procedimento.id + ')" class="btn btn-sm btn-info">Alterar</button></td>' +
-            '<td><button type="button" onclick="inativarProcedimento(' + procedimento.id + ')" class="btn btn-sm btn-danger">Inativar</button></td>' +
-            '</tr>';
+       var row = `
+            <tr>
+                <td>${procedimento.nome}</td>
+                <td>
+                    ${procedimento.status == 1 ? 'Ativo' : 'Inativo'}
+                    <input type="hidden" name="status" value="${procedimento.status}">
+                </td>
+                <td>
+                    <button type="button" onclick="alterarProcedimento(${procedimento.id})" class="btn btn-sm btn-info">Alterar</button>
+                </td>
+                <td>
+                    <button type="button" onclick="inativarProcedimento(${procedimento.id}, ${procedimento.status})" class="btn btn-sm ${procedimento.status == 1 ? 'btn-danger' : 'btn-success'}">
+                        ${procedimento.status == 1 ? 'Inativar' : 'Ativar'}
+                    </button>
+                </td>
+            </tr>
+        `;
         tabelaBody.append(row);
     });
 }
@@ -104,16 +115,16 @@ function alterarProcedimento(id) {
         }
     });
 }
-function inativarProcedimento($id) {
+function inativarProcedimento($id, status) {
     $.ajax({
         url: BASE_URL + '/procedimento/inativarProcedimento',
         method: 'POST',
-        data: { id: $id },
+        data: { id: $id, status: status ? 0 : 1 },
         dataType: 'json',
         success: function(response) {
             if (response.success) {
                 consultaProcedimentos();
-                alert('Procedimento inativado com sucesso!');
+                alert('Status alterado com sucesso!');
             } else {
                 alert(response.message || 'Erro ao inativar procedimento');
             }

@@ -62,6 +62,7 @@ class ProcedimentoController {
     public function inativarProcedimento() {
         header('Content-Type: application/json');
         $id = $_POST['id'] ?? '';
+        $status = $_POST['status'];
 
         if (empty($id)) {
             echo json_encode(['success' => false, 'message' => 'ID é obrigatório']);
@@ -70,6 +71,7 @@ class ProcedimentoController {
 
         $procedimentoModel = new Procedimento();
         $procedimentoModel->id = $id;
+        $procedimentoModel->status = $status;
         $resultado = $procedimentoModel->inativar();
 
         if ($resultado) {
