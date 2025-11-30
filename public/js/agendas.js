@@ -46,10 +46,50 @@ function carregarClientes() {
         }
     });
 
-    $(document).on('click', '.cliente-card', function() {
-        const clienteId = $(this).data('id');
-        const clienteNome = $(this).find('.cliente-nome').text();
+   $(document).on('click', '.cliente-card', function() {
+    const clienteId = $(this).data('id');
+    const clienteNome = $(this).find('.cliente-nome').text();
 
-        window.location.href = BASE_APP + 'agendaCliente.php?id=' + clienteId;
+    // 1. Cria o conteúdo HTML do modal
+    var dialogHtml = '<div style="text-align: center; padding: 20px;">' +
+                     '<p>O que deseja fazer com o cliente <b>' + clienteNome + '</b>?</p>' +
+                     '</div>';
+
+    // 2. Transforma em objeto jQuery
+    var $dialog = $(dialogHtml);
+
+    // 3. Abre o Dialog com as opções
+    $dialog.dialog({
+        title: 'Selecione uma Ação',
+        modal: true,
+        width: 450,
+        resizable: false,
+        close: function() {
+            $(this).dialog('destroy').remove(); 
+        },
+        buttons: [
+            {
+                text: "Visualizar Agenda",
+                class: "btn btn-info",
+                click: function() {
+                    window.location.href = BASE_APP + 'agendaCliente.php?id=' + clienteId;
+                }
+            },
+            {
+                text: "Iniciar Cuidado Diário",
+                class: "btn btn-success", 
+                click: function() {
+                    window.location.href = BASE_APP + 'iniciarCuidado.php?id=' + clienteId;
+                }
+            },
+            {
+                text: "Cancelar",
+                class: "btn btn-secondary",
+                click: function() {
+                    $(this).dialog('close');
+                }
+            }
+        ]
     });
+});
 }

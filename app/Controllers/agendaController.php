@@ -9,6 +9,185 @@ class AgendaController {
         $this->conexao = conexao();
     }
 
+    public function getEventosDia() {
+        header('Content-Type: application/json');
+        $clienteId = $_GET['cliente_id'] ?? null;
+        $data = $_GET['data'] ?? date('Y-m-d');
+
+        log_error('getEventosDia - clienteId: ' . $clienteId . ', data: ' . $data);
+
+        if (!$clienteId) {
+            log_error('Cliente ID não fornecido');
+            echo json_encode(['success' => false, 'message' => 'ID do cliente é obrigatório.']);
+            return;
+        }
+
+        try {
+            $fichaTecnicaModel = new FichaTecnica();
+            $ficha = $fichaTecnicaModel->listarPorCliente($clienteId);
+            log_error('Ficha encontrada: ' . json_encode($ficha));
+            
+            if (empty($ficha)) {
+                log_error('Nenhuma ficha encontrada para cliente: ' . $clienteId);
+                echo json_encode(['success' => true, 'data' => []]);
+                return;
+            }
+            $fichaId = $ficha[0]['id'];
+            log_error('FichaId: ' . $fichaId);
+
+            $medicamentosModel = new Medicamentos();
+            $medicamentos = $medicamentosModel->listarPorData($fichaId, $data);
+            log_error('Medicamentos encontrados: ' . json_encode($medicamentos));
+            
+            $eventos = [];
+
+            foreach ($medicamentos as $medicamento) {
+                log_error('Processando medicamento: ' . $medicamento['nome']);
+                $datasAplicacao = $this->calcularAplicacoesDia($medicamento, $data);
+                log_error('Datas de aplicação calculadas: ' . json_encode($datasAplicacao));
+                
+                foreach ($datasAplicacao as $dataAplicacao) {
+                    $eventos[] = [
+                        'id' => $medicamento['id'],
+                        'nome' => $medicamento['nome'],
+                        'descricao' => $medicamento['dosagem'] . ' - ' . $medicamento['viaAdministracao'],
+                        'data_evento' => $dataAplicacao,
+                        'horario' => date('H:i', strtotime($dataAplicacao)),
+                        'tipo_evento' => 'medicamento'
+                    ];
+                }
+            }
+
+            $procedimentoModel = new Procedimento();
+            $procedimentos = $procedimentoModel->listarPorData($fichaId, $data);
+            log_error('Procedimentos encontrados: ' . json_encode($procedimentos));
+            
+            foreach ($procedimentos as $procedimento) {
+                $eventos[] = [
+                    'id' => $procedimento['id'],
+                    'nome' => $procedimento['nome'],
+                    'descricao' => $procedimento['descricao'] ?? '',
+                    'data_evento' => $data . ' ' . ($procedimento['horarios'] ?? '00:00:00'),
+                    'horario' => $procedimento['horarios'] ?? '00:00',
+                    'tipo_evento' => 'procedimento'
+                ];
+            }
+
+            log_error('Total de eventos: ' . count($eventos));
+            log_error('Eventos finais: ' . json_encode($eventos));
+
+            usort($eventos, function($a, $b) {
+                return strtotime($a['data_evento']) - strtotime($b['data_evento']);
+            });
+
+            echo json_encode(['success' => true, 'data' => $eventos]);
+        } catch (Exception $e) {
+            log_error('Erro em getEventosDia: ' . $e->getMessage());
+            echo json_encode(['success' => false, 'message' => 'Erro ao buscar eventos: ' . $e->getMessage()]);
+        }
+    }
+
+    private function calcularAplicacoesDia($medicamento, $data) {
+        $datasAplicacao = [];
+        $dataAlvo = new DateTime($data);
+        
+        log_error('calcularAplicacoesDia - medicamento: ' . $medicamento['nome'] . ', data: ' . $data);
+        
+        if (empty($medicamento['inicioTratamento'])) {
+            log_error('Medicamento sem data de início de tratamento');
+            return $datasAplicacao;
+        }
+        
+        $inicioTratamento = new DateTime($medicamento['inicioTratamento']);
+        $fimTratamento = new DateTime($medicamento['fimTratamento']);
+        
+        log_error('Período tratamento: ' . $inicioTratamento->format('Y-m-d') . ' a ' . $fimTratamento->format('Y-m-d'));
+        
+        if ($dataAlvo < $inicioTratamento || $dataAlvo > $fimTratamento) {
+            log_error('Data alvo fora do período de tratamento');
+            return $datasAplicacao;
+        }
+
+        log_error('Repetir: ' . $medicamento['repetir'] . ', Intervalo: ' . $medicamento['intervalo']);
+        log_error('Horas medicamento: ' . $medicamento['horasMedicamento']);
+
+        if ($medicamento['repetir'] == 1) { // Todos os dias
+            if ($medicamento['intervalo'] == 3) { // Horas específicas
+                log_error('Processando horas específicas para todos os dias');
+                $horarios = explode(',', $medicamento['horasMedicamento']);
+                foreach ($horarios as $horario) {
+                    $horario = trim($horario);
+                    $horario = str_replace('::', ':', $horario); // Corrige horários malformados
+                    if (!empty($horario) && strpos($horario, ':') !== false) {
+                        $dataComHora = clone $dataAlvo;
+                        $partesHora = explode(':', $horario);
+                        $hora = (int)$partesHora[0];
+                        $minuto = isset($partesHora[1]) ? (int)$partesHora[1] : 0;
+                        $dataComHora->setTime($hora, $minuto, 0);
+                        $datasAplicacao[] = $dataComHora->format('Y-m-d H:i:s');
+                        log_error('Adicionada aplicação: ' . $dataComHora->format('Y-m-d H:i:s'));
+                    }
+                }
+            }
+        } else if ($medicamento['repetir'] == 2) { // Dias específicos
+            log_error('Processando dias específicos da semana');
+            $diasSemana = explode(',', $medicamento['diasMedicamento']);
+            $diaDaSemanaPHP = $dataAlvo->format('N');
+            $diaDaSemanaJS = ($diaDaSemanaPHP % 7) + 1;
+            
+            log_error('Dia da semana atual: ' . $diaDaSemanaJS . ', dias permitidos: ' . implode(',', $diasSemana));
+            
+            if (in_array($diaDaSemanaJS, $diasSemana) && $medicamento['intervalo'] == 3) {
+                $horarios = explode(',', $medicamento['horasMedicamento']);
+                foreach ($horarios as $horario) {
+                    $horario = trim($horario);
+                    $horario = str_replace('::', ':', $horario); // Corrige horários malformados
+                    if (!empty($horario) && strpos($horario, ':') !== false) {
+                        $dataComHora = clone $dataAlvo;
+                        $partesHora = explode(':', $horario);
+                        $hora = (int)$partesHora[0];
+                        $minuto = isset($partesHora[1]) ? (int)$partesHora[1] : 0;
+                        $dataComHora->setTime($hora, $minuto, 0);
+                        $datasAplicacao[] = $dataComHora->format('Y-m-d H:i:s');
+                        log_error('Adicionada aplicação: ' . $dataComHora->format('Y-m-d H:i:s'));
+                    }
+                }
+            }
+        } else if ($medicamento['repetir'] == 3) { // Intervalo de dias
+            log_error('Processando intervalo de dias');
+            $intervaloEmDias = (int)$medicamento['diasMedicamento'];
+            $inicioTratamento = new DateTime($medicamento['inicioTratamento']);
+            
+            log_error('Intervalo em dias: ' . $intervaloEmDias);
+            
+            // Calcular se hoje é um dia de aplicação
+            $diasDiferenca = $dataAlvo->diff($inicioTratamento)->days;
+            
+            if ($diasDiferenca % $intervaloEmDias == 0 && $medicamento['intervalo'] == 3) {
+                log_error('Hoje é dia de aplicação (diferença: ' . $diasDiferenca . ' dias)');
+                $horarios = explode(',', $medicamento['horasMedicamento']);
+                foreach ($horarios as $horario) {
+                    $horario = trim($horario);
+                    $horario = str_replace('::', ':', $horario); // Corrige horários malformados
+                    if (!empty($horario) && strpos($horario, ':') !== false) {
+                        $dataComHora = clone $dataAlvo;
+                        $partesHora = explode(':', $horario);
+                        $hora = (int)$partesHora[0];
+                        $minuto = isset($partesHora[1]) ? (int)$partesHora[1] : 0;
+                        $dataComHora->setTime($hora, $minuto, 0);
+                        $datasAplicacao[] = $dataComHora->format('Y-m-d H:i:s');
+                        log_error('Adicionada aplicação: ' . $dataComHora->format('Y-m-d H:i:s'));
+                    }
+                }
+            } else {
+                log_error('Hoje NÃO é dia de aplicação (diferença: ' . $diasDiferenca . ' dias, intervalo: ' . $intervaloEmDias . ')');
+            }
+        }
+        
+        log_error('Total de aplicações calculadas: ' . count($datasAplicacao));
+        return $datasAplicacao;
+    }
+
     public function getEventos() {
         header('Content-Type: application/json');
         $clienteId = $_GET['cliente_id'] ?? null;

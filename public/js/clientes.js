@@ -223,17 +223,37 @@ function novoProcedimentosEspecificos(index, item = {}) {
 
     $('#divProcedimentosEspecificos').append(novoProcedimento);
 
+    // Popula o select com procedimentos
+    const $select = $(`#id_procedimento_${index}`);
+    
     if (procedimentosCache.length > 0) {
-        const $select = $(`#id_procedimento_${index}`);
-
-        console.log("Populando select de procedimentos específicos");
+        console.log("Populando select de procedimentos específicos com cache");
         procedimentosCache.forEach(procedimento => {
             $select.append(`<option value="${procedimento.id}">${procedimento.nome}</option>`);
-            console.log("Adicionado procedimento ao select:", procedimento.nome);
         });
         if (item.id_procedimento) {
             $select.val(item.id_procedimento);
         }
+    } else {
+        console.log("Cache vazio, carregando procedimentos...");
+        // Se o cache estiver vazio, carrega os procedimentos
+        $.ajax({
+            url: BASE_URL + '/procedimento/listar',
+            method: 'GET',
+            dataType: 'json',
+            success: function(response) {
+                procedimentosCache = response.data;
+                procedimentosCache.forEach(procedimento => {
+                    $select.append(`<option value="${procedimento.id}">${procedimento.nome}</option>`);
+                });
+                if (item.id_procedimento) {
+                    $select.val(item.id_procedimento);
+                }
+            },
+            error: function(xhr, status, error) {
+                console.log('Erro ao carregar procedimentos: ' + error);
+            }
+        });
     }
     
     const novoIndice = index + 1;

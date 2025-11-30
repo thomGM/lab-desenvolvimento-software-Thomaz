@@ -83,4 +83,23 @@ class Medicamentos {
        
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function listarPorData($id_ficha, $data) {
+        require_once __DIR__ . '/../Core/log.php';
+        
+        log_error('Medicamentos.listarPorData - id_ficha: ' . $id_ficha . ', data: ' . $data);
+        
+        $stmt = $this->conexao->prepare("
+            SELECT m.* FROM medicamento m 
+            WHERE id_ficha = :id_ficha 
+            AND DATE(m.inicioTratamento) <= :data 
+            AND DATE(m.fimTratamento) >= :data");
+        
+        $stmt->execute(['id_ficha' => $id_ficha, 'data' => $data]);
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        
+        log_error('Medicamentos encontrados: ' . count($result));
+        
+        return $result;
+    }
 }
