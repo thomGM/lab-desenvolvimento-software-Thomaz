@@ -21,4 +21,22 @@ class Procedimento {
         ]);
         return $this->conexao->lastInsertId();
     }
+    public function buscarPorId($id) {
+        $stmt = $this->conexao->prepare("SELECT * FROM procedimento WHERE id = :id");
+        $stmt->execute(['id' => $id]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+    public function alterar() {
+        $stmt = $this->conexao->prepare("UPDATE procedimento SET nome = :nome WHERE id = :id");
+        $stmt->execute([
+            'nome' => $this->nome,
+            'id' => $this->id
+        ]);
+        return $stmt->rowCount() > 0;
+    }
+    public function inativar() {
+        $stmt = $this->conexao->prepare("UPDATE procedimento SET status = 0 WHERE id = :id");
+        $stmt->execute(['id' => $this->id]);
+        return $stmt->rowCount() > 0;
+    }
 }
