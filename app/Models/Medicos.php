@@ -27,5 +27,20 @@ class Medicos {
         ]);
         return $this->conexao->lastInsertId();
     }
+    public function buscarPorId($id) {
+        $stmt = $this->conexao->prepare("SELECT * FROM medicos WHERE id = :id");
+        $stmt->execute(['id' => $id]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+    public function alterar() {
+        $stmt = $this->conexao->prepare("UPDATE medicos SET nome = :nome, crm = :crm, especialidade = :especialidade, telefone = :telefone WHERE id = :id");
+        return $stmt->execute([
+            'nome' => $this->nome,
+            'crm' => $this->crm,
+            'especialidade' => $this->especialidade,
+            'telefone' => $this->telefone,
+            'id' => $this->id
+        ]);
+    }
 }
 ?>

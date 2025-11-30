@@ -9,6 +9,7 @@
             <ul class="submenu">
                 <li><a href="novoCliente.php">Cadastrar Cliente</a></li>
                 <li><a href="clientes.php">Pesquisar Clientes</a></li>
+                <li><a href="medicos.php">Médicos</a></li>
             </ul>
         </li>
         <li class="has-submenu">
