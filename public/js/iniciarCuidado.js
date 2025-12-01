@@ -7,32 +7,83 @@ $(document).ready(function() {
         const $taskItem = $(this).closest('.task-item');
         
         if ($(this).is(':checked')) {
-            $taskItem.addClass('completed');
-            console.log('Tarefa concluída:', $taskItem.find('h3').text());
+            $.ajax({
+                url: BASE_URL + '/agenda/marcarConcluida',
+                method: 'POST',
+                data: {
+                    paciente: CLIENTE_ID,
+                    evento_id: $taskItem.data('evento-id'),
+                    evento_tipo: $taskItem.data('evento-tipo'),
+                    hora: $taskItem.data('data-evento')
+                },
+                success: function(response) {
+                    $taskItem.addClass('completed');
+                    console.log('Tarefa concluída:', $taskItem.find('h3').text());
+                    if ($taskItem.data('evento-tipo') == 'f') {
+                        console.log('fim do turno');
+                        enviarRelatorio();
+                    }
+                },
+                error: function() {
+                    console.error('Erro ao marcar tarefa');
+                }
+            });
         } else {
-            $taskItem.removeClass('completed');
-            console.log('Tarefa desmarcada:', $taskItem.find('h3').text());
+            console.log('desmarcar');
+            console.log($taskItem.data('evento-id'))
+            console.log($taskItem.data('evento-tipo'))
+            console.log($taskItem.data('data-evento'))
+            $.ajax({
+                url: BASE_URL + '/agenda/desmarcarConcluida',
+                method: 'POST',
+                data: {
+                    paciente: CLIENTE_ID,
+                    evento_id: $taskItem.data('evento-id'),
+                    evento_tipo: $taskItem.data('evento-tipo'),
+                    hora: $taskItem.data('data-evento')
+                },
+                success: function(response) {
+                    $taskItem.removeClass('completed');
+                    console.log('Tarefa desmarcada:', $taskItem.find('h3').text());
+                },
+                error: function() {
+                    console.error('Erro ao desmarcar tarefa');
+                }
+            });
         }
     });
 });
 
-function carregarProcedimentosDia() {
-    const hoje = new Date();
-    const ano = hoje.getFullYear();
-    const mes = hoje.getMonth() + 1;
-    const dia = hoje.getDate();
-    
+function enviarRelatorio() {
+    $.ajax({
+        url: BASE_URL + '/gemini/enviarRelatorio',
+        method: 'POST',
+        data: {
+            paciente: CLIENTE_ID,
+            data: $('#dataDia').val()
+        },
+        success: function(response) {
+            console.log('Relatório enviado com sucesso.');
+            console.log(response.relatorio)
+        },
+        error: function() {
+            console.error('Erro ao enviar relatório.');
+        }
+    });
+}
+
+function carregarProcedimentosDia() {   
     $.ajax({
         url: BASE_URL + '/agenda/getEventosDia',
         method: 'GET',
         data: {
             cliente_id: CLIENTE_ID,
-            data: hoje.toISOString().split('T')[0]
+            data: $('#dataDia').val()
         },
         dataType: 'json',
         success: function(response) {
             if (response.success && response.data.length > 0) {
-                renderizarTarefas(response.data);
+                renderizarTarefas(response.data, response.inicio, response.fim);
             } else {
                 $('.tasks-container').html('<p>Nenhum procedimento agendado para hoje.</p>');
             }
@@ -43,30 +94,39 @@ function carregarProcedimentosDia() {
     });
 }
 
-function renderizarTarefas(eventos) {
+function renderizarTarefas(eventos, checkincio, checkfim) {
+    console.log('inicio ' + checkincio);
+    console.log('fim ' + checkfim);
+
     const container = $('.tasks-container');
     container.empty();
-    const inicio = `<div class="task-item" data-evento-id="inicio">
+
+    const checkedInicio = checkincio ? 'checked' : '';
+    const completeInicio = checkincio ? 'completed' : '';
+    const inicio = `<div class="task-item ${completeInicio}" data-evento-id="inicio" data-evento-tipo="i">
                 <div class="task-info">
                     <h3>Inicio do Turno</h3>
                 </div>
                 <label class="switch">
-                    <input type="checkbox" class="task-toggle">
+                    <input type="checkbox" class="task-toggle" ${checkedInicio}>
                     <span class="slider"></span>
                 </label>
             </div>`;
     container.append(inicio);
     
     eventos.forEach(function(evento) {
+        const checked = evento.concluida ? 'checked' : '';
+        const completedClass = evento.concluida ? 'completed' : '';
+        
         const taskHtml = `
-            <div class="task-item" data-evento-id="${evento.id}">
+            <div class="task-item ${completedClass}" data-evento-id="${evento.id}" data-evento-tipo="${evento.tipo_evento}" data-data-evento="${evento.horario}">
                 <div class="task-info">
                     <h3>${evento.nome}</h3>
                     <p>${evento.descricao || 'Procedimento agendado'}</p>
                     <span class="task-time">Agendado para: ${evento.horario || 'Horário não definido'}</span>
                 </div>
                 <label class="switch">
-                    <input type="checkbox" class="task-toggle">
+                    <input type="checkbox" class="task-toggle" ${checked}>
                     <span class="slider"></span>
                 </label>
             </div>
@@ -74,12 +134,14 @@ function renderizarTarefas(eventos) {
         container.append(taskHtml);
     });
 
-    const fim = `<div class="task-item" data-evento-id="fim">
+    const checkedFim = checkfim ? 'checked' : '';
+    const completeFim = checkfim ? 'completed' : '';
+    const fim = `<div class="task-item ${completeFim}" data-evento-id="fim" data-evento-tipo="f">
                 <div class="task-info">
                     <h3>Fim do Turno</h3>
                 </div>
                 <label class="switch">
-                    <input type="checkbox" class="task-toggle">
+                    <input type="checkbox" class="task-toggle" ${checkedFim}>
                     <span class="slider"></span>
                 </label>
             </div>`;

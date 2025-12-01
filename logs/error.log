@@ -1,147 +1,41 @@
-[2025-11-30 21:57:03] getEventosDia - clienteId: 19, data: 2025-11-30
-[2025-11-30 21:57:03] Ficha encontrada: [{"id":9,"paciente":19,"historicoMedico":0,"medicamentos":1,"restricoesAlimentares":1,"procedimentosEspecificos":1,"observacoes":null}]
-[2025-11-30 21:57:03] FichaId: 9
-[2025-11-30 21:57:03] Medicamentos.listarPorData - id_ficha: 9, data: 2025-11-30
-[2025-11-30 21:57:03] Medicamentos encontrados: 1
-[2025-11-30 21:57:03] Medicamentos encontrados: [{"id":21,"id_ficha":9,"nome":"312","dosagem":"312","viaAdministracao":"312","inicioTratamento":"2025-11-01 21:42:00","fimTratamento":"2025-12-03","ultima_aplicacao":"2025-11-16 13:00:00","repetir":1,"intervalo":3,"diasMedicamento":"","horasMedicamento":"08::00, 15:00"}]
-[2025-11-30 21:57:03] Processando medicamento: 312
-[2025-11-30 21:57:03] calcularAplicacoesDia - medicamento: 312, data: 2025-11-30
-[2025-11-30 21:57:03] Período tratamento: 2025-11-01 a 2025-12-03
-[2025-11-30 21:57:03] Repetir: 1, Intervalo: 3
-[2025-11-30 21:57:03] Horas medicamento: 08::00, 15:00
-[2025-11-30 21:57:03] Processando horas específicas para todos os dias
-[2025-11-30 21:57:03] Adicionada aplicação: 2025-11-30 08:00:00
-[2025-11-30 21:57:03] Adicionada aplicação: 2025-11-30 15:00:00
-[2025-11-30 21:57:03] Total de aplicações calculadas: 2
-[2025-11-30 21:57:03] Datas de aplicação calculadas: ["2025-11-30 08:00:00","2025-11-30 15:00:00"]
-[2025-11-30 21:57:03] Procedimento.listarPorData - id_ficha: 9, data: 2025-11-30
-[2025-11-30 21:57:03] Procedimentos encontrados: 1
-[2025-11-30 21:57:03] Procedimentos encontrados: [{"id":5,"nome":"Banho ","status":0,"horarios":"19:42","descricao":"Testando o procedimento"}]
-[2025-11-30 21:57:03] Total de eventos: 3
-[2025-11-30 21:57:03] Eventos finais: [{"id":21,"nome":"312","descricao":"312 - 312","data_evento":"2025-11-30 08:00:00","horario":"08:00","tipo_evento":"medicamento"},{"id":21,"nome":"312","descricao":"312 - 312","data_evento":"2025-11-30 15:00:00","horario":"15:00","tipo_evento":"medicamento"},{"id":5,"nome":"Banho ","descricao":"Testando o procedimento","data_evento":"2025-11-30 19:42","horario":"00:00","tipo_evento":"procedimento"}]
-[2025-11-30 21:58:13] getEventosDia - clienteId: 19, data: 2025-11-30
-[2025-11-30 21:58:13] Ficha encontrada: [{"id":9,"paciente":19,"historicoMedico":0,"medicamentos":1,"restricoesAlimentares":1,"procedimentosEspecificos":1,"observacoes":null}]
-[2025-11-30 21:58:13] FichaId: 9
-[2025-11-30 21:58:13] Medicamentos.listarPorData - id_ficha: 9, data: 2025-11-30
-[2025-11-30 21:58:13] Medicamentos encontrados: 1
-[2025-11-30 21:58:13] Medicamentos encontrados: [{"id":21,"id_ficha":9,"nome":"312","dosagem":"312","viaAdministracao":"312","inicioTratamento":"2025-11-01 21:42:00","fimTratamento":"2025-12-03","ultima_aplicacao":"2025-11-16 13:00:00","repetir":1,"intervalo":3,"diasMedicamento":"","horasMedicamento":"08::00, 15:00"}]
-[2025-11-30 21:58:13] Processando medicamento: 312
-[2025-11-30 21:58:13] calcularAplicacoesDia - medicamento: 312, data: 2025-11-30
-[2025-11-30 21:58:13] Período tratamento: 2025-11-01 a 2025-12-03
-[2025-11-30 21:58:13] Repetir: 1, Intervalo: 3
-[2025-11-30 21:58:13] Horas medicamento: 08::00, 15:00
-[2025-11-30 21:58:13] Processando horas específicas para todos os dias
-[2025-11-30 21:58:13] Adicionada aplicação: 2025-11-30 08:00:00
-[2025-11-30 21:58:13] Adicionada aplicação: 2025-11-30 15:00:00
-[2025-11-30 21:58:13] Total de aplicações calculadas: 2
-[2025-11-30 21:58:13] Datas de aplicação calculadas: ["2025-11-30 08:00:00","2025-11-30 15:00:00"]
-[2025-11-30 21:58:13] Procedimento.listarPorData - id_ficha: 9, data: 2025-11-30
-[2025-11-30 21:58:13] Procedimentos encontrados: 1
-[2025-11-30 21:58:13] Procedimentos encontrados: [{"id":5,"nome":"Banho ","status":0,"horarios":"19:42","descricao":"Testando o procedimento"}]
-[2025-11-30 21:58:13] Total de eventos: 3
-[2025-11-30 21:58:13] Eventos finais: [{"id":21,"nome":"312","descricao":"312 - 312","data_evento":"2025-11-30 08:00:00","horario":"08:00","tipo_evento":"medicamento"},{"id":21,"nome":"312","descricao":"312 - 312","data_evento":"2025-11-30 15:00:00","horario":"15:00","tipo_evento":"medicamento"},{"id":5,"nome":"Banho ","descricao":"Testando o procedimento","data_evento":"2025-11-30 19:42","horario":"00:00","tipo_evento":"procedimento"}]
-[2025-11-30 21:58:16] getEventosDia - clienteId: 19, data: 2025-11-30
-[2025-11-30 21:58:16] Ficha encontrada: [{"id":9,"paciente":19,"historicoMedico":0,"medicamentos":1,"restricoesAlimentares":1,"procedimentosEspecificos":1,"observacoes":null}]
-[2025-11-30 21:58:16] FichaId: 9
-[2025-11-30 21:58:16] Medicamentos.listarPorData - id_ficha: 9, data: 2025-11-30
-[2025-11-30 21:58:16] Medicamentos encontrados: 1
-[2025-11-30 21:58:16] Medicamentos encontrados: [{"id":21,"id_ficha":9,"nome":"312","dosagem":"312","viaAdministracao":"312","inicioTratamento":"2025-11-01 21:42:00","fimTratamento":"2025-12-03","ultima_aplicacao":"2025-11-16 13:00:00","repetir":1,"intervalo":3,"diasMedicamento":"","horasMedicamento":"08::00, 15:00"}]
-[2025-11-30 21:58:16] Processando medicamento: 312
-[2025-11-30 21:58:16] calcularAplicacoesDia - medicamento: 312, data: 2025-11-30
-[2025-11-30 21:58:16] Período tratamento: 2025-11-01 a 2025-12-03
-[2025-11-30 21:58:16] Repetir: 1, Intervalo: 3
-[2025-11-30 21:58:16] Horas medicamento: 08::00, 15:00
-[2025-11-30 21:58:16] Processando horas específicas para todos os dias
-[2025-11-30 21:58:16] Adicionada aplicação: 2025-11-30 08:00:00
-[2025-11-30 21:58:16] Adicionada aplicação: 2025-11-30 15:00:00
-[2025-11-30 21:58:16] Total de aplicações calculadas: 2
-[2025-11-30 21:58:16] Datas de aplicação calculadas: ["2025-11-30 08:00:00","2025-11-30 15:00:00"]
-[2025-11-30 21:58:16] Procedimento.listarPorData - id_ficha: 9, data: 2025-11-30
-[2025-11-30 21:58:16] Procedimentos encontrados: 1
-[2025-11-30 21:58:16] Procedimentos encontrados: [{"id":5,"nome":"Banho ","status":0,"horarios":"19:42","descricao":"Testando o procedimento"}]
-[2025-11-30 21:58:16] Total de eventos: 3
-[2025-11-30 21:58:16] Eventos finais: [{"id":21,"nome":"312","descricao":"312 - 312","data_evento":"2025-11-30 08:00:00","horario":"08:00","tipo_evento":"medicamento"},{"id":21,"nome":"312","descricao":"312 - 312","data_evento":"2025-11-30 15:00:00","horario":"15:00","tipo_evento":"medicamento"},{"id":5,"nome":"Banho ","descricao":"Testando o procedimento","data_evento":"2025-11-30 19:42","horario":"00:00","tipo_evento":"procedimento"}]
-[2025-11-30 21:58:53] getEventosDia - clienteId: 19, data: 2025-11-30
-[2025-11-30 21:58:53] Ficha encontrada: [{"id":9,"paciente":19,"historicoMedico":0,"medicamentos":1,"restricoesAlimentares":1,"procedimentosEspecificos":1,"observacoes":null}]
-[2025-11-30 21:58:53] FichaId: 9
-[2025-11-30 21:58:53] Medicamentos.listarPorData - id_ficha: 9, data: 2025-11-30
-[2025-11-30 21:58:53] Medicamentos encontrados: 1
-[2025-11-30 21:58:53] Medicamentos encontrados: [{"id":21,"id_ficha":9,"nome":"312","dosagem":"312","viaAdministracao":"312","inicioTratamento":"2025-11-01 21:42:00","fimTratamento":"2025-12-03","ultima_aplicacao":"2025-11-16 13:00:00","repetir":1,"intervalo":3,"diasMedicamento":"","horasMedicamento":"08::00, 15:00"}]
-[2025-11-30 21:58:53] Processando medicamento: 312
-[2025-11-30 21:58:53] calcularAplicacoesDia - medicamento: 312, data: 2025-11-30
-[2025-11-30 21:58:53] Período tratamento: 2025-11-01 a 2025-12-03
-[2025-11-30 21:58:53] Repetir: 1, Intervalo: 3
-[2025-11-30 21:58:53] Horas medicamento: 08::00, 15:00
-[2025-11-30 21:58:53] Processando horas específicas para todos os dias
-[2025-11-30 21:58:53] Adicionada aplicação: 2025-11-30 08:00:00
-[2025-11-30 21:58:53] Adicionada aplicação: 2025-11-30 15:00:00
-[2025-11-30 21:58:53] Total de aplicações calculadas: 2
-[2025-11-30 21:58:53] Datas de aplicação calculadas: ["2025-11-30 08:00:00","2025-11-30 15:00:00"]
-[2025-11-30 21:58:53] Procedimento.listarPorData - id_ficha: 9, data: 2025-11-30
-[2025-11-30 21:58:53] Procedimentos encontrados: 1
-[2025-11-30 21:58:53] Procedimentos encontrados: [{"id":5,"nome":"Banho ","status":0,"horarios":"19:42","descricao":"Testando o procedimento"}]
-[2025-11-30 21:58:53] Total de eventos: 3
-[2025-11-30 21:58:53] Eventos finais: [{"id":21,"nome":"312","descricao":"312 - 312","data_evento":"2025-11-30 08:00:00","horario":"08:00","tipo_evento":"medicamento"},{"id":21,"nome":"312","descricao":"312 - 312","data_evento":"2025-11-30 15:00:00","horario":"15:00","tipo_evento":"medicamento"},{"id":5,"nome":"Banho ","descricao":"Testando o procedimento","data_evento":"2025-11-30 19:42","horario":"19:42","tipo_evento":"procedimento"}]
-[2025-11-30 22:02:57] getEventosDia - clienteId: 19, data: 2025-11-30
-[2025-11-30 22:02:57] Ficha encontrada: [{"id":9,"paciente":19,"historicoMedico":0,"medicamentos":1,"restricoesAlimentares":1,"procedimentosEspecificos":1,"observacoes":null}]
-[2025-11-30 22:02:57] FichaId: 9
-[2025-11-30 22:02:57] Medicamentos.listarPorData - id_ficha: 9, data: 2025-11-30
-[2025-11-30 22:02:57] Medicamentos encontrados: 1
-[2025-11-30 22:02:57] Medicamentos encontrados: [{"id":21,"id_ficha":9,"nome":"312","dosagem":"312","viaAdministracao":"312","inicioTratamento":"2025-11-01 21:42:00","fimTratamento":"2025-12-03","ultima_aplicacao":"2025-11-16 13:00:00","repetir":1,"intervalo":3,"diasMedicamento":"","horasMedicamento":"08::00, 15:00"}]
-[2025-11-30 22:02:57] Processando medicamento: 312
-[2025-11-30 22:02:57] calcularAplicacoesDia - medicamento: 312, data: 2025-11-30
-[2025-11-30 22:02:57] Período tratamento: 2025-11-01 a 2025-12-03
-[2025-11-30 22:02:57] Repetir: 1, Intervalo: 3
-[2025-11-30 22:02:57] Horas medicamento: 08::00, 15:00
-[2025-11-30 22:02:57] Processando horas específicas para todos os dias
-[2025-11-30 22:02:57] Adicionada aplicação: 2025-11-30 08:00:00
-[2025-11-30 22:02:57] Adicionada aplicação: 2025-11-30 15:00:00
-[2025-11-30 22:02:57] Total de aplicações calculadas: 2
-[2025-11-30 22:02:57] Datas de aplicação calculadas: ["2025-11-30 08:00:00","2025-11-30 15:00:00"]
-[2025-11-30 22:02:57] Procedimento.listarPorData - id_ficha: 9, data: 2025-11-30
-[2025-11-30 22:02:57] Procedimentos encontrados: 1
-[2025-11-30 22:02:57] Procedimentos encontrados: [{"id":5,"nome":"Banho ","status":0,"horarios":"19:42","descricao":"Testando o procedimento"}]
-[2025-11-30 22:02:57] Total de eventos: 3
-[2025-11-30 22:02:57] Eventos finais: [{"id":21,"nome":"312","descricao":"312 - 312","data_evento":"2025-11-30 08:00:00","horario":"08:00","tipo_evento":"medicamento"},{"id":21,"nome":"312","descricao":"312 - 312","data_evento":"2025-11-30 15:00:00","horario":"15:00","tipo_evento":"medicamento"},{"id":5,"nome":"Banho ","descricao":"Testando o procedimento","data_evento":"2025-11-30 19:42","horario":"19:42","tipo_evento":"procedimento"}]
-[2025-11-30 22:03:19] getEventosDia - clienteId: 19, data: 2025-11-30
-[2025-11-30 22:03:19] Ficha encontrada: [{"id":9,"paciente":19,"historicoMedico":0,"medicamentos":1,"restricoesAlimentares":1,"procedimentosEspecificos":1,"observacoes":null}]
-[2025-11-30 22:03:19] FichaId: 9
-[2025-11-30 22:03:19] Medicamentos.listarPorData - id_ficha: 9, data: 2025-11-30
-[2025-11-30 22:03:19] Medicamentos encontrados: 1
-[2025-11-30 22:03:19] Medicamentos encontrados: [{"id":21,"id_ficha":9,"nome":"312","dosagem":"312","viaAdministracao":"312","inicioTratamento":"2025-11-01 21:42:00","fimTratamento":"2025-12-03","ultima_aplicacao":"2025-11-16 13:00:00","repetir":1,"intervalo":3,"diasMedicamento":"","horasMedicamento":"08::00, 15:00"}]
-[2025-11-30 22:03:19] Processando medicamento: 312
-[2025-11-30 22:03:19] calcularAplicacoesDia - medicamento: 312, data: 2025-11-30
-[2025-11-30 22:03:19] Período tratamento: 2025-11-01 a 2025-12-03
-[2025-11-30 22:03:19] Repetir: 1, Intervalo: 3
-[2025-11-30 22:03:19] Horas medicamento: 08::00, 15:00
-[2025-11-30 22:03:19] Processando horas específicas para todos os dias
-[2025-11-30 22:03:19] Adicionada aplicação: 2025-11-30 08:00:00
-[2025-11-30 22:03:19] Adicionada aplicação: 2025-11-30 15:00:00
-[2025-11-30 22:03:19] Total de aplicações calculadas: 2
-[2025-11-30 22:03:19] Datas de aplicação calculadas: ["2025-11-30 08:00:00","2025-11-30 15:00:00"]
-[2025-11-30 22:03:19] Procedimento.listarPorData - id_ficha: 9, data: 2025-11-30
-[2025-11-30 22:03:19] Procedimentos encontrados: 1
-[2025-11-30 22:03:19] Procedimentos encontrados: [{"id":5,"nome":"Banho ","status":0,"horarios":"19:42","descricao":"Testando o procedimento"}]
-[2025-11-30 22:03:19] Total de eventos: 3
-[2025-11-30 22:03:19] Eventos finais: [{"id":21,"nome":"312","descricao":"312 - 312","data_evento":"2025-11-30 08:00:00","horario":"08:00","tipo_evento":"medicamento"},{"id":21,"nome":"312","descricao":"312 - 312","data_evento":"2025-11-30 15:00:00","horario":"15:00","tipo_evento":"medicamento"},{"id":5,"nome":"Banho ","descricao":"Testando o procedimento","data_evento":"2025-11-30 19:42","horario":"19:42","tipo_evento":"procedimento"}]
-[2025-11-30 22:04:00] getEventosDia - clienteId: 19, data: 2025-11-30
-[2025-11-30 22:04:00] Ficha encontrada: [{"id":9,"paciente":19,"historicoMedico":0,"medicamentos":1,"restricoesAlimentares":1,"procedimentosEspecificos":1,"observacoes":null}]
-[2025-11-30 22:04:00] FichaId: 9
-[2025-11-30 22:04:00] Medicamentos.listarPorData - id_ficha: 9, data: 2025-11-30
-[2025-11-30 22:04:00] Medicamentos encontrados: 1
-[2025-11-30 22:04:00] Medicamentos encontrados: [{"id":21,"id_ficha":9,"nome":"312","dosagem":"312","viaAdministracao":"312","inicioTratamento":"2025-11-01 21:42:00","fimTratamento":"2025-12-03","ultima_aplicacao":"2025-11-16 13:00:00","repetir":1,"intervalo":3,"diasMedicamento":"","horasMedicamento":"08::00, 15:00"}]
-[2025-11-30 22:04:00] Processando medicamento: 312
-[2025-11-30 22:04:00] calcularAplicacoesDia - medicamento: 312, data: 2025-11-30
-[2025-11-30 22:04:00] Período tratamento: 2025-11-01 a 2025-12-03
-[2025-11-30 22:04:00] Repetir: 1, Intervalo: 3
-[2025-11-30 22:04:00] Horas medicamento: 08::00, 15:00
-[2025-11-30 22:04:00] Processando horas específicas para todos os dias
-[2025-11-30 22:04:00] Adicionada aplicação: 2025-11-30 08:00:00
-[2025-11-30 22:04:00] Adicionada aplicação: 2025-11-30 15:00:00
-[2025-11-30 22:04:00] Total de aplicações calculadas: 2
-[2025-11-30 22:04:00] Datas de aplicação calculadas: ["2025-11-30 08:00:00","2025-11-30 15:00:00"]
-[2025-11-30 22:04:00] Procedimento.listarPorData - id_ficha: 9, data: 2025-11-30
-[2025-11-30 22:04:00] Procedimentos encontrados: 1
-[2025-11-30 22:04:00] Procedimentos encontrados: [{"id":5,"nome":"Banho ","status":0,"horarios":"19:42","descricao":"Testando o procedimento"}]
-[2025-11-30 22:04:00] Total de eventos: 3
-[2025-11-30 22:04:00] Eventos finais: [{"id":21,"nome":"312","descricao":"312 - 312","data_evento":"2025-11-30 08:00:00","horario":"08:00","tipo_evento":"medicamento"},{"id":21,"nome":"312","descricao":"312 - 312","data_evento":"2025-11-30 15:00:00","horario":"15:00","tipo_evento":"medicamento"},{"id":5,"nome":"Banho ","descricao":"Testando o procedimento","data_evento":"2025-11-30 19:42","horario":"19:42","tipo_evento":"procedimento"}]
+[2025-12-01 06:38:02] gemmini
+[2025-12-01 06:38:02] {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. ",
+    "status": "RESOURCE_EXHAUSTED"
+  }
+}
+
+[2025-12-01 06:44:53] gemmini
+[2025-12-01 06:44:53] {
+  "candidates": [
+    {
+      "content": {
+        "parts": [
+          {
+            "text": "## Relatório de Cuidados Domiciliares\n\n**Data do Relatório:** 01 de Dezembro de 2025\n\n---\n\n**Dados da Cuidadora:**\n*   **Nome:** Angélica\n\n**Dados do Paciente:**\n*   **ID do Paciente:** 19\n\n---\n\n### **Procedimentos Realizados**\n\nInformamos que, durante o período de cuidados em 01 de Dezembro de 2025, **nenhum procedimento médico ou de enfermagem específico foi realizado ou solicitado** para o Paciente ID 19.\n\n---\n\n### **Observações Gerais**\n\nO paciente apresentou-se estável e confortável ao longo do dia. Não foram observadas intercorrências, queixas ou quaisquer alterações no estado de saúde que exigissem a realização de procedimentos adicionais. As atividades diárias rotineiras foram conduzidas normalmente.\n\n---\n\nAtenciosamente,\n\nAngélica\nCuidadora"
+          }
+        ],
+        "role": "model"
+      },
+      "finishReason": "STOP",
+      "index": 0
+    }
+  ],
+  "usageMetadata": {
+    "promptTokenCount": 148,
+    "candidatesTokenCount": 204,
+    "totalTokenCount": 1596,
+    "promptTokensDetails": [
+      {
+        "modality": "TEXT",
+        "tokenCount": 148
+      }
+    ],
+    "thoughtsTokenCount": 1244
+  },
+  "modelVersion": "gemini-2.5-flash",
+  "responseId": "pGMtacXWMsSUmtkP7IeMsQI"
+}
+

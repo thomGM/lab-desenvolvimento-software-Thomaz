@@ -1,12 +1,52 @@
 <?php
 require_once __DIR__ . '/../Core/log.php';
-
 class AgendaController {
 
     private $conexao;
 
     public function __construct() {
         $this->conexao = conexao();
+    }
+
+    public function marcarConcluida() {
+        header('Content-Type: application/json');
+        $paciente = $_POST['paciente'] ?? null;
+        $eventoId = $_POST['evento_id'] ?? null;
+        $eventoTipo = $_POST['evento_tipo'] ?? null;
+        $hora = $_POST['hora'] ?? null;
+
+        if (!$paciente || !$eventoId || !$eventoTipo) {
+            echo json_encode(['success' => false, 'message' => 'Parâmetros obrigatórios']);
+            return;
+        }
+
+        try {
+            $agendaModel = new Agenda();
+            $agendaModel->marcarConcluida($paciente, $eventoId, $eventoTipo, $hora);
+            echo json_encode(['success' => true]);
+        } catch (Exception $e) {
+            echo json_encode(['success' => false, 'message' => $e->getMessage()]);
+        }
+    }
+
+    public function desmarcarConcluida() {
+        header('Content-Type: application/json');
+        $paciente = $_POST['paciente'] ?? null;
+        $eventoId = $_POST['evento_id'] ?? null;
+        $eventoTipo = $_POST['evento_tipo'] ?? null;
+
+        if (!$paciente || !$eventoId || !$eventoTipo) {
+            echo json_encode(['success' => false, 'message' => 'Parâmetros obrigatórios']);
+            return;
+        }
+
+        try {
+            $agendaModel = new Agenda();
+            $agendaModel->desmarcarConcluida($paciente, $eventoId, $eventoTipo);
+            echo json_encode(['success' => true]);
+        } catch (Exception $e) {
+            echo json_encode(['success' => false, 'message' => $e->getMessage()]);
+        }
     }
 
     public function getEventosDia() {
@@ -49,6 +89,7 @@ class AgendaController {
                 foreach ($datasAplicacao as $dataAplicacao) {
                     $eventos[] = [
                         'id' => $medicamento['id'],
+                        'tipo' => 'm',
                         'nome' => $medicamento['nome'],
                         'descricao' => $medicamento['dosagem'] . ' - ' . $medicamento['viaAdministracao'],
                         'data_evento' => $dataAplicacao,
@@ -65,6 +106,7 @@ class AgendaController {
             foreach ($procedimentos as $procedimento) {
                 $eventos[] = [
                     'id' => $procedimento['id'],
+                    'tipo' => 'p',
                     'nome' => $procedimento['nome'],
                     'descricao' => $procedimento['descricao'] ?? '',
                     'data_evento' => $data . ' ' . ($procedimento['horarios'] ?? '00:00:00'),
@@ -80,7 +122,45 @@ class AgendaController {
                 return strtotime($a['data_evento']) - strtotime($b['data_evento']);
             });
 
-            echo json_encode(['success' => true, 'data' => $eventos]);
+            // Verificar quais tarefas já foram concluídas
+            $agendaModel = new Agenda();
+            $tarefasConcluidas = $agendaModel->verificarConcluidas($clienteId, $data);
+            
+            // Marcar eventos como concluídos
+            $eventoInicio = false;
+            $eventoFim = false;
+            foreach ($tarefasConcluidas as $concluida) {
+
+                log_error('tarefas: ' . $concluida['evento_tipo']);
+                if ($concluida['evento_tipo'] == 'i') {
+                    $eventoInicio = true;
+                }
+
+                if ($concluida['evento_tipo'] == 'f') {
+                    $eventoFim = true;
+                }
+            }
+            foreach ($eventos as &$evento) {
+                $evento['concluida'] = false;
+                foreach ($tarefasConcluidas as $concluida) {
+                    log_error('evento_id ' . $concluida['evento_id']);
+                    log_error('evento_id ' . $concluida['evento_id']);
+                    log_error('id ' . $evento['id']);
+                    log_error('evento_tipo ' . $concluida['evento_tipo']);
+                    log_error('tipo ' . $evento['tipo']);
+                    log_error('horaAgendada ' . $concluida['horaAgendada']);
+                    log_error('horario ' . $evento['horario']);
+
+                    if ($concluida['evento_id'] == $evento['id'] && 
+                        $concluida['evento_tipo'] == $evento['tipo'] &&
+                        $concluida['horaAgendada'] == $evento['horario'] . ':00') {
+                        $evento['concluida'] = true;
+                        break;
+                    }
+                }
+            }
+
+            echo json_encode(['success' => true, 'data' => $eventos, 'inicio' => $eventoInicio, 'fim' => $eventoFim]);
         } catch (Exception $e) {
             log_error('Erro em getEventosDia: ' . $e->getMessage());
             echo json_encode(['success' => false, 'message' => 'Erro ao buscar eventos: ' . $e->getMessage()]);

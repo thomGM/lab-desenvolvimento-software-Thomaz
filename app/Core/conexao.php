@@ -1,5 +1,5 @@
 <?php
-
+date_default_timezone_set(timezoneId: 'America/Sao_Paulo');
 function conexao(){
     $dsn = "mysql:host=localhost;dbname=homecare";
     $usuario = "root";
