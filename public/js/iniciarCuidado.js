@@ -67,7 +67,7 @@ function enviarRelatorio() {
             console.log('Relatório enviado com sucesso.');
             console.log(response.relatorio)
             // abrir um dialog com o retorno de gemini
-            var dialogHtml = '<div style="text-align: center; padding: 20px;">' +
+            var dialogHtml = '<div id="dialog" style="text-align: center; padding: 20px;">' +
                                 '<p><b>Relatório do Dia:</b></p>' +
                                 '<p>' + response.relatorio + '</p>' +
                                 '</div>';
@@ -80,7 +80,7 @@ function enviarRelatorio() {
                     Enviar: function() {
                         console.log(' WhatsApp do familiar...' + FAMILIAR_WHATSAPP);
                         // enviar mensagem para o whatsapp do familar
-                        window.open('https://wa.me/' + FAMILIAR_WHATSAPP + '?text=' + encodeURIComponent(response.relatorio), '_blank');
+                        window.open('https://wa.me/' + FAMILIAR_WHATSAPP + '?text=' + encodeURIComponent($('#dialog p:nth-child(2)').text()), '_blank');
                         $(this).dialog('close');
                     },
                     Cancelar: function() {

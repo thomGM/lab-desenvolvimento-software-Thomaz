@@ -17,18 +17,21 @@ class GeminiController {
 
         // Pesquisar na agenda tudo que foi concluido
         $agendaModel = new Agenda();
-        $concluidos = $agendaModel->getConcluidos($paciente, $data);
+        $concluidos = $agendaModel->getConcluidos($data, $paciente);
+        
+        log_error('Concluidos retornados: ' . json_encode($concluidos));
 
         $procedimentosTexto = "";
         if (!empty($concluidos)) {
             foreach ($concluidos as $item) {
-                $procedimentosTexto .= $item['procedimentoNome'] != null ? 'Procedimento ' . $item['procedimentoNome'] : 'Medicamento ' . $item['medicamentoNome'] . ' - data: ' . $item['data'] . ' - horário: ' . $item['hora'];
+                $procedimentosTexto .= $item['procedimentoNome'] != null ? 'Procedimento ' . $item['procedimentoNome'] : 'Medicamento ' . $item['medicamentoNome'] . ' - data: ' . $item['data'] . ' - horário: ' . $item['hora'] . "\n";
                 $paciente = $item['nomePaciente'];
             }
         } else {
+            log_error('Nenhum procedimento encontrado para o paciente ' . $paciente . ' na data ' . $data);
             $procedimentosTexto = "Nenhum procedimento foi realizado neste dia.";
         }
-
+        log_error('Texto final dos procedimentos: ' . $procedimentosTexto);
         $corpo = [
             "contents"=> [
                 [
@@ -46,7 +49,6 @@ class GeminiController {
                             O relatório deve ser formatado de forma profissional, incluindo:
                             - Cabeçalho com dados da cuidadora e data
                             - Lista detalhada dos procedimentos com horários
-                            - Enviar os procedimentos realizados somente, não pode iventar novos
                             
                             Use um formato claro e organizado."
                         ]
