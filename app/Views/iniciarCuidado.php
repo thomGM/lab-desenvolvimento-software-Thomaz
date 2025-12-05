@@ -27,6 +27,8 @@
         </script>
     </main>
     <script>var CLIENTE_ID= <?= $_GET['id'] ?></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
     <script src="<?= BASE_URL ?>/js/iniciarCuidado.js"></script>
 </body>
 </html>

@@ -15,6 +15,12 @@ class Procedimento {
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function consultaTodos() {
+        $stmt = $this->conexao->prepare("SELECT * FROM procedimento");
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
     public function salvar() {
         $stmt = $this->conexao->prepare("INSERT INTO procedimento (nome) VALUES (:nome)");
         $stmt->execute([

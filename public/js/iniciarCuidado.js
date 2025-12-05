@@ -1,4 +1,5 @@
 var BASE_URL = '/homeCare/lab-desenvolvimento-software-Thomaz/public';
+var FAMILIAR_WHATSAPP = '';
 
 $(document).ready(function() {
     carregarProcedimentosDia();
@@ -65,6 +66,28 @@ function enviarRelatorio() {
         success: function(response) {
             console.log('Relatório enviado com sucesso.');
             console.log(response.relatorio)
+            // abrir um dialog com o retorno de gemini
+            var dialogHtml = '<div style="text-align: center; padding: 20px;">' +
+                                '<p><b>Relatório do Dia:</b></p>' +
+                                '<p>' + response.relatorio + '</p>' +
+                                '</div>';
+            var $dialog = $(dialogHtml);
+            $dialog.dialog({
+                title: 'Relatório Enviado',
+                modal: true,
+                width: 400,
+                buttons: {
+                    Enviar: function() {
+                        console.log(' WhatsApp do familiar...' + FAMILIAR_WHATSAPP);
+                        // enviar mensagem para o whatsapp do familar
+                        window.open('https://wa.me/' + FAMILIAR_WHATSAPP + '?text=' + encodeURIComponent(response.relatorio), '_blank');
+                        $(this).dialog('close');
+                    },
+                    Cancelar: function() {
+                        $(this).dialog('close');
+                    }
+                }
+            });
         },
         error: function() {
             console.error('Erro ao enviar relatório.');
@@ -82,6 +105,8 @@ function carregarProcedimentosDia() {
         },
         dataType: 'json',
         success: function(response) {
+            FAMILIAR_WHATSAPP = response.telefone;
+
             if (response.success && response.data.length > 0) {
                 renderizarTarefas(response.data, response.inicio, response.fim);
             } else {

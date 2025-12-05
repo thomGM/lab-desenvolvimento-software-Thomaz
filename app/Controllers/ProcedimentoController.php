@@ -15,6 +15,14 @@ class ProcedimentoController {
         echo json_encode(['success' => true, 'data' => $listaDeProcedimentos]);
         return;
     }
+
+    public function listarTodos() {
+        header('Content-Type: application/json');
+        $procedimentoModel = new Procedimento();
+        $listaDeProcedimentos = $procedimentoModel->consultaTodos();
+        echo json_encode(['success' => true, 'data' => $listaDeProcedimentos]);
+        return;
+    }
     public function novoProcedimento() {
         header('Content-Type: application/json');
         parse_str($_POST['formData'], result: $formData);

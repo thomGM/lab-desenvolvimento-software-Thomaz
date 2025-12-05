@@ -63,6 +63,9 @@ class AgendaController {
         }
 
         try {
+            $telefone = new Clientes();
+            $telefoneCliente = $telefone->buscarTelefonePorId($clienteId);
+
             $fichaTecnicaModel = new FichaTecnica();
             $ficha = $fichaTecnicaModel->listarPorCliente($clienteId);
             log_error('Ficha encontrada: ' . json_encode($ficha));
@@ -160,7 +163,7 @@ class AgendaController {
                 }
             }
 
-            echo json_encode(['success' => true, 'data' => $eventos, 'inicio' => $eventoInicio, 'fim' => $eventoFim]);
+            echo json_encode(['success' => true, 'data' => $eventos, 'inicio' => $eventoInicio, 'fim' => $eventoFim, 'telefone' => $telefoneCliente['telefoneEmergencia'] ?? '']);
         } catch (Exception $e) {
             log_error('Erro em getEventosDia: ' . $e->getMessage());
             echo json_encode(['success' => false, 'message' => 'Erro ao buscar eventos: ' . $e->getMessage()]);
@@ -169,7 +172,11 @@ class AgendaController {
 
     private function calcularAplicacoesDia($medicamento, $data) {
         $datasAplicacao = [];
-        $dataAlvo = new DateTime($data);
+        
+        $dataAlvo = date('Y-m-d', strtotime($data));
+        $dataAlvoObj = new DateTime($dataAlvo);
+
+        log_error('dataAlvo formatada: ' . $dataAlvo);
         
         log_error('calcularAplicacoesDia - medicamento: ' . $medicamento['nome'] . ', data: ' . $data);
         
@@ -183,7 +190,7 @@ class AgendaController {
         
         log_error('Período tratamento: ' . $inicioTratamento->format('Y-m-d') . ' a ' . $fimTratamento->format('Y-m-d'));
         
-        if ($dataAlvo < $inicioTratamento || $dataAlvo > $fimTratamento) {
+        if ($dataAlvoObj < $inicioTratamento || $dataAlvoObj > $fimTratamento) {
             log_error('Data alvo fora do período de tratamento');
             return $datasAplicacao;
         }
@@ -192,14 +199,28 @@ class AgendaController {
         log_error('Horas medicamento: ' . $medicamento['horasMedicamento']);
 
         if ($medicamento['repetir'] == 1) { // Todos os dias
-            if ($medicamento['intervalo'] == 3) { // Horas específicas
+            if ($medicamento['intervalo'] == 1) { // Intervalo em horas
+                log_error('Processando intervalo em horas');
+                $intervaloHoras = (int)$medicamento['horasMedicamento'];
+                $ultimaAplicacao = new DateTime($medicamento['ultima_aplicacao']);
+                $proximaAplicacao = clone $ultimaAplicacao;
+                
+                while ($proximaAplicacao->format('Y-m-d') <= $dataAlvo) {
+                    if ($proximaAplicacao->format('Y-m-d') == $dataAlvo) {
+                        $datasAplicacao[] = $proximaAplicacao->format('Y-m-d H:i:s');
+                        log_error('Adicionada aplicação: ' . $proximaAplicacao->format('Y-m-d H:i:s'));
+                    }
+                    $proximaAplicacao->modify("+{$intervaloHoras} hours");
+                    if ($proximaAplicacao->format('Y-m-d') > $dataAlvo) break;
+                }
+            } else if ($medicamento['intervalo'] == 3) { // Horas específicas
                 log_error('Processando horas específicas para todos os dias');
                 $horarios = explode(',', $medicamento['horasMedicamento']);
                 foreach ($horarios as $horario) {
                     $horario = trim($horario);
                     $horario = str_replace('::', ':', $horario); // Corrige horários malformados
                     if (!empty($horario) && strpos($horario, ':') !== false) {
-                        $dataComHora = clone $dataAlvo;
+                        $dataComHora = clone $dataAlvoObj;
                         $partesHora = explode(':', $horario);
                         $hora = (int)$partesHora[0];
                         $minuto = isset($partesHora[1]) ? (int)$partesHora[1] : 0;
@@ -212,7 +233,7 @@ class AgendaController {
         } else if ($medicamento['repetir'] == 2) { // Dias específicos
             log_error('Processando dias específicos da semana');
             $diasSemana = explode(',', $medicamento['diasMedicamento']);
-            $diaDaSemanaPHP = $dataAlvo->format('N');
+            $diaDaSemanaPHP = $dataAlvoObj->format('N');
             $diaDaSemanaJS = ($diaDaSemanaPHP % 7) + 1;
             
             log_error('Dia da semana atual: ' . $diaDaSemanaJS . ', dias permitidos: ' . implode(',', $diasSemana));
@@ -223,7 +244,7 @@ class AgendaController {
                     $horario = trim($horario);
                     $horario = str_replace('::', ':', $horario); // Corrige horários malformados
                     if (!empty($horario) && strpos($horario, ':') !== false) {
-                        $dataComHora = clone $dataAlvo;
+                        $dataComHora = clone $dataAlvoObj;
                         $partesHora = explode(':', $horario);
                         $hora = (int)$partesHora[0];
                         $minuto = isset($partesHora[1]) ? (int)$partesHora[1] : 0;
@@ -241,7 +262,7 @@ class AgendaController {
             log_error('Intervalo em dias: ' . $intervaloEmDias);
             
             // Calcular se hoje é um dia de aplicação
-            $diasDiferenca = $dataAlvo->diff($inicioTratamento)->days;
+            $diasDiferenca = $dataAlvoObj->diff($inicioTratamento)->days;
             
             if ($diasDiferenca % $intervaloEmDias == 0 && $medicamento['intervalo'] == 3) {
                 log_error('Hoje é dia de aplicação (diferença: ' . $diasDiferenca . ' dias)');
@@ -250,7 +271,7 @@ class AgendaController {
                     $horario = trim($horario);
                     $horario = str_replace('::', ':', $horario); // Corrige horários malformados
                     if (!empty($horario) && strpos($horario, ':') !== false) {
-                        $dataComHora = clone $dataAlvo;
+                        $dataComHora = clone $dataAlvoObj;
                         $partesHora = explode(':', $horario);
                         $hora = (int)$partesHora[0];
                         $minuto = isset($partesHora[1]) ? (int)$partesHora[1] : 0;

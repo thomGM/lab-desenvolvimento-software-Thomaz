@@ -1,41 +1,1090 @@
-[2025-12-01 06:38:02] gemmini
-[2025-12-01 06:38:02] {
+[2025-12-05 12:51:56] getEventosDia - clienteId: 20, data: 2025-12-05
+[2025-12-05 12:51:56] Ficha encontrada: [{"id":10,"paciente":20,"historicoMedico":1,"medicamentos":1,"restricoesAlimentares":1,"procedimentosEspecificos":1,"observacoes":null}]
+[2025-12-05 12:51:56] FichaId: 10
+[2025-12-05 12:51:56] Medicamentos.listarPorData - id_ficha: 10, data: 2025-12-05
+[2025-12-05 12:51:56] Medicamentos encontrados: 2
+[2025-12-05 12:51:56] Medicamentos encontrados: [{"id":32,"id_ficha":10,"nome":"Parecetamol ","dosagem":"10mg","viaAdministracao":"Oral","inicioTratamento":"2025-12-04 12:51:00","fimTratamento":"2025-12-12","ultima_aplicacao":"2025-12-05 09:00:00","repetir":1,"intervalo":1,"diasMedicamento":"","horasMedicamento":"6"},{"id":33,"id_ficha":10,"nome":"Amoxilina","dosagem":"20mg","viaAdministracao":"Venosa","inicioTratamento":"2025-12-03 12:51:00","fimTratamento":"2025-12-09","ultima_aplicacao":"2025-12-05 10:00:00","repetir":1,"intervalo":3,"diasMedicamento":"","horasMedicamento":"10:00, 22:00"}]
+[2025-12-05 12:51:56] Processando medicamento: Parecetamol 
+[2025-12-05 12:51:56] dataAlvo formatada: 2025-12-05
+[2025-12-05 12:51:56] calcularAplicacoesDia - medicamento: Parecetamol , data: 2025-12-05
+[2025-12-05 12:51:56] Período tratamento: 2025-12-04 a 2025-12-12
+[2025-12-05 12:51:56] Repetir: 1, Intervalo: 1
+[2025-12-05 12:51:56] Horas medicamento: 6
+[2025-12-05 12:51:56] Total de aplicações calculadas: 0
+[2025-12-05 12:51:56] Datas de aplicação calculadas: []
+[2025-12-05 12:51:56] Processando medicamento: Amoxilina
+[2025-12-05 12:51:56] dataAlvo formatada: 2025-12-05
+[2025-12-05 12:51:56] calcularAplicacoesDia - medicamento: Amoxilina, data: 2025-12-05
+[2025-12-05 12:51:56] Período tratamento: 2025-12-03 a 2025-12-09
+[2025-12-05 12:51:56] Repetir: 1, Intervalo: 3
+[2025-12-05 12:51:56] Horas medicamento: 10:00, 22:00
+[2025-12-05 12:51:56] Processando horas específicas para todos os dias
+[2025-12-05 12:51:56] Adicionada aplicação: 2025-12-05 10:00:00
+[2025-12-05 12:51:56] Adicionada aplicação: 2025-12-05 22:00:00
+[2025-12-05 12:51:56] Total de aplicações calculadas: 2
+[2025-12-05 12:51:56] Datas de aplicação calculadas: ["2025-12-05 10:00:00","2025-12-05 22:00:00"]
+[2025-12-05 12:51:56] Procedimento.listarPorData - id_ficha: 10, data: 2025-12-05
+[2025-12-05 12:51:56] Procedimentos encontrados: 1
+[2025-12-05 12:51:56] Procedimentos encontrados: [{"id":1,"nome":"Aferir Glicemia Capilar (HGT)","status":1,"horarios":"09:00","descricao":"Procedimento solicitado pelo Dr. Guimar\u00e3es. "}]
+[2025-12-05 12:51:56] Total de eventos: 3
+[2025-12-05 12:51:56] Eventos finais: [{"id":33,"tipo":"m","nome":"Amoxilina","descricao":"20mg - Venosa","data_evento":"2025-12-05 10:00:00","horario":"10:00","tipo_evento":"medicamento"},{"id":33,"tipo":"m","nome":"Amoxilina","descricao":"20mg - Venosa","data_evento":"2025-12-05 22:00:00","horario":"22:00","tipo_evento":"medicamento"},{"id":1,"tipo":"p","nome":"Aferir Glicemia Capilar (HGT)","descricao":"Procedimento solicitado pelo Dr. Guimar\u00e3es. ","data_evento":"2025-12-05 09:00","horario":"09:00","tipo_evento":"procedimento"}]
+[2025-12-05 12:53:41] getEventosDia - clienteId: 20, data: 2025-12-05
+[2025-12-05 12:53:41] Ficha encontrada: [{"id":10,"paciente":20,"historicoMedico":1,"medicamentos":1,"restricoesAlimentares":1,"procedimentosEspecificos":1,"observacoes":null}]
+[2025-12-05 12:53:41] FichaId: 10
+[2025-12-05 12:53:41] Medicamentos.listarPorData - id_ficha: 10, data: 2025-12-05
+[2025-12-05 12:53:41] Medicamentos encontrados: 2
+[2025-12-05 12:53:41] Medicamentos encontrados: [{"id":32,"id_ficha":10,"nome":"Parecetamol ","dosagem":"10mg","viaAdministracao":"Oral","inicioTratamento":"2025-12-04 12:51:00","fimTratamento":"2025-12-12","ultima_aplicacao":"2025-12-05 09:00:00","repetir":1,"intervalo":1,"diasMedicamento":"","horasMedicamento":"6"},{"id":33,"id_ficha":10,"nome":"Amoxilina","dosagem":"20mg","viaAdministracao":"Venosa","inicioTratamento":"2025-12-03 12:51:00","fimTratamento":"2025-12-09","ultima_aplicacao":"2025-12-05 10:00:00","repetir":1,"intervalo":3,"diasMedicamento":"","horasMedicamento":"10:00, 22:00"}]
+[2025-12-05 12:53:41] Processando medicamento: Parecetamol 
+[2025-12-05 12:53:41] dataAlvo formatada: 2025-12-05
+[2025-12-05 12:53:41] calcularAplicacoesDia - medicamento: Parecetamol , data: 2025-12-05
+[2025-12-05 12:53:41] Período tratamento: 2025-12-04 a 2025-12-12
+[2025-12-05 12:53:41] Repetir: 1, Intervalo: 1
+[2025-12-05 12:53:41] Horas medicamento: 6
+[2025-12-05 12:53:41] Processando intervalo em horas
+[2025-12-05 12:53:41] Adicionada aplicação: 2025-12-05 09:00:00
+[2025-12-05 12:53:41] Adicionada aplicação: 2025-12-05 15:00:00
+[2025-12-05 12:53:41] Adicionada aplicação: 2025-12-05 21:00:00
+[2025-12-05 12:53:41] Total de aplicações calculadas: 3
+[2025-12-05 12:53:41] Datas de aplicação calculadas: ["2025-12-05 09:00:00","2025-12-05 15:00:00","2025-12-05 21:00:00"]
+[2025-12-05 12:53:41] Processando medicamento: Amoxilina
+[2025-12-05 12:53:41] dataAlvo formatada: 2025-12-05
+[2025-12-05 12:53:41] calcularAplicacoesDia - medicamento: Amoxilina, data: 2025-12-05
+[2025-12-05 12:53:41] Período tratamento: 2025-12-03 a 2025-12-09
+[2025-12-05 12:53:41] Repetir: 1, Intervalo: 3
+[2025-12-05 12:53:41] Horas medicamento: 10:00, 22:00
+[2025-12-05 12:53:41] Processando horas específicas para todos os dias
+[2025-12-05 12:53:41] Adicionada aplicação: 2025-12-05 10:00:00
+[2025-12-05 12:53:41] Adicionada aplicação: 2025-12-05 22:00:00
+[2025-12-05 12:53:41] Total de aplicações calculadas: 2
+[2025-12-05 12:53:41] Datas de aplicação calculadas: ["2025-12-05 10:00:00","2025-12-05 22:00:00"]
+[2025-12-05 12:53:41] Procedimento.listarPorData - id_ficha: 10, data: 2025-12-05
+[2025-12-05 12:53:41] Procedimentos encontrados: 1
+[2025-12-05 12:53:41] Procedimentos encontrados: [{"id":1,"nome":"Aferir Glicemia Capilar (HGT)","status":1,"horarios":"09:00","descricao":"Procedimento solicitado pelo Dr. Guimar\u00e3es. "}]
+[2025-12-05 12:53:41] Total de eventos: 6
+[2025-12-05 12:53:41] Eventos finais: [{"id":32,"tipo":"m","nome":"Parecetamol ","descricao":"10mg - Oral","data_evento":"2025-12-05 09:00:00","horario":"09:00","tipo_evento":"medicamento"},{"id":32,"tipo":"m","nome":"Parecetamol ","descricao":"10mg - Oral","data_evento":"2025-12-05 15:00:00","horario":"15:00","tipo_evento":"medicamento"},{"id":32,"tipo":"m","nome":"Parecetamol ","descricao":"10mg - Oral","data_evento":"2025-12-05 21:00:00","horario":"21:00","tipo_evento":"medicamento"},{"id":33,"tipo":"m","nome":"Amoxilina","descricao":"20mg - Venosa","data_evento":"2025-12-05 10:00:00","horario":"10:00","tipo_evento":"medicamento"},{"id":33,"tipo":"m","nome":"Amoxilina","descricao":"20mg - Venosa","data_evento":"2025-12-05 22:00:00","horario":"22:00","tipo_evento":"medicamento"},{"id":1,"tipo":"p","nome":"Aferir Glicemia Capilar (HGT)","descricao":"Procedimento solicitado pelo Dr. Guimar\u00e3es. ","data_evento":"2025-12-05 09:00","horario":"09:00","tipo_evento":"procedimento"}]
+[2025-12-05 12:54:57] getEventosDia - clienteId: 20, data: 2025-12-05
+[2025-12-05 12:54:57] Ficha encontrada: [{"id":10,"paciente":20,"historicoMedico":1,"medicamentos":1,"restricoesAlimentares":1,"procedimentosEspecificos":1,"observacoes":null}]
+[2025-12-05 12:54:57] FichaId: 10
+[2025-12-05 12:54:57] Medicamentos.listarPorData - id_ficha: 10, data: 2025-12-05
+[2025-12-05 12:54:57] Medicamentos encontrados: 2
+[2025-12-05 12:54:57] Medicamentos encontrados: [{"id":32,"id_ficha":10,"nome":"Parecetamol ","dosagem":"10mg","viaAdministracao":"Oral","inicioTratamento":"2025-12-04 12:51:00","fimTratamento":"2025-12-12","ultima_aplicacao":"2025-12-05 09:00:00","repetir":1,"intervalo":1,"diasMedicamento":"","horasMedicamento":"6"},{"id":33,"id_ficha":10,"nome":"Amoxilina","dosagem":"20mg","viaAdministracao":"Venosa","inicioTratamento":"2025-12-03 12:51:00","fimTratamento":"2025-12-09","ultima_aplicacao":"2025-12-05 10:00:00","repetir":1,"intervalo":3,"diasMedicamento":"","horasMedicamento":"10:00, 22:00"}]
+[2025-12-05 12:54:57] Processando medicamento: Parecetamol 
+[2025-12-05 12:54:57] dataAlvo formatada: 2025-12-05
+[2025-12-05 12:54:57] calcularAplicacoesDia - medicamento: Parecetamol , data: 2025-12-05
+[2025-12-05 12:54:57] Período tratamento: 2025-12-04 a 2025-12-12
+[2025-12-05 12:54:57] Repetir: 1, Intervalo: 1
+[2025-12-05 12:54:57] Horas medicamento: 6
+[2025-12-05 12:54:57] Processando intervalo em horas
+[2025-12-05 12:54:57] Adicionada aplicação: 2025-12-05 09:00:00
+[2025-12-05 12:54:57] Adicionada aplicação: 2025-12-05 15:00:00
+[2025-12-05 12:54:57] Adicionada aplicação: 2025-12-05 21:00:00
+[2025-12-05 12:54:57] Total de aplicações calculadas: 3
+[2025-12-05 12:54:57] Datas de aplicação calculadas: ["2025-12-05 09:00:00","2025-12-05 15:00:00","2025-12-05 21:00:00"]
+[2025-12-05 12:54:57] Processando medicamento: Amoxilina
+[2025-12-05 12:54:57] dataAlvo formatada: 2025-12-05
+[2025-12-05 12:54:57] calcularAplicacoesDia - medicamento: Amoxilina, data: 2025-12-05
+[2025-12-05 12:54:57] Período tratamento: 2025-12-03 a 2025-12-09
+[2025-12-05 12:54:57] Repetir: 1, Intervalo: 3
+[2025-12-05 12:54:57] Horas medicamento: 10:00, 22:00
+[2025-12-05 12:54:57] Processando horas específicas para todos os dias
+[2025-12-05 12:54:57] Adicionada aplicação: 2025-12-05 10:00:00
+[2025-12-05 12:54:57] Adicionada aplicação: 2025-12-05 22:00:00
+[2025-12-05 12:54:57] Total de aplicações calculadas: 2
+[2025-12-05 12:54:57] Datas de aplicação calculadas: ["2025-12-05 10:00:00","2025-12-05 22:00:00"]
+[2025-12-05 12:54:57] Procedimento.listarPorData - id_ficha: 10, data: 2025-12-05
+[2025-12-05 12:54:57] Procedimentos encontrados: 1
+[2025-12-05 12:54:57] Procedimentos encontrados: [{"id":1,"nome":"Aferir Glicemia Capilar (HGT)","status":1,"horarios":"09:00","descricao":"Procedimento solicitado pelo Dr. Guimar\u00e3es. "}]
+[2025-12-05 12:54:57] Total de eventos: 6
+[2025-12-05 12:54:57] Eventos finais: [{"id":32,"tipo":"m","nome":"Parecetamol ","descricao":"10mg - Oral","data_evento":"2025-12-05 09:00:00","horario":"09:00","tipo_evento":"medicamento"},{"id":32,"tipo":"m","nome":"Parecetamol ","descricao":"10mg - Oral","data_evento":"2025-12-05 15:00:00","horario":"15:00","tipo_evento":"medicamento"},{"id":32,"tipo":"m","nome":"Parecetamol ","descricao":"10mg - Oral","data_evento":"2025-12-05 21:00:00","horario":"21:00","tipo_evento":"medicamento"},{"id":33,"tipo":"m","nome":"Amoxilina","descricao":"20mg - Venosa","data_evento":"2025-12-05 10:00:00","horario":"10:00","tipo_evento":"medicamento"},{"id":33,"tipo":"m","nome":"Amoxilina","descricao":"20mg - Venosa","data_evento":"2025-12-05 22:00:00","horario":"22:00","tipo_evento":"medicamento"},{"id":1,"tipo":"p","nome":"Aferir Glicemia Capilar (HGT)","descricao":"Procedimento solicitado pelo Dr. Guimar\u00e3es. ","data_evento":"2025-12-05 09:00","horario":"09:00","tipo_evento":"procedimento"}]
+[2025-12-05 12:54:57] tarefas: i
+[2025-12-05 12:54:57] evento_id inicio
+[2025-12-05 12:54:57] evento_id inicio
+[2025-12-05 12:54:57] id 32
+[2025-12-05 12:54:57] evento_tipo i
+[2025-12-05 12:54:57] tipo m
+[2025-12-05 12:54:57] horaAgendada 
+[2025-12-05 12:54:57] horario 09:00
+[2025-12-05 12:54:57] evento_id inicio
+[2025-12-05 12:54:57] evento_id inicio
+[2025-12-05 12:54:57] id 1
+[2025-12-05 12:54:57] evento_tipo i
+[2025-12-05 12:54:57] tipo p
+[2025-12-05 12:54:57] horaAgendada 
+[2025-12-05 12:54:57] horario 09:00
+[2025-12-05 12:54:57] evento_id inicio
+[2025-12-05 12:54:57] evento_id inicio
+[2025-12-05 12:54:57] id 33
+[2025-12-05 12:54:57] evento_tipo i
+[2025-12-05 12:54:57] tipo m
+[2025-12-05 12:54:57] horaAgendada 
+[2025-12-05 12:54:57] horario 10:00
+[2025-12-05 12:54:57] evento_id inicio
+[2025-12-05 12:54:57] evento_id inicio
+[2025-12-05 12:54:57] id 32
+[2025-12-05 12:54:57] evento_tipo i
+[2025-12-05 12:54:57] tipo m
+[2025-12-05 12:54:57] horaAgendada 
+[2025-12-05 12:54:57] horario 15:00
+[2025-12-05 12:54:57] evento_id inicio
+[2025-12-05 12:54:57] evento_id inicio
+[2025-12-05 12:54:57] id 32
+[2025-12-05 12:54:57] evento_tipo i
+[2025-12-05 12:54:57] tipo m
+[2025-12-05 12:54:57] horaAgendada 
+[2025-12-05 12:54:57] horario 21:00
+[2025-12-05 12:54:57] evento_id inicio
+[2025-12-05 12:54:57] evento_id inicio
+[2025-12-05 12:54:57] id 33
+[2025-12-05 12:54:57] evento_tipo i
+[2025-12-05 12:54:57] tipo m
+[2025-12-05 12:54:57] horaAgendada 
+[2025-12-05 12:54:57] horario 22:00
+[2025-12-05 12:56:06] getEventosDia - clienteId: 20, data: 2025-12-05
+[2025-12-05 12:56:06] Ficha encontrada: [{"id":10,"paciente":20,"historicoMedico":1,"medicamentos":1,"restricoesAlimentares":1,"procedimentosEspecificos":1,"observacoes":null}]
+[2025-12-05 12:56:06] FichaId: 10
+[2025-12-05 12:56:06] Medicamentos.listarPorData - id_ficha: 10, data: 2025-12-05
+[2025-12-05 12:56:06] Medicamentos encontrados: 2
+[2025-12-05 12:56:06] Medicamentos encontrados: [{"id":32,"id_ficha":10,"nome":"Parecetamol ","dosagem":"10mg","viaAdministracao":"Oral","inicioTratamento":"2025-12-04 12:51:00","fimTratamento":"2025-12-12","ultima_aplicacao":"2025-12-05 09:00:00","repetir":1,"intervalo":1,"diasMedicamento":"","horasMedicamento":"6"},{"id":33,"id_ficha":10,"nome":"Amoxilina","dosagem":"20mg","viaAdministracao":"Venosa","inicioTratamento":"2025-12-03 12:51:00","fimTratamento":"2025-12-09","ultima_aplicacao":"2025-12-05 10:00:00","repetir":1,"intervalo":3,"diasMedicamento":"","horasMedicamento":"10:00, 22:00"}]
+[2025-12-05 12:56:06] Processando medicamento: Parecetamol 
+[2025-12-05 12:56:06] dataAlvo formatada: 2025-12-05
+[2025-12-05 12:56:06] calcularAplicacoesDia - medicamento: Parecetamol , data: 2025-12-05
+[2025-12-05 12:56:06] Período tratamento: 2025-12-04 a 2025-12-12
+[2025-12-05 12:56:06] Repetir: 1, Intervalo: 1
+[2025-12-05 12:56:06] Horas medicamento: 6
+[2025-12-05 12:56:06] Processando intervalo em horas
+[2025-12-05 12:56:06] Adicionada aplicação: 2025-12-05 09:00:00
+[2025-12-05 12:56:06] Adicionada aplicação: 2025-12-05 15:00:00
+[2025-12-05 12:56:06] Adicionada aplicação: 2025-12-05 21:00:00
+[2025-12-05 12:56:06] Total de aplicações calculadas: 3
+[2025-12-05 12:56:06] Datas de aplicação calculadas: ["2025-12-05 09:00:00","2025-12-05 15:00:00","2025-12-05 21:00:00"]
+[2025-12-05 12:56:06] Processando medicamento: Amoxilina
+[2025-12-05 12:56:06] dataAlvo formatada: 2025-12-05
+[2025-12-05 12:56:06] calcularAplicacoesDia - medicamento: Amoxilina, data: 2025-12-05
+[2025-12-05 12:56:06] Período tratamento: 2025-12-03 a 2025-12-09
+[2025-12-05 12:56:06] Repetir: 1, Intervalo: 3
+[2025-12-05 12:56:06] Horas medicamento: 10:00, 22:00
+[2025-12-05 12:56:06] Processando horas específicas para todos os dias
+[2025-12-05 12:56:06] Adicionada aplicação: 2025-12-05 10:00:00
+[2025-12-05 12:56:06] Adicionada aplicação: 2025-12-05 22:00:00
+[2025-12-05 12:56:06] Total de aplicações calculadas: 2
+[2025-12-05 12:56:06] Datas de aplicação calculadas: ["2025-12-05 10:00:00","2025-12-05 22:00:00"]
+[2025-12-05 12:56:07] Procedimento.listarPorData - id_ficha: 10, data: 2025-12-05
+[2025-12-05 12:56:07] Procedimentos encontrados: 1
+[2025-12-05 12:56:07] Procedimentos encontrados: [{"id":1,"nome":"Aferir Glicemia Capilar (HGT)","status":1,"horarios":"09:00","descricao":"Procedimento solicitado pelo Dr. Guimar\u00e3es. "}]
+[2025-12-05 12:56:07] Total de eventos: 6
+[2025-12-05 12:56:07] Eventos finais: [{"id":32,"tipo":"m","nome":"Parecetamol ","descricao":"10mg - Oral","data_evento":"2025-12-05 09:00:00","horario":"09:00","tipo_evento":"medicamento"},{"id":32,"tipo":"m","nome":"Parecetamol ","descricao":"10mg - Oral","data_evento":"2025-12-05 15:00:00","horario":"15:00","tipo_evento":"medicamento"},{"id":32,"tipo":"m","nome":"Parecetamol ","descricao":"10mg - Oral","data_evento":"2025-12-05 21:00:00","horario":"21:00","tipo_evento":"medicamento"},{"id":33,"tipo":"m","nome":"Amoxilina","descricao":"20mg - Venosa","data_evento":"2025-12-05 10:00:00","horario":"10:00","tipo_evento":"medicamento"},{"id":33,"tipo":"m","nome":"Amoxilina","descricao":"20mg - Venosa","data_evento":"2025-12-05 22:00:00","horario":"22:00","tipo_evento":"medicamento"},{"id":1,"tipo":"p","nome":"Aferir Glicemia Capilar (HGT)","descricao":"Procedimento solicitado pelo Dr. Guimar\u00e3es. ","data_evento":"2025-12-05 09:00","horario":"09:00","tipo_evento":"procedimento"}]
+[2025-12-05 12:56:07] tarefas: i
+[2025-12-05 12:56:07] tarefas: m
+[2025-12-05 12:56:07] tarefas: p
+[2025-12-05 12:56:07] tarefas: m
+[2025-12-05 12:56:07] tarefas: m
+[2025-12-05 12:56:07] tarefas: m
+[2025-12-05 12:56:07] tarefas: m
+[2025-12-05 12:56:07] evento_id inicio
+[2025-12-05 12:56:07] evento_id inicio
+[2025-12-05 12:56:07] id 32
+[2025-12-05 12:56:07] evento_tipo i
+[2025-12-05 12:56:07] tipo m
+[2025-12-05 12:56:07] horaAgendada 
+[2025-12-05 12:56:07] horario 09:00
+[2025-12-05 12:56:07] evento_id 32
+[2025-12-05 12:56:07] evento_id 32
+[2025-12-05 12:56:07] id 32
+[2025-12-05 12:56:07] evento_tipo m
+[2025-12-05 12:56:07] tipo m
+[2025-12-05 12:56:07] horaAgendada 09:00:00
+[2025-12-05 12:56:07] horario 09:00
+[2025-12-05 12:56:07] evento_id inicio
+[2025-12-05 12:56:07] evento_id inicio
+[2025-12-05 12:56:07] id 1
+[2025-12-05 12:56:07] evento_tipo i
+[2025-12-05 12:56:07] tipo p
+[2025-12-05 12:56:07] horaAgendada 
+[2025-12-05 12:56:07] horario 09:00
+[2025-12-05 12:56:07] evento_id 32
+[2025-12-05 12:56:07] evento_id 32
+[2025-12-05 12:56:07] id 1
+[2025-12-05 12:56:07] evento_tipo m
+[2025-12-05 12:56:07] tipo p
+[2025-12-05 12:56:07] horaAgendada 09:00:00
+[2025-12-05 12:56:07] horario 09:00
+[2025-12-05 12:56:07] evento_id 1
+[2025-12-05 12:56:07] evento_id 1
+[2025-12-05 12:56:07] id 1
+[2025-12-05 12:56:07] evento_tipo p
+[2025-12-05 12:56:07] tipo p
+[2025-12-05 12:56:07] horaAgendada 09:00:00
+[2025-12-05 12:56:07] horario 09:00
+[2025-12-05 12:56:07] evento_id inicio
+[2025-12-05 12:56:07] evento_id inicio
+[2025-12-05 12:56:07] id 33
+[2025-12-05 12:56:07] evento_tipo i
+[2025-12-05 12:56:07] tipo m
+[2025-12-05 12:56:07] horaAgendada 
+[2025-12-05 12:56:07] horario 10:00
+[2025-12-05 12:56:07] evento_id 32
+[2025-12-05 12:56:07] evento_id 32
+[2025-12-05 12:56:07] id 33
+[2025-12-05 12:56:07] evento_tipo m
+[2025-12-05 12:56:07] tipo m
+[2025-12-05 12:56:07] horaAgendada 09:00:00
+[2025-12-05 12:56:07] horario 10:00
+[2025-12-05 12:56:07] evento_id 1
+[2025-12-05 12:56:07] evento_id 1
+[2025-12-05 12:56:07] id 33
+[2025-12-05 12:56:07] evento_tipo p
+[2025-12-05 12:56:07] tipo m
+[2025-12-05 12:56:07] horaAgendada 09:00:00
+[2025-12-05 12:56:07] horario 10:00
+[2025-12-05 12:56:07] evento_id 33
+[2025-12-05 12:56:07] evento_id 33
+[2025-12-05 12:56:07] id 33
+[2025-12-05 12:56:07] evento_tipo m
+[2025-12-05 12:56:07] tipo m
+[2025-12-05 12:56:07] horaAgendada 10:00:00
+[2025-12-05 12:56:07] horario 10:00
+[2025-12-05 12:56:07] evento_id inicio
+[2025-12-05 12:56:07] evento_id inicio
+[2025-12-05 12:56:07] id 32
+[2025-12-05 12:56:07] evento_tipo i
+[2025-12-05 12:56:07] tipo m
+[2025-12-05 12:56:07] horaAgendada 
+[2025-12-05 12:56:07] horario 15:00
+[2025-12-05 12:56:07] evento_id 32
+[2025-12-05 12:56:07] evento_id 32
+[2025-12-05 12:56:07] id 32
+[2025-12-05 12:56:07] evento_tipo m
+[2025-12-05 12:56:07] tipo m
+[2025-12-05 12:56:07] horaAgendada 09:00:00
+[2025-12-05 12:56:07] horario 15:00
+[2025-12-05 12:56:07] evento_id 1
+[2025-12-05 12:56:07] evento_id 1
+[2025-12-05 12:56:07] id 32
+[2025-12-05 12:56:07] evento_tipo p
+[2025-12-05 12:56:07] tipo m
+[2025-12-05 12:56:07] horaAgendada 09:00:00
+[2025-12-05 12:56:07] horario 15:00
+[2025-12-05 12:56:07] evento_id 33
+[2025-12-05 12:56:07] evento_id 33
+[2025-12-05 12:56:07] id 32
+[2025-12-05 12:56:07] evento_tipo m
+[2025-12-05 12:56:07] tipo m
+[2025-12-05 12:56:07] horaAgendada 10:00:00
+[2025-12-05 12:56:07] horario 15:00
+[2025-12-05 12:56:07] evento_id 32
+[2025-12-05 12:56:07] evento_id 32
+[2025-12-05 12:56:07] id 32
+[2025-12-05 12:56:07] evento_tipo m
+[2025-12-05 12:56:07] tipo m
+[2025-12-05 12:56:07] horaAgendada 15:00:00
+[2025-12-05 12:56:07] horario 15:00
+[2025-12-05 12:56:07] evento_id inicio
+[2025-12-05 12:56:07] evento_id inicio
+[2025-12-05 12:56:07] id 32
+[2025-12-05 12:56:07] evento_tipo i
+[2025-12-05 12:56:07] tipo m
+[2025-12-05 12:56:07] horaAgendada 
+[2025-12-05 12:56:07] horario 21:00
+[2025-12-05 12:56:07] evento_id 32
+[2025-12-05 12:56:07] evento_id 32
+[2025-12-05 12:56:07] id 32
+[2025-12-05 12:56:07] evento_tipo m
+[2025-12-05 12:56:07] tipo m
+[2025-12-05 12:56:07] horaAgendada 09:00:00
+[2025-12-05 12:56:07] horario 21:00
+[2025-12-05 12:56:07] evento_id 1
+[2025-12-05 12:56:07] evento_id 1
+[2025-12-05 12:56:07] id 32
+[2025-12-05 12:56:07] evento_tipo p
+[2025-12-05 12:56:07] tipo m
+[2025-12-05 12:56:07] horaAgendada 09:00:00
+[2025-12-05 12:56:07] horario 21:00
+[2025-12-05 12:56:07] evento_id 33
+[2025-12-05 12:56:07] evento_id 33
+[2025-12-05 12:56:07] id 32
+[2025-12-05 12:56:07] evento_tipo m
+[2025-12-05 12:56:07] tipo m
+[2025-12-05 12:56:07] horaAgendada 10:00:00
+[2025-12-05 12:56:07] horario 21:00
+[2025-12-05 12:56:07] evento_id 32
+[2025-12-05 12:56:07] evento_id 32
+[2025-12-05 12:56:07] id 32
+[2025-12-05 12:56:07] evento_tipo m
+[2025-12-05 12:56:07] tipo m
+[2025-12-05 12:56:07] horaAgendada 15:00:00
+[2025-12-05 12:56:07] horario 21:00
+[2025-12-05 12:56:07] evento_id 32
+[2025-12-05 12:56:07] evento_id 32
+[2025-12-05 12:56:07] id 32
+[2025-12-05 12:56:07] evento_tipo m
+[2025-12-05 12:56:07] tipo m
+[2025-12-05 12:56:07] horaAgendada 21:00:00
+[2025-12-05 12:56:07] horario 21:00
+[2025-12-05 12:56:07] evento_id inicio
+[2025-12-05 12:56:07] evento_id inicio
+[2025-12-05 12:56:07] id 33
+[2025-12-05 12:56:07] evento_tipo i
+[2025-12-05 12:56:07] tipo m
+[2025-12-05 12:56:07] horaAgendada 
+[2025-12-05 12:56:07] horario 22:00
+[2025-12-05 12:56:07] evento_id 32
+[2025-12-05 12:56:07] evento_id 32
+[2025-12-05 12:56:07] id 33
+[2025-12-05 12:56:07] evento_tipo m
+[2025-12-05 12:56:07] tipo m
+[2025-12-05 12:56:07] horaAgendada 09:00:00
+[2025-12-05 12:56:07] horario 22:00
+[2025-12-05 12:56:07] evento_id 1
+[2025-12-05 12:56:07] evento_id 1
+[2025-12-05 12:56:07] id 33
+[2025-12-05 12:56:07] evento_tipo p
+[2025-12-05 12:56:07] tipo m
+[2025-12-05 12:56:07] horaAgendada 09:00:00
+[2025-12-05 12:56:07] horario 22:00
+[2025-12-05 12:56:07] evento_id 33
+[2025-12-05 12:56:07] evento_id 33
+[2025-12-05 12:56:07] id 33
+[2025-12-05 12:56:07] evento_tipo m
+[2025-12-05 12:56:07] tipo m
+[2025-12-05 12:56:07] horaAgendada 10:00:00
+[2025-12-05 12:56:07] horario 22:00
+[2025-12-05 12:56:07] evento_id 32
+[2025-12-05 12:56:07] evento_id 32
+[2025-12-05 12:56:07] id 33
+[2025-12-05 12:56:07] evento_tipo m
+[2025-12-05 12:56:07] tipo m
+[2025-12-05 12:56:07] horaAgendada 15:00:00
+[2025-12-05 12:56:07] horario 22:00
+[2025-12-05 12:56:07] evento_id 32
+[2025-12-05 12:56:07] evento_id 32
+[2025-12-05 12:56:07] id 33
+[2025-12-05 12:56:07] evento_tipo m
+[2025-12-05 12:56:07] tipo m
+[2025-12-05 12:56:07] horaAgendada 21:00:00
+[2025-12-05 12:56:07] horario 22:00
+[2025-12-05 12:56:07] evento_id 33
+[2025-12-05 12:56:07] evento_id 33
+[2025-12-05 12:56:07] id 33
+[2025-12-05 12:56:07] evento_tipo m
+[2025-12-05 12:56:07] tipo m
+[2025-12-05 12:56:07] horaAgendada 22:00:00
+[2025-12-05 12:56:07] horario 22:00
+[2025-12-05 13:11:30] getEventosDia - clienteId: 20, data: 2025-12-05
+[2025-12-05 13:11:30] Ficha encontrada: [{"id":10,"paciente":20,"historicoMedico":1,"medicamentos":1,"restricoesAlimentares":1,"procedimentosEspecificos":1,"observacoes":null}]
+[2025-12-05 13:11:30] FichaId: 10
+[2025-12-05 13:11:30] Medicamentos.listarPorData - id_ficha: 10, data: 2025-12-05
+[2025-12-05 13:11:30] Medicamentos encontrados: 2
+[2025-12-05 13:11:30] Medicamentos encontrados: [{"id":32,"id_ficha":10,"nome":"Parecetamol ","dosagem":"10mg","viaAdministracao":"Oral","inicioTratamento":"2025-12-04 12:51:00","fimTratamento":"2025-12-12","ultima_aplicacao":"2025-12-05 09:00:00","repetir":1,"intervalo":1,"diasMedicamento":"","horasMedicamento":"6"},{"id":33,"id_ficha":10,"nome":"Amoxilina","dosagem":"20mg","viaAdministracao":"Venosa","inicioTratamento":"2025-12-03 12:51:00","fimTratamento":"2025-12-09","ultima_aplicacao":"2025-12-05 10:00:00","repetir":1,"intervalo":3,"diasMedicamento":"","horasMedicamento":"10:00, 22:00"}]
+[2025-12-05 13:11:30] Processando medicamento: Parecetamol 
+[2025-12-05 13:11:30] dataAlvo formatada: 2025-12-05
+[2025-12-05 13:11:30] calcularAplicacoesDia - medicamento: Parecetamol , data: 2025-12-05
+[2025-12-05 13:11:30] Período tratamento: 2025-12-04 a 2025-12-12
+[2025-12-05 13:11:30] Repetir: 1, Intervalo: 1
+[2025-12-05 13:11:30] Horas medicamento: 6
+[2025-12-05 13:11:30] Processando intervalo em horas
+[2025-12-05 13:11:30] Adicionada aplicação: 2025-12-05 09:00:00
+[2025-12-05 13:11:30] Adicionada aplicação: 2025-12-05 15:00:00
+[2025-12-05 13:11:30] Adicionada aplicação: 2025-12-05 21:00:00
+[2025-12-05 13:11:30] Total de aplicações calculadas: 3
+[2025-12-05 13:11:30] Datas de aplicação calculadas: ["2025-12-05 09:00:00","2025-12-05 15:00:00","2025-12-05 21:00:00"]
+[2025-12-05 13:11:30] Processando medicamento: Amoxilina
+[2025-12-05 13:11:30] dataAlvo formatada: 2025-12-05
+[2025-12-05 13:11:30] calcularAplicacoesDia - medicamento: Amoxilina, data: 2025-12-05
+[2025-12-05 13:11:30] Período tratamento: 2025-12-03 a 2025-12-09
+[2025-12-05 13:11:30] Repetir: 1, Intervalo: 3
+[2025-12-05 13:11:30] Horas medicamento: 10:00, 22:00
+[2025-12-05 13:11:30] Processando horas específicas para todos os dias
+[2025-12-05 13:11:30] Adicionada aplicação: 2025-12-05 10:00:00
+[2025-12-05 13:11:30] Adicionada aplicação: 2025-12-05 22:00:00
+[2025-12-05 13:11:30] Total de aplicações calculadas: 2
+[2025-12-05 13:11:30] Datas de aplicação calculadas: ["2025-12-05 10:00:00","2025-12-05 22:00:00"]
+[2025-12-05 13:11:30] Procedimento.listarPorData - id_ficha: 10, data: 2025-12-05
+[2025-12-05 13:11:30] Procedimentos encontrados: 1
+[2025-12-05 13:11:30] Procedimentos encontrados: [{"id":1,"nome":"Aferir Glicemia Capilar (HGT)","status":1,"horarios":"09:00","descricao":"Procedimento solicitado pelo Dr. Guimar\u00e3es. "}]
+[2025-12-05 13:11:30] Total de eventos: 6
+[2025-12-05 13:11:30] Eventos finais: [{"id":32,"tipo":"m","nome":"Parecetamol ","descricao":"10mg - Oral","data_evento":"2025-12-05 09:00:00","horario":"09:00","tipo_evento":"medicamento"},{"id":32,"tipo":"m","nome":"Parecetamol ","descricao":"10mg - Oral","data_evento":"2025-12-05 15:00:00","horario":"15:00","tipo_evento":"medicamento"},{"id":32,"tipo":"m","nome":"Parecetamol ","descricao":"10mg - Oral","data_evento":"2025-12-05 21:00:00","horario":"21:00","tipo_evento":"medicamento"},{"id":33,"tipo":"m","nome":"Amoxilina","descricao":"20mg - Venosa","data_evento":"2025-12-05 10:00:00","horario":"10:00","tipo_evento":"medicamento"},{"id":33,"tipo":"m","nome":"Amoxilina","descricao":"20mg - Venosa","data_evento":"2025-12-05 22:00:00","horario":"22:00","tipo_evento":"medicamento"},{"id":1,"tipo":"p","nome":"Aferir Glicemia Capilar (HGT)","descricao":"Procedimento solicitado pelo Dr. Guimar\u00e3es. ","data_evento":"2025-12-05 09:00","horario":"09:00","tipo_evento":"procedimento"}]
+[2025-12-05 13:11:30] tarefas: i
+[2025-12-05 13:11:30] tarefas: m
+[2025-12-05 13:11:30] tarefas: p
+[2025-12-05 13:11:30] tarefas: m
+[2025-12-05 13:11:30] tarefas: m
+[2025-12-05 13:11:30] tarefas: m
+[2025-12-05 13:11:30] tarefas: m
+[2025-12-05 13:11:30] evento_id inicio
+[2025-12-05 13:11:30] evento_id inicio
+[2025-12-05 13:11:30] id 32
+[2025-12-05 13:11:30] evento_tipo i
+[2025-12-05 13:11:30] tipo m
+[2025-12-05 13:11:30] horaAgendada 
+[2025-12-05 13:11:30] horario 09:00
+[2025-12-05 13:11:30] evento_id 32
+[2025-12-05 13:11:30] evento_id 32
+[2025-12-05 13:11:30] id 32
+[2025-12-05 13:11:30] evento_tipo m
+[2025-12-05 13:11:30] tipo m
+[2025-12-05 13:11:30] horaAgendada 09:00:00
+[2025-12-05 13:11:30] horario 09:00
+[2025-12-05 13:11:30] evento_id inicio
+[2025-12-05 13:11:30] evento_id inicio
+[2025-12-05 13:11:30] id 1
+[2025-12-05 13:11:30] evento_tipo i
+[2025-12-05 13:11:30] tipo p
+[2025-12-05 13:11:30] horaAgendada 
+[2025-12-05 13:11:30] horario 09:00
+[2025-12-05 13:11:30] evento_id 32
+[2025-12-05 13:11:30] evento_id 32
+[2025-12-05 13:11:30] id 1
+[2025-12-05 13:11:30] evento_tipo m
+[2025-12-05 13:11:30] tipo p
+[2025-12-05 13:11:30] horaAgendada 09:00:00
+[2025-12-05 13:11:30] horario 09:00
+[2025-12-05 13:11:30] evento_id 1
+[2025-12-05 13:11:30] evento_id 1
+[2025-12-05 13:11:30] id 1
+[2025-12-05 13:11:30] evento_tipo p
+[2025-12-05 13:11:30] tipo p
+[2025-12-05 13:11:30] horaAgendada 09:00:00
+[2025-12-05 13:11:30] horario 09:00
+[2025-12-05 13:11:30] evento_id inicio
+[2025-12-05 13:11:30] evento_id inicio
+[2025-12-05 13:11:30] id 33
+[2025-12-05 13:11:30] evento_tipo i
+[2025-12-05 13:11:30] tipo m
+[2025-12-05 13:11:30] horaAgendada 
+[2025-12-05 13:11:30] horario 10:00
+[2025-12-05 13:11:30] evento_id 32
+[2025-12-05 13:11:30] evento_id 32
+[2025-12-05 13:11:30] id 33
+[2025-12-05 13:11:30] evento_tipo m
+[2025-12-05 13:11:30] tipo m
+[2025-12-05 13:11:30] horaAgendada 09:00:00
+[2025-12-05 13:11:30] horario 10:00
+[2025-12-05 13:11:30] evento_id 1
+[2025-12-05 13:11:30] evento_id 1
+[2025-12-05 13:11:30] id 33
+[2025-12-05 13:11:30] evento_tipo p
+[2025-12-05 13:11:30] tipo m
+[2025-12-05 13:11:30] horaAgendada 09:00:00
+[2025-12-05 13:11:30] horario 10:00
+[2025-12-05 13:11:30] evento_id 33
+[2025-12-05 13:11:30] evento_id 33
+[2025-12-05 13:11:30] id 33
+[2025-12-05 13:11:30] evento_tipo m
+[2025-12-05 13:11:30] tipo m
+[2025-12-05 13:11:30] horaAgendada 10:00:00
+[2025-12-05 13:11:30] horario 10:00
+[2025-12-05 13:11:30] evento_id inicio
+[2025-12-05 13:11:30] evento_id inicio
+[2025-12-05 13:11:30] id 32
+[2025-12-05 13:11:30] evento_tipo i
+[2025-12-05 13:11:30] tipo m
+[2025-12-05 13:11:30] horaAgendada 
+[2025-12-05 13:11:30] horario 15:00
+[2025-12-05 13:11:30] evento_id 32
+[2025-12-05 13:11:30] evento_id 32
+[2025-12-05 13:11:30] id 32
+[2025-12-05 13:11:30] evento_tipo m
+[2025-12-05 13:11:30] tipo m
+[2025-12-05 13:11:30] horaAgendada 09:00:00
+[2025-12-05 13:11:30] horario 15:00
+[2025-12-05 13:11:30] evento_id 1
+[2025-12-05 13:11:30] evento_id 1
+[2025-12-05 13:11:30] id 32
+[2025-12-05 13:11:30] evento_tipo p
+[2025-12-05 13:11:30] tipo m
+[2025-12-05 13:11:30] horaAgendada 09:00:00
+[2025-12-05 13:11:30] horario 15:00
+[2025-12-05 13:11:30] evento_id 33
+[2025-12-05 13:11:30] evento_id 33
+[2025-12-05 13:11:30] id 32
+[2025-12-05 13:11:30] evento_tipo m
+[2025-12-05 13:11:30] tipo m
+[2025-12-05 13:11:30] horaAgendada 10:00:00
+[2025-12-05 13:11:30] horario 15:00
+[2025-12-05 13:11:30] evento_id 32
+[2025-12-05 13:11:30] evento_id 32
+[2025-12-05 13:11:30] id 32
+[2025-12-05 13:11:30] evento_tipo m
+[2025-12-05 13:11:30] tipo m
+[2025-12-05 13:11:30] horaAgendada 15:00:00
+[2025-12-05 13:11:30] horario 15:00
+[2025-12-05 13:11:30] evento_id inicio
+[2025-12-05 13:11:30] evento_id inicio
+[2025-12-05 13:11:30] id 32
+[2025-12-05 13:11:30] evento_tipo i
+[2025-12-05 13:11:30] tipo m
+[2025-12-05 13:11:30] horaAgendada 
+[2025-12-05 13:11:30] horario 21:00
+[2025-12-05 13:11:30] evento_id 32
+[2025-12-05 13:11:30] evento_id 32
+[2025-12-05 13:11:30] id 32
+[2025-12-05 13:11:30] evento_tipo m
+[2025-12-05 13:11:30] tipo m
+[2025-12-05 13:11:30] horaAgendada 09:00:00
+[2025-12-05 13:11:30] horario 21:00
+[2025-12-05 13:11:30] evento_id 1
+[2025-12-05 13:11:30] evento_id 1
+[2025-12-05 13:11:30] id 32
+[2025-12-05 13:11:30] evento_tipo p
+[2025-12-05 13:11:30] tipo m
+[2025-12-05 13:11:30] horaAgendada 09:00:00
+[2025-12-05 13:11:30] horario 21:00
+[2025-12-05 13:11:30] evento_id 33
+[2025-12-05 13:11:30] evento_id 33
+[2025-12-05 13:11:30] id 32
+[2025-12-05 13:11:30] evento_tipo m
+[2025-12-05 13:11:30] tipo m
+[2025-12-05 13:11:30] horaAgendada 10:00:00
+[2025-12-05 13:11:30] horario 21:00
+[2025-12-05 13:11:30] evento_id 32
+[2025-12-05 13:11:30] evento_id 32
+[2025-12-05 13:11:30] id 32
+[2025-12-05 13:11:30] evento_tipo m
+[2025-12-05 13:11:30] tipo m
+[2025-12-05 13:11:30] horaAgendada 15:00:00
+[2025-12-05 13:11:30] horario 21:00
+[2025-12-05 13:11:30] evento_id 32
+[2025-12-05 13:11:30] evento_id 32
+[2025-12-05 13:11:30] id 32
+[2025-12-05 13:11:30] evento_tipo m
+[2025-12-05 13:11:30] tipo m
+[2025-12-05 13:11:30] horaAgendada 21:00:00
+[2025-12-05 13:11:30] horario 21:00
+[2025-12-05 13:11:30] evento_id inicio
+[2025-12-05 13:11:30] evento_id inicio
+[2025-12-05 13:11:30] id 33
+[2025-12-05 13:11:30] evento_tipo i
+[2025-12-05 13:11:30] tipo m
+[2025-12-05 13:11:30] horaAgendada 
+[2025-12-05 13:11:30] horario 22:00
+[2025-12-05 13:11:30] evento_id 32
+[2025-12-05 13:11:30] evento_id 32
+[2025-12-05 13:11:30] id 33
+[2025-12-05 13:11:30] evento_tipo m
+[2025-12-05 13:11:30] tipo m
+[2025-12-05 13:11:30] horaAgendada 09:00:00
+[2025-12-05 13:11:30] horario 22:00
+[2025-12-05 13:11:30] evento_id 1
+[2025-12-05 13:11:30] evento_id 1
+[2025-12-05 13:11:30] id 33
+[2025-12-05 13:11:30] evento_tipo p
+[2025-12-05 13:11:30] tipo m
+[2025-12-05 13:11:30] horaAgendada 09:00:00
+[2025-12-05 13:11:30] horario 22:00
+[2025-12-05 13:11:30] evento_id 33
+[2025-12-05 13:11:30] evento_id 33
+[2025-12-05 13:11:30] id 33
+[2025-12-05 13:11:30] evento_tipo m
+[2025-12-05 13:11:30] tipo m
+[2025-12-05 13:11:30] horaAgendada 10:00:00
+[2025-12-05 13:11:30] horario 22:00
+[2025-12-05 13:11:30] evento_id 32
+[2025-12-05 13:11:30] evento_id 32
+[2025-12-05 13:11:30] id 33
+[2025-12-05 13:11:30] evento_tipo m
+[2025-12-05 13:11:30] tipo m
+[2025-12-05 13:11:30] horaAgendada 15:00:00
+[2025-12-05 13:11:30] horario 22:00
+[2025-12-05 13:11:30] evento_id 32
+[2025-12-05 13:11:30] evento_id 32
+[2025-12-05 13:11:30] id 33
+[2025-12-05 13:11:30] evento_tipo m
+[2025-12-05 13:11:30] tipo m
+[2025-12-05 13:11:30] horaAgendada 21:00:00
+[2025-12-05 13:11:30] horario 22:00
+[2025-12-05 13:11:30] evento_id 33
+[2025-12-05 13:11:30] evento_id 33
+[2025-12-05 13:11:30] id 33
+[2025-12-05 13:11:30] evento_tipo m
+[2025-12-05 13:11:30] tipo m
+[2025-12-05 13:11:30] horaAgendada 22:00:00
+[2025-12-05 13:11:30] horario 22:00
+[2025-12-05 13:11:47] gemmini
+[2025-12-05 13:11:47] {
   "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. ",
-    "status": "RESOURCE_EXHAUSTED"
+    "code": 403,
+    "message": "Your API key was reported as leaked. Please use another API key.",
+    "status": "PERMISSION_DENIED"
   }
 }
 
-[2025-12-01 06:44:53] gemmini
-[2025-12-01 06:44:53] {
-  "candidates": [
-    {
-      "content": {
-        "parts": [
-          {
-            "text": "## Relatório de Cuidados Domiciliares\n\n**Data do Relatório:** 01 de Dezembro de 2025\n\n---\n\n**Dados da Cuidadora:**\n*   **Nome:** Angélica\n\n**Dados do Paciente:**\n*   **ID do Paciente:** 19\n\n---\n\n### **Procedimentos Realizados**\n\nInformamos que, durante o período de cuidados em 01 de Dezembro de 2025, **nenhum procedimento médico ou de enfermagem específico foi realizado ou solicitado** para o Paciente ID 19.\n\n---\n\n### **Observações Gerais**\n\nO paciente apresentou-se estável e confortável ao longo do dia. Não foram observadas intercorrências, queixas ou quaisquer alterações no estado de saúde que exigissem a realização de procedimentos adicionais. As atividades diárias rotineiras foram conduzidas normalmente.\n\n---\n\nAtenciosamente,\n\nAngélica\nCuidadora"
-          }
-        ],
-        "role": "model"
-      },
-      "finishReason": "STOP",
-      "index": 0
-    }
-  ],
-  "usageMetadata": {
-    "promptTokenCount": 148,
-    "candidatesTokenCount": 204,
-    "totalTokenCount": 1596,
-    "promptTokensDetails": [
-      {
-        "modality": "TEXT",
-        "tokenCount": 148
-      }
-    ],
-    "thoughtsTokenCount": 1244
-  },
-  "modelVersion": "gemini-2.5-flash",
-  "responseId": "pGMtacXWMsSUmtkP7IeMsQI"
+[2025-12-05 13:25:48] getEventosDia - clienteId: 20, data: 2025-12-05
+[2025-12-05 13:25:48] Ficha encontrada: [{"id":10,"paciente":20,"historicoMedico":1,"medicamentos":1,"restricoesAlimentares":1,"procedimentosEspecificos":1,"observacoes":null}]
+[2025-12-05 13:25:48] FichaId: 10
+[2025-12-05 13:25:48] Medicamentos.listarPorData - id_ficha: 10, data: 2025-12-05
+[2025-12-05 13:25:48] Medicamentos encontrados: 2
+[2025-12-05 13:25:48] Medicamentos encontrados: [{"id":32,"id_ficha":10,"nome":"Parecetamol ","dosagem":"10mg","viaAdministracao":"Oral","inicioTratamento":"2025-12-04 12:51:00","fimTratamento":"2025-12-12","ultima_aplicacao":"2025-12-05 09:00:00","repetir":1,"intervalo":1,"diasMedicamento":"","horasMedicamento":"6"},{"id":33,"id_ficha":10,"nome":"Amoxilina","dosagem":"20mg","viaAdministracao":"Venosa","inicioTratamento":"2025-12-03 12:51:00","fimTratamento":"2025-12-09","ultima_aplicacao":"2025-12-05 10:00:00","repetir":1,"intervalo":3,"diasMedicamento":"","horasMedicamento":"10:00, 22:00"}]
+[2025-12-05 13:25:48] Processando medicamento: Parecetamol 
+[2025-12-05 13:25:48] dataAlvo formatada: 2025-12-05
+[2025-12-05 13:25:48] calcularAplicacoesDia - medicamento: Parecetamol , data: 2025-12-05
+[2025-12-05 13:25:48] Período tratamento: 2025-12-04 a 2025-12-12
+[2025-12-05 13:25:48] Repetir: 1, Intervalo: 1
+[2025-12-05 13:25:48] Horas medicamento: 6
+[2025-12-05 13:25:48] Processando intervalo em horas
+[2025-12-05 13:25:48] Adicionada aplicação: 2025-12-05 09:00:00
+[2025-12-05 13:25:48] Adicionada aplicação: 2025-12-05 15:00:00
+[2025-12-05 13:25:48] Adicionada aplicação: 2025-12-05 21:00:00
+[2025-12-05 13:25:48] Total de aplicações calculadas: 3
+[2025-12-05 13:25:48] Datas de aplicação calculadas: ["2025-12-05 09:00:00","2025-12-05 15:00:00","2025-12-05 21:00:00"]
+[2025-12-05 13:25:48] Processando medicamento: Amoxilina
+[2025-12-05 13:25:48] dataAlvo formatada: 2025-12-05
+[2025-12-05 13:25:48] calcularAplicacoesDia - medicamento: Amoxilina, data: 2025-12-05
+[2025-12-05 13:25:48] Período tratamento: 2025-12-03 a 2025-12-09
+[2025-12-05 13:25:48] Repetir: 1, Intervalo: 3
+[2025-12-05 13:25:48] Horas medicamento: 10:00, 22:00
+[2025-12-05 13:25:48] Processando horas específicas para todos os dias
+[2025-12-05 13:25:48] Adicionada aplicação: 2025-12-05 10:00:00
+[2025-12-05 13:25:48] Adicionada aplicação: 2025-12-05 22:00:00
+[2025-12-05 13:25:48] Total de aplicações calculadas: 2
+[2025-12-05 13:25:48] Datas de aplicação calculadas: ["2025-12-05 10:00:00","2025-12-05 22:00:00"]
+[2025-12-05 13:25:48] Procedimento.listarPorData - id_ficha: 10, data: 2025-12-05
+[2025-12-05 13:25:48] Procedimentos encontrados: 1
+[2025-12-05 13:25:48] Procedimentos encontrados: [{"id":1,"nome":"Aferir Glicemia Capilar (HGT)","status":1,"horarios":"09:00","descricao":"Procedimento solicitado pelo Dr. Guimar\u00e3es. "}]
+[2025-12-05 13:25:48] Total de eventos: 6
+[2025-12-05 13:25:48] Eventos finais: [{"id":32,"tipo":"m","nome":"Parecetamol ","descricao":"10mg - Oral","data_evento":"2025-12-05 09:00:00","horario":"09:00","tipo_evento":"medicamento"},{"id":32,"tipo":"m","nome":"Parecetamol ","descricao":"10mg - Oral","data_evento":"2025-12-05 15:00:00","horario":"15:00","tipo_evento":"medicamento"},{"id":32,"tipo":"m","nome":"Parecetamol ","descricao":"10mg - Oral","data_evento":"2025-12-05 21:00:00","horario":"21:00","tipo_evento":"medicamento"},{"id":33,"tipo":"m","nome":"Amoxilina","descricao":"20mg - Venosa","data_evento":"2025-12-05 10:00:00","horario":"10:00","tipo_evento":"medicamento"},{"id":33,"tipo":"m","nome":"Amoxilina","descricao":"20mg - Venosa","data_evento":"2025-12-05 22:00:00","horario":"22:00","tipo_evento":"medicamento"},{"id":1,"tipo":"p","nome":"Aferir Glicemia Capilar (HGT)","descricao":"Procedimento solicitado pelo Dr. Guimar\u00e3es. ","data_evento":"2025-12-05 09:00","horario":"09:00","tipo_evento":"procedimento"}]
+[2025-12-05 13:25:48] tarefas: i
+[2025-12-05 13:25:48] tarefas: m
+[2025-12-05 13:25:48] tarefas: p
+[2025-12-05 13:25:48] tarefas: m
+[2025-12-05 13:25:48] tarefas: m
+[2025-12-05 13:25:48] tarefas: m
+[2025-12-05 13:25:48] tarefas: m
+[2025-12-05 13:25:48] tarefas: f
+[2025-12-05 13:25:48] evento_id inicio
+[2025-12-05 13:25:48] evento_id inicio
+[2025-12-05 13:25:48] id 32
+[2025-12-05 13:25:48] evento_tipo i
+[2025-12-05 13:25:48] tipo m
+[2025-12-05 13:25:48] horaAgendada 
+[2025-12-05 13:25:48] horario 09:00
+[2025-12-05 13:25:48] evento_id 32
+[2025-12-05 13:25:48] evento_id 32
+[2025-12-05 13:25:48] id 32
+[2025-12-05 13:25:48] evento_tipo m
+[2025-12-05 13:25:48] tipo m
+[2025-12-05 13:25:48] horaAgendada 09:00:00
+[2025-12-05 13:25:48] horario 09:00
+[2025-12-05 13:25:48] evento_id inicio
+[2025-12-05 13:25:48] evento_id inicio
+[2025-12-05 13:25:48] id 1
+[2025-12-05 13:25:48] evento_tipo i
+[2025-12-05 13:25:48] tipo p
+[2025-12-05 13:25:48] horaAgendada 
+[2025-12-05 13:25:48] horario 09:00
+[2025-12-05 13:25:48] evento_id 32
+[2025-12-05 13:25:48] evento_id 32
+[2025-12-05 13:25:48] id 1
+[2025-12-05 13:25:48] evento_tipo m
+[2025-12-05 13:25:48] tipo p
+[2025-12-05 13:25:48] horaAgendada 09:00:00
+[2025-12-05 13:25:48] horario 09:00
+[2025-12-05 13:25:48] evento_id 1
+[2025-12-05 13:25:48] evento_id 1
+[2025-12-05 13:25:48] id 1
+[2025-12-05 13:25:48] evento_tipo p
+[2025-12-05 13:25:48] tipo p
+[2025-12-05 13:25:48] horaAgendada 09:00:00
+[2025-12-05 13:25:48] horario 09:00
+[2025-12-05 13:25:48] evento_id inicio
+[2025-12-05 13:25:48] evento_id inicio
+[2025-12-05 13:25:48] id 33
+[2025-12-05 13:25:48] evento_tipo i
+[2025-12-05 13:25:48] tipo m
+[2025-12-05 13:25:48] horaAgendada 
+[2025-12-05 13:25:48] horario 10:00
+[2025-12-05 13:25:48] evento_id 32
+[2025-12-05 13:25:48] evento_id 32
+[2025-12-05 13:25:48] id 33
+[2025-12-05 13:25:48] evento_tipo m
+[2025-12-05 13:25:48] tipo m
+[2025-12-05 13:25:48] horaAgendada 09:00:00
+[2025-12-05 13:25:48] horario 10:00
+[2025-12-05 13:25:48] evento_id 1
+[2025-12-05 13:25:48] evento_id 1
+[2025-12-05 13:25:48] id 33
+[2025-12-05 13:25:48] evento_tipo p
+[2025-12-05 13:25:48] tipo m
+[2025-12-05 13:25:48] horaAgendada 09:00:00
+[2025-12-05 13:25:48] horario 10:00
+[2025-12-05 13:25:48] evento_id 33
+[2025-12-05 13:25:48] evento_id 33
+[2025-12-05 13:25:48] id 33
+[2025-12-05 13:25:48] evento_tipo m
+[2025-12-05 13:25:48] tipo m
+[2025-12-05 13:25:48] horaAgendada 10:00:00
+[2025-12-05 13:25:48] horario 10:00
+[2025-12-05 13:25:48] evento_id inicio
+[2025-12-05 13:25:48] evento_id inicio
+[2025-12-05 13:25:48] id 32
+[2025-12-05 13:25:48] evento_tipo i
+[2025-12-05 13:25:48] tipo m
+[2025-12-05 13:25:48] horaAgendada 
+[2025-12-05 13:25:48] horario 15:00
+[2025-12-05 13:25:48] evento_id 32
+[2025-12-05 13:25:48] evento_id 32
+[2025-12-05 13:25:48] id 32
+[2025-12-05 13:25:48] evento_tipo m
+[2025-12-05 13:25:48] tipo m
+[2025-12-05 13:25:48] horaAgendada 09:00:00
+[2025-12-05 13:25:48] horario 15:00
+[2025-12-05 13:25:48] evento_id 1
+[2025-12-05 13:25:48] evento_id 1
+[2025-12-05 13:25:48] id 32
+[2025-12-05 13:25:48] evento_tipo p
+[2025-12-05 13:25:48] tipo m
+[2025-12-05 13:25:48] horaAgendada 09:00:00
+[2025-12-05 13:25:48] horario 15:00
+[2025-12-05 13:25:48] evento_id 33
+[2025-12-05 13:25:48] evento_id 33
+[2025-12-05 13:25:48] id 32
+[2025-12-05 13:25:48] evento_tipo m
+[2025-12-05 13:25:48] tipo m
+[2025-12-05 13:25:48] horaAgendada 10:00:00
+[2025-12-05 13:25:48] horario 15:00
+[2025-12-05 13:25:48] evento_id 32
+[2025-12-05 13:25:48] evento_id 32
+[2025-12-05 13:25:48] id 32
+[2025-12-05 13:25:48] evento_tipo m
+[2025-12-05 13:25:48] tipo m
+[2025-12-05 13:25:48] horaAgendada 15:00:00
+[2025-12-05 13:25:48] horario 15:00
+[2025-12-05 13:25:48] evento_id inicio
+[2025-12-05 13:25:48] evento_id inicio
+[2025-12-05 13:25:48] id 32
+[2025-12-05 13:25:48] evento_tipo i
+[2025-12-05 13:25:48] tipo m
+[2025-12-05 13:25:48] horaAgendada 
+[2025-12-05 13:25:48] horario 21:00
+[2025-12-05 13:25:48] evento_id 32
+[2025-12-05 13:25:48] evento_id 32
+[2025-12-05 13:25:48] id 32
+[2025-12-05 13:25:48] evento_tipo m
+[2025-12-05 13:25:48] tipo m
+[2025-12-05 13:25:48] horaAgendada 09:00:00
+[2025-12-05 13:25:48] horario 21:00
+[2025-12-05 13:25:48] evento_id 1
+[2025-12-05 13:25:48] evento_id 1
+[2025-12-05 13:25:48] id 32
+[2025-12-05 13:25:48] evento_tipo p
+[2025-12-05 13:25:48] tipo m
+[2025-12-05 13:25:48] horaAgendada 09:00:00
+[2025-12-05 13:25:48] horario 21:00
+[2025-12-05 13:25:48] evento_id 33
+[2025-12-05 13:25:48] evento_id 33
+[2025-12-05 13:25:48] id 32
+[2025-12-05 13:25:48] evento_tipo m
+[2025-12-05 13:25:48] tipo m
+[2025-12-05 13:25:48] horaAgendada 10:00:00
+[2025-12-05 13:25:48] horario 21:00
+[2025-12-05 13:25:48] evento_id 32
+[2025-12-05 13:25:48] evento_id 32
+[2025-12-05 13:25:48] id 32
+[2025-12-05 13:25:48] evento_tipo m
+[2025-12-05 13:25:48] tipo m
+[2025-12-05 13:25:48] horaAgendada 15:00:00
+[2025-12-05 13:25:48] horario 21:00
+[2025-12-05 13:25:48] evento_id 32
+[2025-12-05 13:25:48] evento_id 32
+[2025-12-05 13:25:48] id 32
+[2025-12-05 13:25:48] evento_tipo m
+[2025-12-05 13:25:48] tipo m
+[2025-12-05 13:25:48] horaAgendada 21:00:00
+[2025-12-05 13:25:48] horario 21:00
+[2025-12-05 13:25:48] evento_id inicio
+[2025-12-05 13:25:48] evento_id inicio
+[2025-12-05 13:25:48] id 33
+[2025-12-05 13:25:48] evento_tipo i
+[2025-12-05 13:25:48] tipo m
+[2025-12-05 13:25:48] horaAgendada 
+[2025-12-05 13:25:48] horario 22:00
+[2025-12-05 13:25:48] evento_id 32
+[2025-12-05 13:25:48] evento_id 32
+[2025-12-05 13:25:48] id 33
+[2025-12-05 13:25:48] evento_tipo m
+[2025-12-05 13:25:48] tipo m
+[2025-12-05 13:25:48] horaAgendada 09:00:00
+[2025-12-05 13:25:48] horario 22:00
+[2025-12-05 13:25:48] evento_id 1
+[2025-12-05 13:25:48] evento_id 1
+[2025-12-05 13:25:48] id 33
+[2025-12-05 13:25:48] evento_tipo p
+[2025-12-05 13:25:48] tipo m
+[2025-12-05 13:25:48] horaAgendada 09:00:00
+[2025-12-05 13:25:48] horario 22:00
+[2025-12-05 13:25:48] evento_id 33
+[2025-12-05 13:25:48] evento_id 33
+[2025-12-05 13:25:48] id 33
+[2025-12-05 13:25:48] evento_tipo m
+[2025-12-05 13:25:48] tipo m
+[2025-12-05 13:25:48] horaAgendada 10:00:00
+[2025-12-05 13:25:48] horario 22:00
+[2025-12-05 13:25:48] evento_id 32
+[2025-12-05 13:25:48] evento_id 32
+[2025-12-05 13:25:48] id 33
+[2025-12-05 13:25:48] evento_tipo m
+[2025-12-05 13:25:48] tipo m
+[2025-12-05 13:25:48] horaAgendada 15:00:00
+[2025-12-05 13:25:48] horario 22:00
+[2025-12-05 13:25:48] evento_id 32
+[2025-12-05 13:25:48] evento_id 32
+[2025-12-05 13:25:48] id 33
+[2025-12-05 13:25:48] evento_tipo m
+[2025-12-05 13:25:48] tipo m
+[2025-12-05 13:25:48] horaAgendada 21:00:00
+[2025-12-05 13:25:48] horario 22:00
+[2025-12-05 13:25:48] evento_id 33
+[2025-12-05 13:25:48] evento_id 33
+[2025-12-05 13:25:48] id 33
+[2025-12-05 13:25:48] evento_tipo m
+[2025-12-05 13:25:48] tipo m
+[2025-12-05 13:25:48] horaAgendada 22:00:00
+[2025-12-05 13:25:48] horario 22:00
+[2025-12-05 13:26:06] gemmini
+[2025-12-05 13:26:06] {
+  "error": {
+    "code": 403,
+    "message": "Your API key was reported as leaked. Please use another API key.",
+    "status": "PERMISSION_DENIED"
+  }
+}
+
+[2025-12-05 13:27:18] getEventosDia - clienteId: 20, data: 2025-12-05
+[2025-12-05 13:27:18] Ficha encontrada: [{"id":10,"paciente":20,"historicoMedico":1,"medicamentos":1,"restricoesAlimentares":1,"procedimentosEspecificos":1,"observacoes":null}]
+[2025-12-05 13:27:18] FichaId: 10
+[2025-12-05 13:27:18] Medicamentos.listarPorData - id_ficha: 10, data: 2025-12-05
+[2025-12-05 13:27:18] Medicamentos encontrados: 2
+[2025-12-05 13:27:18] Medicamentos encontrados: [{"id":32,"id_ficha":10,"nome":"Parecetamol ","dosagem":"10mg","viaAdministracao":"Oral","inicioTratamento":"2025-12-04 12:51:00","fimTratamento":"2025-12-12","ultima_aplicacao":"2025-12-05 09:00:00","repetir":1,"intervalo":1,"diasMedicamento":"","horasMedicamento":"6"},{"id":33,"id_ficha":10,"nome":"Amoxilina","dosagem":"20mg","viaAdministracao":"Venosa","inicioTratamento":"2025-12-03 12:51:00","fimTratamento":"2025-12-09","ultima_aplicacao":"2025-12-05 10:00:00","repetir":1,"intervalo":3,"diasMedicamento":"","horasMedicamento":"10:00, 22:00"}]
+[2025-12-05 13:27:18] Processando medicamento: Parecetamol 
+[2025-12-05 13:27:18] dataAlvo formatada: 2025-12-05
+[2025-12-05 13:27:18] calcularAplicacoesDia - medicamento: Parecetamol , data: 2025-12-05
+[2025-12-05 13:27:18] Período tratamento: 2025-12-04 a 2025-12-12
+[2025-12-05 13:27:18] Repetir: 1, Intervalo: 1
+[2025-12-05 13:27:18] Horas medicamento: 6
+[2025-12-05 13:27:18] Processando intervalo em horas
+[2025-12-05 13:27:18] Adicionada aplicação: 2025-12-05 09:00:00
+[2025-12-05 13:27:18] Adicionada aplicação: 2025-12-05 15:00:00
+[2025-12-05 13:27:18] Adicionada aplicação: 2025-12-05 21:00:00
+[2025-12-05 13:27:18] Total de aplicações calculadas: 3
+[2025-12-05 13:27:18] Datas de aplicação calculadas: ["2025-12-05 09:00:00","2025-12-05 15:00:00","2025-12-05 21:00:00"]
+[2025-12-05 13:27:18] Processando medicamento: Amoxilina
+[2025-12-05 13:27:18] dataAlvo formatada: 2025-12-05
+[2025-12-05 13:27:18] calcularAplicacoesDia - medicamento: Amoxilina, data: 2025-12-05
+[2025-12-05 13:27:18] Período tratamento: 2025-12-03 a 2025-12-09
+[2025-12-05 13:27:18] Repetir: 1, Intervalo: 3
+[2025-12-05 13:27:18] Horas medicamento: 10:00, 22:00
+[2025-12-05 13:27:18] Processando horas específicas para todos os dias
+[2025-12-05 13:27:18] Adicionada aplicação: 2025-12-05 10:00:00
+[2025-12-05 13:27:18] Adicionada aplicação: 2025-12-05 22:00:00
+[2025-12-05 13:27:18] Total de aplicações calculadas: 2
+[2025-12-05 13:27:18] Datas de aplicação calculadas: ["2025-12-05 10:00:00","2025-12-05 22:00:00"]
+[2025-12-05 13:27:18] Procedimento.listarPorData - id_ficha: 10, data: 2025-12-05
+[2025-12-05 13:27:18] Procedimentos encontrados: 1
+[2025-12-05 13:27:18] Procedimentos encontrados: [{"id":1,"nome":"Aferir Glicemia Capilar (HGT)","status":1,"horarios":"09:00","descricao":"Procedimento solicitado pelo Dr. Guimar\u00e3es. "}]
+[2025-12-05 13:27:18] Total de eventos: 6
+[2025-12-05 13:27:18] Eventos finais: [{"id":32,"tipo":"m","nome":"Parecetamol ","descricao":"10mg - Oral","data_evento":"2025-12-05 09:00:00","horario":"09:00","tipo_evento":"medicamento"},{"id":32,"tipo":"m","nome":"Parecetamol ","descricao":"10mg - Oral","data_evento":"2025-12-05 15:00:00","horario":"15:00","tipo_evento":"medicamento"},{"id":32,"tipo":"m","nome":"Parecetamol ","descricao":"10mg - Oral","data_evento":"2025-12-05 21:00:00","horario":"21:00","tipo_evento":"medicamento"},{"id":33,"tipo":"m","nome":"Amoxilina","descricao":"20mg - Venosa","data_evento":"2025-12-05 10:00:00","horario":"10:00","tipo_evento":"medicamento"},{"id":33,"tipo":"m","nome":"Amoxilina","descricao":"20mg - Venosa","data_evento":"2025-12-05 22:00:00","horario":"22:00","tipo_evento":"medicamento"},{"id":1,"tipo":"p","nome":"Aferir Glicemia Capilar (HGT)","descricao":"Procedimento solicitado pelo Dr. Guimar\u00e3es. ","data_evento":"2025-12-05 09:00","horario":"09:00","tipo_evento":"procedimento"}]
+[2025-12-05 13:27:18] tarefas: i
+[2025-12-05 13:27:18] tarefas: m
+[2025-12-05 13:27:18] tarefas: p
+[2025-12-05 13:27:18] tarefas: m
+[2025-12-05 13:27:18] tarefas: m
+[2025-12-05 13:27:18] tarefas: m
+[2025-12-05 13:27:18] tarefas: m
+[2025-12-05 13:27:18] tarefas: f
+[2025-12-05 13:27:18] evento_id inicio
+[2025-12-05 13:27:18] evento_id inicio
+[2025-12-05 13:27:18] id 32
+[2025-12-05 13:27:18] evento_tipo i
+[2025-12-05 13:27:18] tipo m
+[2025-12-05 13:27:18] horaAgendada 
+[2025-12-05 13:27:18] horario 09:00
+[2025-12-05 13:27:18] evento_id 32
+[2025-12-05 13:27:18] evento_id 32
+[2025-12-05 13:27:18] id 32
+[2025-12-05 13:27:18] evento_tipo m
+[2025-12-05 13:27:18] tipo m
+[2025-12-05 13:27:18] horaAgendada 09:00:00
+[2025-12-05 13:27:18] horario 09:00
+[2025-12-05 13:27:18] evento_id inicio
+[2025-12-05 13:27:18] evento_id inicio
+[2025-12-05 13:27:18] id 1
+[2025-12-05 13:27:18] evento_tipo i
+[2025-12-05 13:27:18] tipo p
+[2025-12-05 13:27:18] horaAgendada 
+[2025-12-05 13:27:18] horario 09:00
+[2025-12-05 13:27:18] evento_id 32
+[2025-12-05 13:27:18] evento_id 32
+[2025-12-05 13:27:18] id 1
+[2025-12-05 13:27:18] evento_tipo m
+[2025-12-05 13:27:18] tipo p
+[2025-12-05 13:27:18] horaAgendada 09:00:00
+[2025-12-05 13:27:18] horario 09:00
+[2025-12-05 13:27:18] evento_id 1
+[2025-12-05 13:27:18] evento_id 1
+[2025-12-05 13:27:18] id 1
+[2025-12-05 13:27:18] evento_tipo p
+[2025-12-05 13:27:18] tipo p
+[2025-12-05 13:27:18] horaAgendada 09:00:00
+[2025-12-05 13:27:18] horario 09:00
+[2025-12-05 13:27:18] evento_id inicio
+[2025-12-05 13:27:18] evento_id inicio
+[2025-12-05 13:27:18] id 33
+[2025-12-05 13:27:18] evento_tipo i
+[2025-12-05 13:27:18] tipo m
+[2025-12-05 13:27:18] horaAgendada 
+[2025-12-05 13:27:18] horario 10:00
+[2025-12-05 13:27:18] evento_id 32
+[2025-12-05 13:27:18] evento_id 32
+[2025-12-05 13:27:18] id 33
+[2025-12-05 13:27:18] evento_tipo m
+[2025-12-05 13:27:18] tipo m
+[2025-12-05 13:27:18] horaAgendada 09:00:00
+[2025-12-05 13:27:18] horario 10:00
+[2025-12-05 13:27:18] evento_id 1
+[2025-12-05 13:27:18] evento_id 1
+[2025-12-05 13:27:18] id 33
+[2025-12-05 13:27:18] evento_tipo p
+[2025-12-05 13:27:18] tipo m
+[2025-12-05 13:27:18] horaAgendada 09:00:00
+[2025-12-05 13:27:18] horario 10:00
+[2025-12-05 13:27:18] evento_id 33
+[2025-12-05 13:27:18] evento_id 33
+[2025-12-05 13:27:18] id 33
+[2025-12-05 13:27:18] evento_tipo m
+[2025-12-05 13:27:18] tipo m
+[2025-12-05 13:27:18] horaAgendada 10:00:00
+[2025-12-05 13:27:18] horario 10:00
+[2025-12-05 13:27:18] evento_id inicio
+[2025-12-05 13:27:18] evento_id inicio
+[2025-12-05 13:27:18] id 32
+[2025-12-05 13:27:18] evento_tipo i
+[2025-12-05 13:27:18] tipo m
+[2025-12-05 13:27:18] horaAgendada 
+[2025-12-05 13:27:18] horario 15:00
+[2025-12-05 13:27:18] evento_id 32
+[2025-12-05 13:27:18] evento_id 32
+[2025-12-05 13:27:18] id 32
+[2025-12-05 13:27:18] evento_tipo m
+[2025-12-05 13:27:18] tipo m
+[2025-12-05 13:27:18] horaAgendada 09:00:00
+[2025-12-05 13:27:18] horario 15:00
+[2025-12-05 13:27:18] evento_id 1
+[2025-12-05 13:27:18] evento_id 1
+[2025-12-05 13:27:18] id 32
+[2025-12-05 13:27:18] evento_tipo p
+[2025-12-05 13:27:18] tipo m
+[2025-12-05 13:27:18] horaAgendada 09:00:00
+[2025-12-05 13:27:18] horario 15:00
+[2025-12-05 13:27:18] evento_id 33
+[2025-12-05 13:27:18] evento_id 33
+[2025-12-05 13:27:18] id 32
+[2025-12-05 13:27:18] evento_tipo m
+[2025-12-05 13:27:18] tipo m
+[2025-12-05 13:27:18] horaAgendada 10:00:00
+[2025-12-05 13:27:18] horario 15:00
+[2025-12-05 13:27:18] evento_id 32
+[2025-12-05 13:27:18] evento_id 32
+[2025-12-05 13:27:18] id 32
+[2025-12-05 13:27:18] evento_tipo m
+[2025-12-05 13:27:18] tipo m
+[2025-12-05 13:27:18] horaAgendada 15:00:00
+[2025-12-05 13:27:18] horario 15:00
+[2025-12-05 13:27:18] evento_id inicio
+[2025-12-05 13:27:18] evento_id inicio
+[2025-12-05 13:27:18] id 32
+[2025-12-05 13:27:18] evento_tipo i
+[2025-12-05 13:27:18] tipo m
+[2025-12-05 13:27:18] horaAgendada 
+[2025-12-05 13:27:18] horario 21:00
+[2025-12-05 13:27:18] evento_id 32
+[2025-12-05 13:27:18] evento_id 32
+[2025-12-05 13:27:18] id 32
+[2025-12-05 13:27:18] evento_tipo m
+[2025-12-05 13:27:18] tipo m
+[2025-12-05 13:27:18] horaAgendada 09:00:00
+[2025-12-05 13:27:18] horario 21:00
+[2025-12-05 13:27:18] evento_id 1
+[2025-12-05 13:27:18] evento_id 1
+[2025-12-05 13:27:18] id 32
+[2025-12-05 13:27:18] evento_tipo p
+[2025-12-05 13:27:18] tipo m
+[2025-12-05 13:27:18] horaAgendada 09:00:00
+[2025-12-05 13:27:18] horario 21:00
+[2025-12-05 13:27:18] evento_id 33
+[2025-12-05 13:27:18] evento_id 33
+[2025-12-05 13:27:18] id 32
+[2025-12-05 13:27:18] evento_tipo m
+[2025-12-05 13:27:18] tipo m
+[2025-12-05 13:27:18] horaAgendada 10:00:00
+[2025-12-05 13:27:18] horario 21:00
+[2025-12-05 13:27:18] evento_id 32
+[2025-12-05 13:27:18] evento_id 32
+[2025-12-05 13:27:18] id 32
+[2025-12-05 13:27:18] evento_tipo m
+[2025-12-05 13:27:18] tipo m
+[2025-12-05 13:27:18] horaAgendada 15:00:00
+[2025-12-05 13:27:18] horario 21:00
+[2025-12-05 13:27:18] evento_id 32
+[2025-12-05 13:27:18] evento_id 32
+[2025-12-05 13:27:18] id 32
+[2025-12-05 13:27:18] evento_tipo m
+[2025-12-05 13:27:18] tipo m
+[2025-12-05 13:27:18] horaAgendada 21:00:00
+[2025-12-05 13:27:18] horario 21:00
+[2025-12-05 13:27:18] evento_id inicio
+[2025-12-05 13:27:18] evento_id inicio
+[2025-12-05 13:27:18] id 33
+[2025-12-05 13:27:18] evento_tipo i
+[2025-12-05 13:27:18] tipo m
+[2025-12-05 13:27:18] horaAgendada 
+[2025-12-05 13:27:18] horario 22:00
+[2025-12-05 13:27:18] evento_id 32
+[2025-12-05 13:27:18] evento_id 32
+[2025-12-05 13:27:18] id 33
+[2025-12-05 13:27:18] evento_tipo m
+[2025-12-05 13:27:18] tipo m
+[2025-12-05 13:27:18] horaAgendada 09:00:00
+[2025-12-05 13:27:18] horario 22:00
+[2025-12-05 13:27:18] evento_id 1
+[2025-12-05 13:27:18] evento_id 1
+[2025-12-05 13:27:18] id 33
+[2025-12-05 13:27:18] evento_tipo p
+[2025-12-05 13:27:18] tipo m
+[2025-12-05 13:27:18] horaAgendada 09:00:00
+[2025-12-05 13:27:18] horario 22:00
+[2025-12-05 13:27:18] evento_id 33
+[2025-12-05 13:27:18] evento_id 33
+[2025-12-05 13:27:18] id 33
+[2025-12-05 13:27:18] evento_tipo m
+[2025-12-05 13:27:18] tipo m
+[2025-12-05 13:27:18] horaAgendada 10:00:00
+[2025-12-05 13:27:18] horario 22:00
+[2025-12-05 13:27:18] evento_id 32
+[2025-12-05 13:27:18] evento_id 32
+[2025-12-05 13:27:18] id 33
+[2025-12-05 13:27:18] evento_tipo m
+[2025-12-05 13:27:18] tipo m
+[2025-12-05 13:27:18] horaAgendada 15:00:00
+[2025-12-05 13:27:18] horario 22:00
+[2025-12-05 13:27:18] evento_id 32
+[2025-12-05 13:27:18] evento_id 32
+[2025-12-05 13:27:18] id 33
+[2025-12-05 13:27:18] evento_tipo m
+[2025-12-05 13:27:18] tipo m
+[2025-12-05 13:27:18] horaAgendada 21:00:00
+[2025-12-05 13:27:18] horario 22:00
+[2025-12-05 13:27:18] evento_id 33
+[2025-12-05 13:27:18] evento_id 33
+[2025-12-05 13:27:18] id 33
+[2025-12-05 13:27:18] evento_tipo m
+[2025-12-05 13:27:18] tipo m
+[2025-12-05 13:27:18] horaAgendada 22:00:00
+[2025-12-05 13:27:18] horario 22:00
+[2025-12-05 13:27:27] gemmini
+[2025-12-05 13:27:27] {
+  "error": {
+    "code": 403,
+    "message": "Your API key was reported as leaked. Please use another API key.",
+    "status": "PERMISSION_DENIED"
+  }
 }
 

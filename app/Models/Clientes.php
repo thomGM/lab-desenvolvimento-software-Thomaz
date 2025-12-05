@@ -59,6 +59,12 @@ class Clientes {
         return;
     }
 
+    public function buscarTelefonePorId($id) {
+        $stmt = $this->conexao->prepare("SELECT telefoneEmergencia FROM paciente WHERE id = :id");
+        $stmt->execute(['id' => $id]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
     public function getId() {
         return $this->id;
     }

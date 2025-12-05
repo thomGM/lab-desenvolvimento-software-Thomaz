@@ -47,11 +47,6 @@
                     </div>
                 </div>
 
-                <div class="mb-3">
-                    <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="Ex: joao.silva@email.com">
-                </div>
-
                 <button type="button" onclick="novoMedico()" class="btn btn-success">Cadastrar</button>
             </form>
         </div>

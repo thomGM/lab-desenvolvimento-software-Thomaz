@@ -26,7 +26,7 @@ function limparFormularioProcedimento() {
 }
 function consultaProcedimentos() {
     $.ajax({
-        url: BASE_URL + '/procedimento/listar',
+        url: BASE_URL + '/procedimento/listarTodos',
         method: 'GET',
         dataType: 'json',
         success: function(response) {
@@ -143,12 +143,11 @@ $(document).ready(function(){
             return;
         }
 
-        // Itera sobre cada linha da tabela para filtrar
         $('#tabelaProcedimentos tbody tr').each(function() {
             var linha = $(this);
             var statusLinha = linha.find('input[name="status"]').val();
-            //console.log('statusLinha' + statusLinha);
-            //console.log( 'statusFiltro' + statusFiltro)
+            console.log('statusLinha' + statusLinha);
+            console.log( 'statusFiltro' + statusFiltro)
 
             if (statusLinha === statusFiltro) {
                 linha.show();

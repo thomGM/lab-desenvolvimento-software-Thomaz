@@ -80,14 +80,35 @@ function novoHistoricoMedico(index, item = {}) {
 
     // Popula o select de médicos que acabou de ser criado
     const $select = $(`#id_medico_${index}`);
+    
     if (medicosCache.length > 0) {
+        console.log("Populando select de médicos com cache");
         medicosCache.forEach(medico => {
             $select.append(`<option value="${medico.id}">${medico.nome}</option>`);
         });
-        // Se estiver editando, seleciona o médico correto
         if (item.id_medico) {
             $select.val(item.id_medico);
         }
+    } else {
+        console.log("Cache vazio, carregando médicos...");
+        // Se o cache estiver vazio, carrega os médicos
+        $.ajax({
+            url: BASE_URL + '/medicos/listar',
+            method: 'GET',
+            dataType: 'json',
+            success: function(response) {
+                medicosCache = response.data;
+                medicosCache.forEach(medico => {
+                    $select.append(`<option value="${medico.id}">${medico.nome}</option>`);
+                });
+                if (item.id_medico) {
+                    $select.val(item.id_medico);
+                }
+            },
+            error: function(xhr, status, error) {
+                console.log('Erro ao carregar médicos: ' + error);
+            }
+        });
     }
 
     const novoIndice = index + 1;
