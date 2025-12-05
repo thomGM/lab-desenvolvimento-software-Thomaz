@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/../Core/log.php';
+require_once __DIR__ . '/../Core/config.php';
 class GeminiController {
 
     private $conexao;
@@ -55,7 +56,7 @@ class GeminiController {
         ];
 
       
-        $apiKey = 'AIzaSyC7Y31Dth7c1cojN37U2V4PEJoXNJUyf_0';
+        $apiKey = GEMINI_API_KEY;
         $url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent";
 
         $header = [
