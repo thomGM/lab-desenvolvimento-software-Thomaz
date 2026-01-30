@@ -1,0 +1,54 @@
+input {
+    width: 80%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin: 0% 0% 0% 10%;
+}
+
+button {
+    width: 100px;
+    background-color: #f09491;
+    color: white;
+    padding: 10px 10px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+.text {
+    margin: 0% 0% 0% 10%;
+}
+
+.entrar {
+    position: relative;
+    text-align: right;
+}
+
+.margin {
+    margin-right: 10%;
+}
+
+.marginTop {
+    margin-top: 10%;
+}
+
+.cadastro {
+    border: 1px solid rgb(163, 158, 158);
+    background-color: rgb(163, 158, 158);
+    text-align: center;
+}
+
+.erro {
+    color: rgb(211, 10, 10);
+    font-weight: bold;
+    padding: 12px 40px;
+}
+
+.eye-icon {
+    cursor: pointer;
+}

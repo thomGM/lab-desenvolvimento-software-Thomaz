@@ -1,0 +1,13 @@
+.form {
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 23px;
+}
+
+.erro {
+    border-style: solid;
+    border-color: #f09491;
+    background-color: #f09491;
+    text-align-last: center;
+}

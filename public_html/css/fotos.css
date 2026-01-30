@@ -1,0 +1,35 @@
+.fotoPai {
+    display: inline-block;
+    margin: 30px 10px 1px 30px;
+    max-width: 210px;
+} 
+
+.foto {
+    display: inline-block;
+}
+
+.descricao {
+  position: relative; 
+}
+
+.descr{
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    
+}
+
+.descr:hover {
+    color: #c78954;
+}
+
+@media (max-width: 768px) {
+    .fotoPai {
+        display: block;
+        margin: 20px auto;
+    }
+    
+}
+

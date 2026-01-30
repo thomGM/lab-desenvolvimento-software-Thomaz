@@ -1,0 +1,112 @@
+#pai {
+    display: flex;
+    flex-wrap: wrap;
+}
+.border {
+    width: 70%;
+    display: inline-block;
+}
+
+.border2 {
+    border: solid 3px rgb(163, 158, 158);
+    display: inline-block;
+    width: 28%;
+    vertical-align: top;
+}
+
+.resumo {
+    text-align: center;
+    margin-top: 5px;
+}
+
+.flex {
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    width: 90%;
+    background-color: #f09491;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+ .cupon {
+    width: 70%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+.buttonOk {
+    width: 25%;
+}
+
+.margin {
+    margin: 5px 5px 5px 5px;
+}
+
+.minha_sacola {
+    margin: 15px 15px 15px 15px;
+}
+
+.border1 {
+    padding: 10px 10px 10px 10px;
+}
+
+@media (max-width: 768px) {
+    .border2 {
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .border {
+        display: none;
+    }
+    button {
+        padding: 0;
+    }
+    .inline {
+        display: inline-block;
+        vertical-align: top; /* Alinha os blocos ao topo, ajusta conforme necessidade */
+        margin-right: 5px; /* Espaçamento entre as divs, ajuste conforme necessário */
+    }
+    
+    .foto {
+        display: block; /* Garante que a imagem ocupe toda a div */
+        margin-bottom: 5px; /* Espaçamento entre a imagem e o texto */
+    }
+
+    .margin1 {
+        margin-bottom: 7px;
+    }
+
+    .largura {
+        width: 18%;
+    }
+
+    .larguraIn {
+        width: 47%;
+    }
+
+    .botaoAltura {
+        height: 40px;
+    }
+
+    .botaoExcluir{
+        height: 25px;
+        width: 85px;
+    }
+}
+
+@media (min-width: 769px) {
+    .border1 {
+        display: none;
+    }
+}
