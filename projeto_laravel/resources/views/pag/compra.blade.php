@@ -67,7 +67,7 @@
                             $('body').append(novaDiv);
 
                             $("#meu-dialogo").load('/pag.dialoglogin').dialog({
-                                height: $(window).height() < 400 ? $(window).height() * 0.8 : 285, 
+                                //height: $(window).height() < 400 ? $(window).height() * 0.8 : 285, 
                                 width: $(window).width() < 500 ? $(window).width() * 0.8 : 400,
                                 modal: true,
                                 closeOnEscape: true,
