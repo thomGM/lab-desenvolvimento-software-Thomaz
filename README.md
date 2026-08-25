@@ -23,3 +23,12 @@ O escopo do projeto está documentado no arquivo [ESCOPO.md](./ESCOPO.md)
 - Jquery
 - PHP (POO)
 - Banco de dados (MySQL)
+
+# 6. Configuração da API Gemini
+O relatório automático de cuidados usa a API do Google Gemini, que exige um token de acesso.
+
+1. Copie `app/Core/config.example.php` para `app/Core/config.php`.
+2. Gere um token em https://aistudio.google.com/apikey.
+3. Defina o valor gerado na constante `GEMINI_API_KEY` dentro de `app/Core/config.php`.
+
+O arquivo `app/Core/config.php` está no `.gitignore` e não deve ser commitado.

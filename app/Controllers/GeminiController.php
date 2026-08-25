@@ -1,6 +1,17 @@
 <?php
 require_once __DIR__ . '/../Core/log.php';
+
+if (!file_exists(__DIR__ . '/../Core/config.php')) {
+    http_response_code(500);
+    header('Content-Type: application/json');
+    echo json_encode([
+        'success' => false,
+        'message' => 'Configuração ausente: copie app/Core/config.example.php para app/Core/config.php e defina o token da API Gemini.'
+    ]);
+    exit;
+}
 require_once __DIR__ . '/../Core/config.php';
+
 class GeminiController {
 
     private $conexao;
